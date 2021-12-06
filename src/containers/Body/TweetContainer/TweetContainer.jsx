@@ -1,6 +1,6 @@
-import TweetCard from './TweetCard/TweetCard';
+import TweetCard from './TweetCard/TweetCard.jsx';
 
-function TweetContainer({ tweets, likeTweetHandler, images }) {
+function TweetContainer({ tweets, likeTweetHandler }) {
     return (
         <div className="tweet-container">
             {tweets.map((tweet, i) =>
@@ -8,7 +8,6 @@ function TweetContainer({ tweets, likeTweetHandler, images }) {
                     key={i}
                     tweet={tweet}
                     likeTweetHandler={likeTweetHandler}
-                    images={images}
                 />
             )}
         </div>

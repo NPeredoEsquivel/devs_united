@@ -1,4 +1,6 @@
-function TweetCard({ tweet, likeTweetHandler, images }) {
+import { images } from '../../../../App';
+
+function TweetCard({ tweet, likeTweetHandler }) {
     return (
         <div className="tweet-card">
             <div className="tweet-card__icons">

@@ -3,9 +3,10 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { firestore, loginWithGoogle, auth, logOut } from './Firebase';
 //import hearth from './icons/hearth.svg'
-import TweetContainer from './containers/Body/TweetContainer/TweetContainer';
+import Body from './containers/Body/Body.jsx';
+import './styles/main.scss';
 
-const images = require.context('./icons', true);
+export const images = require.context('./icons', true);
 
 function App() {
   const [tweets, setTweets] = useState([]);
@@ -52,7 +53,9 @@ function App() {
             Login with google
           </button>
         )}
-      <TweetContainer tweets={tweets} likeTweetHandler={likeTweetHandler} images={images} />
+      <Body
+        tweets={tweets}
+        likeTweetHandler={likeTweetHandler} />
     </div>
   );
 }
