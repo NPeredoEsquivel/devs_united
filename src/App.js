@@ -11,6 +11,12 @@ export const images = require.context('./icons', true);
 
 function App() {
   const [tweets, setTweets] = useState([]);
+  const [tweet, setTweet] = useState(
+    {
+      text: "",
+      author: "",
+      likes: ""
+    });
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -18,6 +24,8 @@ function App() {
       .onSnapshot((snapshot) => {
         const tweets = snapshot.docs.map((doc) => {
           return {
+            text: doc.data().text,
+            author: doc.data().author,
             likes: doc.data().likes,
             id: doc.id
           };
@@ -29,8 +37,28 @@ function App() {
       setUser(user);
       console.log(user);
     })
+
     return () => cancelSubs;
   }, [])
+
+  const handleChange = (e) => {
+    let newTweet = {
+      ...tweet,
+      [e.target.name]: e.target.value
+    }
+
+    setTweets(newTweet);
+  }
+
+  const sendTweet = (e) => {
+    e.preventDefault();
+    firestore.collection("tweets").add(tweet);
+  }
+
+  const deletTweet = (id) => {
+    firestore.doc(`tweets/${id}`).delete();
+
+  }
 
   const likeTweetHandler = (id, numLikes) => {
     if (!numLikes) {
@@ -48,6 +76,7 @@ function App() {
         tweets={tweets}
         likeTweetHandler={likeTweetHandler}
       />
+
     </div>
   );
 }
