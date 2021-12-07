@@ -1,11 +1,11 @@
-function InputText() {
+function InputText({ tweet, handleChange }) {
     return (
         <input
-            name="autor"
+            name="author"
             placeholder="Autor"
             type="text"
-            value={tweet.autor}
-            onChange={handleAutor}
+            value={tweet.author}
+            onChange={handleChange}
             className="tweet-container__input"
         />
     );

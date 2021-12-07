@@ -1,4 +1,4 @@
-function TextArea() {
+function TextArea({ tweet, handleChange }) {
     return (
         <textarea
             placeholder="Add tweet"
@@ -7,7 +7,7 @@ function TextArea() {
             cols="30"
             rows="10"
             value={tweet.text}
-            onChange={handleTextArea}
+            onChange={handleChange}
             className="tweet-container__text-area"
         />
     );

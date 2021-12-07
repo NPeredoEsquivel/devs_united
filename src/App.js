@@ -15,7 +15,9 @@ function App() {
     {
       text: "",
       author: "",
-      likes: ""
+      likes: "",
+      uid: "",
+      email: ""
     });
   const [user, setUser] = useState(null);
 
@@ -35,7 +37,6 @@ function App() {
 
     auth.onAuthStateChanged((user) => {
       setUser(user);
-      console.log(user);
     })
 
     return () => cancelSubs;
@@ -47,15 +48,15 @@ function App() {
       [e.target.name]: e.target.value
     }
 
-    setTweets(newTweet);
+    setTweet(newTweet);
   }
 
-  const sendTweet = (e) => {
+  const sendTweetHandler = (e) => {
     e.preventDefault();
     firestore.collection("tweets").add(tweet);
   }
 
-  const deletTweet = (id) => {
+  const deleteTweetHandler = (id) => {
     firestore.doc(`tweets/${id}`).delete();
 
   }
@@ -73,8 +74,12 @@ function App() {
         user={user}
       />
       <Body
+        tweet={tweet}
+        sendTweetHandler={sendTweetHandler}
+        handleChange={handleChange}
         tweets={tweets}
         likeTweetHandler={likeTweetHandler}
+        deleteTweet={deleteTweetHandler}
       />
 
     </div>

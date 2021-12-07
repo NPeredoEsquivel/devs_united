@@ -1,9 +1,19 @@
 import TweetContainer from './TweetContainer/TweetContainer'
-
-function Body({ tweets, likeTweetHandler }) {
+import TweetForm from './TweetForm/TweetForm'
+function Body({ tweet, sendTweetHandler, handleChange, tweets, likeTweetHandler, deleteTweet }) {
     return (
-        <TweetContainer tweets={tweets} likeTweetHandler={likeTweetHandler} />
-
+        <div className="tweet-body-container">
+            <TweetForm
+                tweet={tweet}
+                sendTweetHandler={sendTweetHandler}
+                handleChange={handleChange}
+            />
+            <TweetContainer
+                tweets={tweets}
+                likeTweetHandler={likeTweetHandler}
+                deleteTweet={deleteTweet}
+            />
+        </div >
     );
 }
 
