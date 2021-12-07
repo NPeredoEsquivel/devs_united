@@ -1,8 +1,12 @@
 import { images } from '../../../../App';
 import Span from '../../../../components/Span';
-function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
+function TweetCard({ tweet, likeTweetHandler, deleteTweet, user }) {
+
     return (
         <div className="tweet-card">
+            <p>{tweet.text}</p>
+            <p>{tweet.author}</p>
+            <p>{tweet.email}</p>
             <div className="tweet-card__icons">
                 <Span
                     className=""
@@ -16,8 +20,8 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                 />
                 <Span
                     className="tweet-card__delete-icon"
-                    onClickHandler={() => deleteTweet(tweet.id)}
-                    contentOfSpan="X"
+                    onClickHandler={(user && user.uid == tweet.uid) ? () => deleteTweet(tweet.id) : ""}
+                    contentOfSpan={(user && user.uid == tweet.uid) ? "X" : ""}
                 />
             </div>
         </div>

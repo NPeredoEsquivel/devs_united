@@ -1,21 +1,22 @@
 
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { firestore, auth } from './Firebase';
 //import hearth from './icons/hearth.svg'
 import Body from './containers/Body/Body.jsx';
 import Header from './containers/Header/Header.jsx';
 import './styles/main.scss';
+import { StatesContext } from './hooks/StatesContext';
 
 export const images = require.context('./icons', true);
 
 function App() {
+  const { tweetsArrayState, tweetState, userState } = useContext(StatesContext);
   const [tweets, setTweets] = useState([]);
   const [tweet, setTweet] = useState(
     {
       text: "",
       author: "",
-      likes: "",
       uid: "",
       email: ""
     });
@@ -29,9 +30,17 @@ function App() {
             text: doc.data().text,
             author: doc.data().author,
             likes: doc.data().likes,
-            id: doc.id
+            email: doc.data().email,
+            id: doc.id,
+            uid: doc.data().uid
           };
         });
+        setTweet({
+          text: "",
+          author: "",
+          uid: "",
+          email: ""
+        })
         setTweets(tweets);
       });
 
@@ -44,9 +53,11 @@ function App() {
 
   const handleChange = (e) => {
     let newTweet = {
-      ...tweet,
-      [e.target.name]: e.target.value
-    }
+      text: e.target.value,
+      author: user.displayName,
+      uid: user.uid,
+      email: user.email,
+    };
 
     setTweet(newTweet);
   }
@@ -80,6 +91,7 @@ function App() {
         tweets={tweets}
         likeTweetHandler={likeTweetHandler}
         deleteTweet={deleteTweetHandler}
+        user={user}
       />
 
     </div>

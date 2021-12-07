@@ -1,6 +1,6 @@
 import TweetCard from './TweetCard/TweetCard.jsx';
 
-function TweetContainer({ tweets, likeTweetHandler, deleteTweet }) {
+function TweetContainer({ tweets, likeTweetHandler, deleteTweet, user }) {
     return (
         <div className="tweet-container">
             {tweets.map((tweet, i) =>
@@ -9,6 +9,7 @@ function TweetContainer({ tweets, likeTweetHandler, deleteTweet }) {
                     tweet={tweet}
                     likeTweetHandler={likeTweetHandler}
                     deleteTweet={deleteTweet}
+                    user={user}
                 />
             )}
         </div>
