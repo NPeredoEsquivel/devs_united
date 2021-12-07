@@ -12,15 +12,6 @@ export const images = require.context('./icons', true);
 
 function App() {
   const { tweetsArrayState, tweetState, userState } = useContext(StatesContext);
-  const [tweets, setTweets] = useState([]);
-  const [tweet, setTweet] = useState(
-    {
-      text: "",
-      author: "",
-      uid: "",
-      email: ""
-    });
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const cancelSubs = firestore.collection("tweets")
@@ -35,17 +26,17 @@ function App() {
             uid: doc.data().uid
           };
         });
-        setTweet({
+        tweetState.setTweet({
           text: "",
           author: "",
           uid: "",
           email: ""
         })
-        setTweets(tweets);
+        tweetsArrayState.setTweets(tweets);
       });
-
-    auth.onAuthStateChanged((user) => {
-      setUser(user);
+    let currentUser = userState.user;
+    auth.onAuthStateChanged((currentUser) => {
+      userState.setUser(currentUser);
     })
 
     return () => cancelSubs;
@@ -54,17 +45,17 @@ function App() {
   const handleChange = (e) => {
     let newTweet = {
       text: e.target.value,
-      author: user.displayName,
-      uid: user.uid,
-      email: user.email,
+      author: userState.user.displayName,
+      uid: userState.user.uid,
+      email: userState.user.email,
     };
 
-    setTweet(newTweet);
+    tweetState.setTweet(newTweet);
   }
 
   const sendTweetHandler = (e) => {
     e.preventDefault();
-    firestore.collection("tweets").add(tweet);
+    firestore.collection("tweets").add(tweetState.tweet);
   }
 
   const deleteTweetHandler = (id) => {
@@ -81,17 +72,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header
-        user={user}
-      />
+      <Header />
       <Body
-        tweet={tweet}
-        sendTweetHandler={sendTweetHandler}
         handleChange={handleChange}
-        tweets={tweets}
         likeTweetHandler={likeTweetHandler}
         deleteTweet={deleteTweetHandler}
-        user={user}
       />
 
     </div>

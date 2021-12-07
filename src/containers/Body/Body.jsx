@@ -9,10 +9,8 @@ function Body({ tweet, sendTweetHandler, handleChange, tweets, likeTweetHandler,
                 handleChange={handleChange}
             />
             <TweetContainer
-                tweets={tweets}
                 likeTweetHandler={likeTweetHandler}
                 deleteTweet={deleteTweet}
-                user={user}
             />
         </div >
     );

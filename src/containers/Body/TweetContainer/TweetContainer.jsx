@@ -1,15 +1,19 @@
 import TweetCard from './TweetCard/TweetCard.jsx';
+import { StatesContext } from '../../../hooks/StatesContext';
+import { useContext } from 'react';
 
-function TweetContainer({ tweets, likeTweetHandler, deleteTweet, user }) {
+function TweetContainer({ likeTweetHandler, deleteTweet }) {
+
+    const { tweetsArrayState, userState } = useContext(StatesContext);
     return (
         <div className="tweet-container">
-            {tweets.map((tweet, i) =>
+            {tweetsArrayState.tweets.map((tweet, i) =>
                 <TweetCard
                     key={i}
                     tweet={tweet}
                     likeTweetHandler={likeTweetHandler}
                     deleteTweet={deleteTweet}
-                    user={user}
+                    user={userState.user}
                 />
             )}
         </div>

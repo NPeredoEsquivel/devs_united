@@ -1,11 +1,15 @@
 import TextArea from '../../../components/TextArea';
 import Button from '../../../components/Button';
+import { StatesContext } from '../../../hooks/StatesContext';
+import { useContext } from 'react';
 
-function TweetForm({ tweet, sendTweetHandler, handleChange }) {
+function TweetForm({ sendTweetHandler, handleChange }) {
+    const { tweetState } = useContext(StatesContext);
+    console.log(tweetState);
     return (
         <div className="tweet-form">
             <TextArea
-                tweet={tweet}
+                tweet={tweetState.tweet}
                 handleChange={handleChange}
             />
             <Button
