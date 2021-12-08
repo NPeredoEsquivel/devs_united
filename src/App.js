@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { firestore, auth } from './Firebase';
 //import hearth from './icons/hearth.svg'
 import Body from './containers/Body/Body.jsx';
@@ -14,26 +14,31 @@ function App() {
   const { tweetsArrayState, tweetState, userState } = useContext(StatesContext);
 
   useEffect(() => {
+
     const cancelSubs = firestore.collection("tweets")
       .onSnapshot((snapshot) => {
         const tweets = snapshot.docs.map((doc) => {
           return {
             text: doc.data().text,
             author: doc.data().author,
+            photoURL: doc.data().photoURL,
             likes: doc.data().likes,
             email: doc.data().email,
             id: doc.id,
             uid: doc.data().uid
           };
         });
+
         tweetState.setTweet({
           text: "",
           author: "",
+          photoURL: "",
           uid: "",
           email: ""
         })
         tweetsArrayState.setTweets(tweets);
       });
+
     let currentUser = userState.user;
     auth.onAuthStateChanged((currentUser) => {
       userState.setUser(currentUser);
@@ -46,10 +51,10 @@ function App() {
     let newTweet = {
       text: e.target.value,
       author: userState.user.displayName,
+      photoURL: userState.user.photoURL,
       uid: userState.user.uid,
       email: userState.user.email,
     };
-
     tweetState.setTweet(newTweet);
   }
 
@@ -74,6 +79,7 @@ function App() {
     <div className="App">
       <Header />
       <Body
+        sendTweetHandler={sendTweetHandler}
         handleChange={handleChange}
         likeTweetHandler={likeTweetHandler}
         deleteTweet={deleteTweetHandler}

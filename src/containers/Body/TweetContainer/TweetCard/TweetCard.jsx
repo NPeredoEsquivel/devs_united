@@ -1,28 +1,36 @@
 import { images } from '../../../../App';
 import Span from '../../../../components/Span';
 function TweetCard({ tweet, likeTweetHandler, deleteTweet, user }) {
-
+    console.log(tweet);
     return (
-        <div className="tweet-card">
-            <p>{tweet.text}</p>
-            <p>{tweet.author}</p>
-            <p>{tweet.email}</p>
-            <div className="tweet-card__icons">
-                <Span
-                    className=""
-                    onClickHandler=""
-                    contentOfSpan={tweet.likes ? tweet.likes : "0"}
-                />
-                <Span
-                    className="tweet-card__icons__span"
-                    onClickHandler={() => likeTweetHandler(tweet.id, tweet.likes)}
-                    contentOfSpan={<img height="13px" alt="hearth" src={images('./hearth.svg').default} />}
-                />
-                <Span
-                    className="tweet-card__delete-icon"
-                    onClickHandler={(user && user.uid == tweet.uid) ? () => deleteTweet(tweet.id) : ""}
-                    contentOfSpan={(user && user.uid == tweet.uid) ? "X" : ""}
-                />
+        <div className="tweet">
+            <div className="tweet__user-img">
+                <img src={tweet.photoURL} alt="img" />
+            </div>
+            <div className="tweet__information">
+                <div className="author">
+                    <p>{tweet.author}</p>
+                    <Span
+                        classOfSpan="tweet-card__delete-icon"
+                        onClickHandler={(user && user.uid === tweet.uid) ? () => deleteTweet(tweet.id) : ""}
+                        contentOfSpan={(user && user.uid === tweet.uid) ? <img height="13px" alt="hearth" src={images('./trash-can.png').default} /> : ""}
+                    />
+                </div>
+                <div className="text">
+                    <p>{tweet.text}</p>
+                </div>
+                <div className="like-icon">
+                    <Span
+                        classOfSpan="like-icon__img"
+                        onClickHandler={() => likeTweetHandler(tweet.id, tweet.likes)}
+                        contentOfSpan={<img height="13px" alt="hearth" src={images('./hearth.svg').default} />}
+                    />
+                    <Span
+                        classOfSpan=""
+                        onClickHandler=""
+                        contentOfSpan={tweet.likes ? tweet.likes : "0"}
+                    />
+                </div>
             </div>
         </div>
     );

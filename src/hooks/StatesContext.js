@@ -10,6 +10,7 @@ export default function StatesContextProvider({ children }) {
         {
             text: "",
             author: "",
+            photoUrl: "",
             uid: "",
             email: ""
         });

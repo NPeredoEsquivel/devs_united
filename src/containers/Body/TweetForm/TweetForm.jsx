@@ -5,7 +5,6 @@ import { useContext } from 'react';
 
 function TweetForm({ sendTweetHandler, handleChange }) {
     const { tweetState } = useContext(StatesContext);
-    console.log(tweetState);
     return (
         <div className="tweet-form">
             <TextArea
