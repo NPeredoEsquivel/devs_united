@@ -1,8 +1,7 @@
 
 import './App.css';
 import { useEffect, useContext } from 'react';
-import { firestore, auth } from './Firebase';
-//import hearth from './icons/hearth.svg'
+import { firestore, auth, serverTimestamp, query, orderBy } from './Firebase';
 import Body from './containers/Body/Body.jsx';
 import Header from './containers/Header/Header.jsx';
 import './styles/main.scss';
@@ -14,37 +13,39 @@ function App() {
   const { tweetsArrayState, tweetState, userState } = useContext(StatesContext);
 
   useEffect(() => {
-
-    const cancelSubs = firestore.collection("tweets")
-      .onSnapshot((snapshot) => {
-        const tweets = snapshot.docs.map((doc) => {
-          return {
-            text: doc.data().text,
-            author: doc.data().author,
-            photoURL: doc.data().photoURL,
-            likes: doc.data().likes,
-            email: doc.data().email,
-            id: doc.id,
-            uid: doc.data().uid
-          };
-        });
-
-        tweetState.setTweet({
-          text: "",
-          author: "",
-          photoURL: "",
-          uid: "",
-          email: ""
-        })
-        tweetsArrayState.setTweets(tweets);
+    const collection = firestore.collection("tweets");
+    const orderedCollection = collection.orderBy("timestamp", "desc");
+    const subs = orderedCollection.onSnapshot((snapshot) => {
+      const tweets = snapshot.docs.map((doc) => {
+        return {
+          text: doc.data().text,
+          author: doc.data().author,
+          photoURL: doc.data().photoURL,
+          likes: doc.data().likes,
+          email: doc.data().email,
+          timestamp: doc.data().timestamp,
+          id: doc.id,
+          uid: doc.data().uid
+        };
       });
+
+      tweetState.setTweet({
+        text: "",
+        author: "",
+        photoURL: "",
+        email: "",
+        timestamp: "",
+        uid: "",
+      })
+      tweetsArrayState.setTweets(tweets);
+    });
 
     let currentUser = userState.user;
     auth.onAuthStateChanged((currentUser) => {
       userState.setUser(currentUser);
     })
 
-    return () => cancelSubs;
+    return () => subs;
   }, [])
 
   const handleChange = (e) => {
@@ -54,6 +55,7 @@ function App() {
       photoURL: userState.user.photoURL,
       uid: userState.user.uid,
       email: userState.user.email,
+      timestamp: serverTimestamp
     };
     tweetState.setTweet(newTweet);
   }

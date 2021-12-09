@@ -23,6 +23,8 @@ export const auth = firebase.auth();
 //creando un nuevo provider.
 export const provider = new firebase.auth.GoogleAuthProvider();
 
+export const serverTimestamp = firebase.firestore.Timestamp.now();
+
 export const loginWithGoogle = () => auth.signInWithPopup(provider);
 export const logOut = () => auth.signOut();
 
