@@ -1,7 +1,6 @@
 import { images } from '../../../../App';
 import Span from '../../../../components/Span';
 function TweetCard({ tweet, likeTweetHandler, deleteTweet, user }) {
-    console.log(tweet);
     return (
         <div className="tweet">
             <div className="tweet__user-img">
