@@ -1,6 +1,6 @@
-import Button from '../../components/Button'
-import { loginWithGoogle, logOut } from '../../Firebase';
-import { StatesContext } from '../../hooks/StatesContext';
+import Button from '../../../components/common/Button'
+import { logOut } from '../../../Firebase';
+import { StatesContext } from '../../../hooks/StatesContext';
 import { useContext } from 'react';
 
 function Header() {
@@ -18,10 +18,7 @@ function Header() {
                     </>
                 ) : (
                         <div className="navbar-container__button-container">
-                            <Button
-                                buttonText="Login with Google"
-                                onClickEvent={loginWithGoogle}
-                            />
+
 
                         </div>
                     )}

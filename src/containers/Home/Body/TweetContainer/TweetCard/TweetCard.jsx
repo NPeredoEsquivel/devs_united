@@ -1,5 +1,5 @@
-import { images } from '../../../../App';
-import Span from '../../../../components/Span';
+import { images } from '../../../../../App';
+import Span from '../../../../../components/common/Span';
 function TweetCard({ tweet, likeTweetHandler, deleteTweet, user }) {
     return (
         <div className="tweet">

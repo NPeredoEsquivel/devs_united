@@ -1,6 +1,6 @@
-import TextArea from '../../../components/TextArea';
-import Button from '../../../components/Button';
-import { StatesContext } from '../../../hooks/StatesContext';
+import TextArea from '../../../../components/common/TextArea';
+import Button from '../../../../components/common/Button';
+import { StatesContext } from '../../../../hooks/StatesContext';
 import { useContext } from 'react';
 
 function TweetForm({ sendTweetHandler, handleChange }) {

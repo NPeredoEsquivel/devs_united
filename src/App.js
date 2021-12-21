@@ -2,10 +2,13 @@
 import './App.css';
 import { useEffect, useContext } from 'react';
 import { firestore, auth, serverTimestamp, query, orderBy } from './Firebase';
-import Body from './containers/Body/Body.jsx';
-import Header from './containers/Header/Header.jsx';
 import './styles/main.scss';
 import { StatesContext } from './hooks/StatesContext';
+import { Link, Route, Routes } from "react-router-dom";
+import Login from './containers/Login/Login';
+import Home from './containers/Home/Home';
+import PrivateRoute from "./containers/Routes/PrivateRoute";
+
 
 export const images = require.context('./icons', true);
 
@@ -41,9 +44,9 @@ function App() {
     });
 
     let currentUser = userState.user;
-    auth.onAuthStateChanged((currentUser) => {
+    /* auth.onAuthStateChanged((currentUser) => {
       userState.setUser(currentUser);
-    })
+    }) */
 
     return () => subs;
   }, [])
@@ -79,14 +82,32 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Body
-        sendTweetHandler={sendTweetHandler}
-        handleChange={handleChange}
-        likeTweetHandler={likeTweetHandler}
-        deleteTweet={deleteTweetHandler}
-      />
+      <>
+        <Routes>
+          <Route exact path="/" element={
+            <PrivateRoute>
+              <Home
+                sendTweetHandler={sendTweetHandler}
+                handleChange={handleChange}
+                likeTweetHandler={likeTweetHandler}
+                deleteTweet={deleteTweetHandler}
+              />
+            </PrivateRoute>
+          } />
+          <Route exact path="/profile" element={
+            <PrivateRoute>
+              <Home
+                sendTweetHandler={sendTweetHandler}
+                handleChange={handleChange}
+                likeTweetHandler={likeTweetHandler}
+                deleteTweet={deleteTweetHandler}
+              />
+            </PrivateRoute>
+          } />
 
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </>
     </div>
   );
 }

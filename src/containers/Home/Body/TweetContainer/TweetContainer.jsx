@@ -1,5 +1,5 @@
 import TweetCard from './TweetCard/TweetCard.jsx';
-import { StatesContext } from '../../../hooks/StatesContext';
+import { StatesContext } from '../../../../hooks/StatesContext';
 import { useContext } from 'react';
 
 function TweetContainer({ likeTweetHandler, deleteTweet }) {
