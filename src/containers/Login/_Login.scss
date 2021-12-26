@@ -16,7 +16,7 @@
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 120px;
+        top: 4rem;
         width: 100%;
 
 
@@ -39,23 +39,25 @@
         align-items: center;
         flex-direction: column;
         position: absolute;
-        bottom: 120px;
+        bottom: 4rem;
         width: 100%;
 
         .auth-container-body {
             width: 20rem;
             display: flex;
             flex-direction: column;
-            padding-bottom: 30px;
+            padding-bottom: 2rem;
 
             &__title {
                 color: white;
+                display: flex;
+                justify-content: center;
                 font-family: 'Silkscreen',
                     sans-serif;
                 font-weight: 700;
                 text-align: initial;
                 font-size: 1.6rem;
-                padding-bottom: 20px;
+                padding-bottom: 1rem;
 
                 span {
                     color: red;
@@ -66,14 +68,14 @@
                 color: white;
                 font-family: 'Fira Code',
                     monospace;
-                font-weight: 400;
-                font-size: .8rem;
+                font-weight: 200;
+                font-size: 1rem;
                 line-height: 23px;
                 letter-spacing: -0.33px;
-                padding-bottom: 40px;
+                padding-bottom: 1.5rem;
 
                 .body__input {
-                    padding-bottom: 20px;
+                    padding-bottom: 1rem;
 
                     input {
                         background-color: #150714;
@@ -95,7 +97,7 @@
                             monospace;
                         font-weight: 400;
                         font-size: 0.9rem;
-                        padding-bottom: 22px;
+                        padding-bottom: 1rem;
                     }
 
                     .color-picker__colors {
@@ -103,8 +105,8 @@
                         justify-content: space-evenly;
 
                         >div {
-                            height: 43px;
-                            width: 43px;
+                            height: 2rem;
+                            width: 2rem;
                         }
 
                         &__red {
@@ -178,7 +180,7 @@
         font-family: 'Fira Code',
             monospace;
         position: absolute;
-        bottom: 50px;
+        bottom: 2rem;
         color: #60265B;
         width: 100%;
 
