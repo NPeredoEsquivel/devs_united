@@ -70,28 +70,30 @@ export function AuthContainerButton({ currentUser }) {
         <div className="auth-container-body__button">
             <div className="button-container">
                 {currentUser ? (
+
                     <>
-                        <Link to="/" >Continue</Link>
+                        <div className="button-container__redirect">
+                            <Link to="/" >Continue</Link>
+                        </div>
                         <Button
                             buttonText="Log out"
                             onClickEvent={logOut}
                         />
                     </>
                 ) : (
-                        <>
-                            <div className="button-container__img-container">
+                        <div className="button-container__login">
+                            <div className="button-container__login__img-container">
                                 <img src={images('./google-icon.svg').default} />
                             </div>
                             <Button
                                 buttonText="Sign in with Google"
-                                buttonClass="button-container__button"
+                                buttonClass="button-container__login__button"
                                 onClickEvent={loginWithGoogle}
                             />
-                        </>
+                        </div>
                     )}
-
             </div>
-        </div>
+        </div >
     );
 }
 
