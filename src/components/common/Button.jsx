@@ -1,10 +1,8 @@
-function Button({ buttonText, onClickEvent }) {
+function Button({ buttonText, buttonClass, onClickEvent }) {
     return (
-        <div className="button-container">
-            <button className="button-container__button" onClick={onClickEvent}>
-                {buttonText}
-            </button>
-        </div>
+        <button className={buttonClass} onClick={onClickEvent}>
+            {buttonText}
+        </button>
     );
 }
 

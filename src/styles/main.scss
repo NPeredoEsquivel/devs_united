@@ -1,3 +1,8 @@
 @import './config.scss';
 @import '../containers/Home/Body/TweetContainer/TweetCard/TweetCard';
 @import '../containers/Login/Login';
+
+.App {
+    background-color: #2E132C;
+    height: 100vh;
+}

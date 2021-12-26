@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
+@import url('http://fonts.cdnfonts.com/css/silkscreen');
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+
+    .logo-container {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 120px;
+        width: 100%;
+
+
+        &__logo {
+            height: 120px;
+            width: 180px;
+
+        }
+
+        &__title {
+            height: 25px;
+            margin-top: 20px;
+            width: 270px;
+        }
+
+    }
+
+    .auth-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        bottom: 120px;
+        width: 100%;
+
+        .auth-container-body {
+            width: 20rem;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 30px;
+
+            &__title {
+                color: white;
+                font-family: 'Silkscreen',
+                    sans-serif;
+                font-weight: 700;
+                text-align: initial;
+                font-size: 1.6rem;
+                padding-bottom: 20px;
+
+                span {
+                    color: red;
+                }
+            }
+
+            &__body {
+                color: white;
+                font-family: 'Fira Code',
+                    monospace;
+                font-weight: 400;
+                font-size: .8rem;
+                line-height: 23px;
+                letter-spacing: -0.33px;
+                padding-bottom: 40px;
+
+                .body__input {
+                    padding-bottom: 20px;
+
+                    input {
+                        background-color: #150714;
+                        border-width: 1px;
+                        height: 3rem;
+                        width: 100%;
+
+                        &::placeholder {
+                            color: #914D8B;
+                            font-size: 1rem;
+                            padding-left: 14px;
+                        }
+                    }
+                }
+
+                .body__color-picker {
+                    .color-picker__title {
+                        font-family: 'Fira Code',
+                            monospace;
+                        font-weight: 400;
+                        font-size: 0.9rem;
+                        padding-bottom: 22px;
+                    }
+
+                    .color-picker__colors {
+                        display: flex;
+                        justify-content: space-evenly;
+
+                        >div {
+                            height: 43px;
+                            width: 43px;
+                        }
+
+                        &__red {
+                            background: #F50D5A;
+                        }
+
+                        &__orange {
+                            background: #FF865C;
+                        }
+
+                        &__yellow {
+                            background-color: #FFEA5C;
+                        }
+
+                        &__green {
+                            background: #00DA76;
+                        }
+
+                        &__light-blue {
+                            background: #0096CE;
+                        }
+
+                        &__purple {
+                            background: #800FFF;
+                        }
+                    }
+                }
+            }
+
+            &__button {
+                .button-container {
+                    border: 1px solid #4285F4;
+                    display: flex;
+                    justify-content: center;
+                    height: 2rem;
+                    width: 100%;
+
+                    &__img-container {
+                        display: flex;
+                        justify-content: center;
+                        background-color: white;
+                        height: 100%;
+                        width: 2rem;
+
+                        img {
+                            width: 70%;
+                        }
+                    }
+
+                    &__button {
+                        background-color: #4285F4;
+                        border-radius: 3px 0px 0px 3px;
+                        box-sizing: border-box;
+                        border-width: 1px;
+                        color: white;
+                        font-family: 'Roboto',
+                            sans-serif;
+                        font-size: 0.8rem;
+                        height: 100%;
+                        width: 18rem;
+                    }
+                }
+            }
+        }
+
+
+
+    }
+
+    .login-footer-container {
+        font-family: 'Fira Code',
+            monospace;
+        position: absolute;
+        bottom: 50px;
+        color: #60265B;
+        width: 100%;
+
+        span {
+            color: red;
+        }
+    }
+
+}
