@@ -4,6 +4,7 @@ import Header from './Header/Header.jsx';
 export default function Home({ sendTweetHandler, handleChange, likeTweetHandler, deleteTweetHandler }) {
     return (
         <div className="home-container">
+            <Header />
             <Body
                 sendTweetHandler={sendTweetHandler}
                 handleChange={handleChange}

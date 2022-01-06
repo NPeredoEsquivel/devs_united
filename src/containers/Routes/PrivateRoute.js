@@ -1,23 +1,16 @@
-import React, { useContext } from "react";
-import { Route, Navigate, Outlet } from "react-router-dom";
-import { AuthContext } from "../../hooks/AuthContext";
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAuthState } from "../../helper/auth";
+import Loading from "../../components/common/Loading";
 
 export default function PrivateRoute({ children }) {
-    const { currentUser } = useContext(AuthContext);
-    console.log(currentUser);
+    const { isLoading, isAuthenticated } = useAuthState();
+    console.log(isLoading);
     return (
-        currentUser ? children : <Navigate to={"/login"} />
+        !isLoading ?
+            isAuthenticated ? children : <Navigate to={"/login"} />
+            : (
+                <Loading />
+            )
     );
-    /* return (
-        <Route
-            {...rest}
-            render={routeProps => (
-                currentUser ? (
-                    <Outlet {...rest} />
-                ) : (
-                        <Navigate to={"/login"} />
-                    )
-            )}>
-        </Route>
-    ); */
 };

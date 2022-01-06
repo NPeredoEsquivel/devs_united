@@ -7,12 +7,14 @@ import { images } from "../../App";
 import { loginWithGoogle, logOut } from "../../Firebase";
 
 export function AuthContainerTitle({ currentUser }) {
+
     const htmlContent = currentUser ?
         <>WELCOME <br></br> <span>{currentUser.displayName}</span></> :
         <>LOREM <br></br>IPSUM DOLOR</>;
 
     return (
         <div className="auth-container-body__title">
+
             {currentUser ? (
                 <TextContainer
                     contentText={htmlContent}

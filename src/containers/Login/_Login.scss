@@ -103,10 +103,23 @@
                     .color-picker__colors {
                         display: flex;
                         justify-content: space-evenly;
+                        align-items: center;
+                        height: 2.5rem;
 
                         >div {
+                            box-sizing: content-box;
+                            box-shadow: 1px 1px 3px 1px #868686;
                             height: 2rem;
                             width: 2rem;
+
+                            &:hover {
+                                border: 2px solid #FFFFFF;
+                                transition: border-width 0.1s linear;
+                                height: 2.2rem;
+                                width: 2.2rem;
+                                transition: width 0.1s,
+                                    height 0.1s;
+                            }
                         }
 
                         &__red {

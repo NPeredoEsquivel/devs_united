@@ -1,29 +1,16 @@
-import Button from '../../../components/common/Button'
-import { logOut } from '../../../Firebase';
-import { StatesContext } from '../../../hooks/StatesContext';
+
 import { useContext } from 'react';
+import { images } from "../../../App";
+import { AuthContext } from "../../../hooks/AuthContext";
 
 function Header() {
-    const { userState } = useContext(StatesContext);
+    const { currentUser } = useContext(AuthContext);
     return (
         <header>
-            <div className="navbar-container">
-                {userState.user ? (
-                    <>
-                        <div className="navbar-container__user">
-                            <img src={userState.user.photoURL} alt="img" className="navbar-container__user__profile__pic" />
-                            <p>¡Hola {userState.user.displayName}!</p>
-                            <button className="navbar-container__user__profile__logout" onClick={logOut}>Log out</button>
-                        </div>
-                    </>
-                ) : (
-                        <div className="navbar-container__button-container">
-
-
-                        </div>
-                    )}
-
-            </div>
+            <nav className="nav-container">
+                <img src={currentUser.photoURL} alt="img" className="navbar-container__user__profile__pic" />
+                <img src={images('./title-mobile.svg')} />
+            </nav>
         </header>
     );
 }

@@ -1,19 +1,15 @@
-import Button from "../../components/common/Button";
+
 import { AuthContainerTitle, AuthContainerBody, AuthContainerButton } from "../../components/Login/AuthContainer";
-import { loginWithGoogle, auth, logOut } from "../../Firebase";
+import { auth } from "../../Firebase";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../hooks/AuthContext";
-import { Link } from "react-router-dom";
 import { images } from "../../App";
+import { useAuthState } from "../../helper/auth";
+import Loading from "../../components/common/Loading";
 export default function Login() {
-    const { currentUser, setCurrentUser } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext);
+    const { isLoading } = useAuthState();
 
-    useEffect(() => {
-        auth.onAuthStateChanged((currentUser) => {
-            setCurrentUser(currentUser);
-        })
-
-    }, []);
     let date = new Date().getFullYear();
     return (
         <div className="login-container">
@@ -23,21 +19,26 @@ export default function Login() {
             </div>
 
 
+            {!isLoading ? (
+                <div className="auth-container">
+                    <div className="auth-container-body">
+                        <AuthContainerTitle
+                            currentUser={currentUser}
+                            isLoading={isLoading}
+                        />
+                        <AuthContainerBody
+                            currentUser={currentUser}
+                            isLoading={isLoading}
+                        />
 
-            <div className="auth-container">
-                <div className="auth-container-body">
-                    <AuthContainerTitle
-                        currentUser={currentUser}
-                    />
-                    <AuthContainerBody
-                        currentUser={currentUser}
-                    />
-
-                    <AuthContainerButton
-                        currentUser={currentUser}
-                    />
+                        <AuthContainerButton
+                            currentUser={currentUser}
+                            isLoading={isLoading}
+                        />
+                    </div>
                 </div>
-            </div>
+            ) : <Loading />
+            }
 
 
             <div className="login-footer-container">

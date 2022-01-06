@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import StatesContextProvider from './hooks/StatesContext'
-import AuthProvider from './hooks/AuthContext'
+import AuthProvider from "./hooks/AuthContext";
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(

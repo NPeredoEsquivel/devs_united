@@ -8,12 +8,16 @@ import { Link, Route, Routes } from "react-router-dom";
 import Login from './containers/Login/Login';
 import Home from './containers/Home/Home';
 import PrivateRoute from "./containers/Routes/PrivateRoute";
-
-
+import { useAuthState } from "./helper/auth";
 export const images = require.context('./icons', true);
 
 function App() {
   const { tweetsArrayState, tweetState, userState } = useContext(StatesContext);
+
+
+  const { isAuthenticated } = useAuthState();
+
+  console.log(isAuthenticated);
 
   useEffect(() => {
     const collection = firestore.collection("tweets");
@@ -42,11 +46,6 @@ function App() {
       })
       tweetsArrayState.setTweets(tweets);
     });
-
-    let currentUser = userState.user;
-    /* auth.onAuthStateChanged((currentUser) => {
-      userState.setUser(currentUser);
-    }) */
 
     return () => subs;
   }, [])
@@ -94,7 +93,7 @@ function App() {
               />
             </PrivateRoute>
           } />
-          <Route exact path="/profile" element={
+          <Route exact path="/profilerr" element={
             <PrivateRoute>
               <Home
                 sendTweetHandler={sendTweetHandler}
@@ -104,9 +103,9 @@ function App() {
               />
             </PrivateRoute>
           } />
-
           <Route path="/login" element={<Login />} />
         </Routes>
+
       </>
     </div>
   );
