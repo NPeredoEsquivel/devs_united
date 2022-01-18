@@ -1,10 +1,10 @@
 
 import './App.css';
 import { useEffect, useContext } from 'react';
-import { firestore, auth, serverTimestamp, query, orderBy } from './Firebase';
+import { firestore, serverTimestamp } from './Firebase';
 import './styles/main.scss';
 import { StatesContext } from './hooks/StatesContext';
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from './containers/Login/Login';
 import Home from './containers/Home/Home';
 import PrivateRoute from "./containers/Routes/PrivateRoute";
