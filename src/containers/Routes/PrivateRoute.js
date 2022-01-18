@@ -5,7 +5,6 @@ import Loading from "../../components/common/Loading";
 
 export default function PrivateRoute({ children }) {
     const { isLoading, isAuthenticated } = useAuthState();
-    console.log(isLoading);
     return (
         !isLoading ?
             isAuthenticated ? children : <Navigate to={"/login"} />

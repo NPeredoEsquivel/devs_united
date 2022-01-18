@@ -12,20 +12,29 @@ export default function AuthProvider({ children }) {
 
     useEffect(() => {
         const userCollection = firestore.collection("user");
+        async function filterUser(userCollection, currentUser) {
+            let res = await userCollection.where("user_uid", "==", currentUser.uid).get();
+            let data = await res.docs[0].data();
+            return [data.nickname, data.profile_color];
+        }
+
         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
             setCurrentUser(currentUser);
             setLoading(false);
 
-            const users = userCollection.onSnapshot((snapshot) => {
-                const user = snapshot.docs.filter((doc) => {
-                    return doc.data().user_uid === currentUser.uid;
-                });
-                console.log(user);
+            filterUser(userCollection, currentUser).then(data => {
+                setNickName(data.nickname);
+                setProfileColor(data.profile_color);
+
+
+                console.log(data);
             });
+
         })
         return () => unsubscribe()
 
     }, []);
+
 
     return (
         <AuthContext.Provider value={{ currentUser, isLoading }}>

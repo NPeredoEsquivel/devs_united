@@ -1,7 +1,6 @@
 
 import { AuthContainerTitle, AuthContainerBody, AuthContainerButton } from "../../components/Login/AuthContainer";
-import { auth } from "../../Firebase";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../hooks/AuthContext";
 import { images } from "../../App";
 import { useAuthState } from "../../helper/auth";
