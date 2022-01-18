@@ -80,13 +80,14 @@
                     input {
                         background-color: #150714;
                         border-width: 1px;
+                        color: #914D8B;
                         height: 3rem;
                         width: 100%;
+                        font-size: 1rem;
+                        padding-left: 14px;
 
                         &::placeholder {
                             color: #914D8B;
-                            font-size: 1rem;
-                            padding-left: 14px;
                         }
                     }
                 }
@@ -120,6 +121,15 @@
                                 transition: width 0.1s,
                                     height 0.1s;
                             }
+                        }
+
+                        .selected {
+                            border: 2px solid #FFFFFF;
+                            transition: border-width 0.1s linear;
+                            height: 2.2rem;
+                            width: 2.2rem;
+                            transition: width 0.1s,
+                                height 0.1s;
                         }
 
                         &__red {

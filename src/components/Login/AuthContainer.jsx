@@ -5,6 +5,9 @@ import Button from "../common/Button";
 import { Link } from "react-router-dom";
 import { images } from "../../App";
 import { loginWithGoogle, logOut } from "../../Firebase";
+import { ProfileConfigurationContext } from "../../hooks/ProfileConfiguration";
+import { colors } from "../../hooks/ProfileConfiguration";
+import { useContext } from "react";
 
 export function AuthContainerTitle({ currentUser }) {
 
@@ -33,6 +36,13 @@ export function AuthContainerTitle({ currentUser }) {
 }
 
 export function AuthContainerBody({ currentUser }) {
+
+    const { nickName, setNickName } = useContext(ProfileConfigurationContext);
+    let handleValueChange = (e) => {
+        setNickName(e.target.value);
+    }
+
+    console.log(nickName);
     return (
         <div className="auth-container-body__body">
             {currentUser ? (
@@ -40,6 +50,8 @@ export function AuthContainerBody({ currentUser }) {
                     <div className="body__input">
                         <InputText
                             placeHolder="Type your username"
+                            inputValue={nickName ?? null}
+                            handleValue={handleValueChange}
                         />
                     </div>
                     <div className="body__color-picker">
@@ -48,12 +60,9 @@ export function AuthContainerBody({ currentUser }) {
                             contentText="Select your favorite color"
                         />
                         <div className="color-picker__colors">
-                            <ColorSelector color="red" />
-                            <ColorSelector color="orange" />
-                            <ColorSelector color="yellow" />
-                            <ColorSelector color="green" />
-                            <ColorSelector color="light-blue" />
-                            <ColorSelector color="purple" />
+                            {colors.map(color => {
+                                return <ColorSelector key={color.hex} color={color} />
+                            })}
                         </div>
                     </div>
                 </>

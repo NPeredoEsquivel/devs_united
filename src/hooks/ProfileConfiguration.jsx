@@ -5,12 +5,22 @@ import { firestore } from "../Firebase";
 
 export const ProfileConfigurationContext = React.createContext();
 
+export const colors = [
+    { name: "red", hex: "#F50D5A" },
+    { name: "orange", hex: "#FF865C" },
+    { name: "yellow", hex: "#FFEA5C" },
+    { name: "green", hex: "#00DA76" },
+    { name: "light-blue", hex: "#0096CE" },
+    { name: "purple", hex: "#800FFF" },
+];
+
 export default function ProfileConfigurationProvider({ children }) {
     const { currentUser } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
 
     const [nickName, setNickName] = useState("");
     const [profileColor, setProfileColor] = useState("");
+
 
     useEffect(() => {
         async function filterUser(userCollection, currentUser) {
@@ -38,10 +48,12 @@ export default function ProfileConfigurationProvider({ children }) {
             });
         }
 
+        return () => { }
+
     }, [isAuthenticated]);
 
     return (
-        <ProfileConfigurationContext.Provider value={{ nickName, profileColor }}>
+        <ProfileConfigurationContext.Provider value={{ nickName, setNickName, profileColor, setProfileColor }}>
             {children}
         </ProfileConfigurationContext.Provider>
     );
