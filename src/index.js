@@ -5,15 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import StatesContextProvider from './hooks/StatesContext'
 import AuthProvider from "./hooks/AuthContext";
+import ProvileConfigurationProvider from "./hooks/ProfileConfiguration";
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <StatesContextProvider>
-          <App />
-        </StatesContextProvider>
+        <ProvileConfigurationProvider>
+          <StatesContextProvider>
+            <App />
+          </StatesContextProvider>
+        </ProvileConfigurationProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
