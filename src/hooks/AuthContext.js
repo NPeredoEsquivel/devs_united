@@ -5,14 +5,12 @@ export const AuthContext = React.createContext();
 
 export default function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
-    const [isLoading, setLoading] = useState(true);
+    const [isAuthLoading, setAuthLoading] = useState(true);
 
     useEffect(() => {
-        const userCollection = firestore.collection("user");
-
         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
             setCurrentUser(currentUser);
-            setLoading(false);
+            setAuthLoading(false);
 
         })
         return () => unsubscribe()
@@ -20,7 +18,7 @@ export default function AuthProvider({ children }) {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ currentUser, isLoading }}>
+        <AuthContext.Provider value={{ currentUser, isAuthLoading }}>
             {children}
         </AuthContext.Provider >
     );

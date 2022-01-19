@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuthState } from "../../helper/auth";
+import { useAuthState } from "../../helper/Auth";
 import Loading from "../../components/common/Loading";
 
 export default function PrivateRoute({ children }) {

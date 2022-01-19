@@ -37,12 +37,11 @@ export function AuthContainerTitle({ currentUser }) {
 
 export function AuthContainerBody({ currentUser }) {
 
-    const { nickName, setNickName } = useContext(ProfileConfigurationContext);
+    const { nickName, setNickName, isLoading } = useContext(ProfileConfigurationContext);
     let handleValueChange = (e) => {
         setNickName(e.target.value);
     }
 
-    console.log(nickName);
     return (
         <div className="auth-container-body__body">
             {currentUser ? (
@@ -50,7 +49,7 @@ export function AuthContainerBody({ currentUser }) {
                     <div className="body__input">
                         <InputText
                             placeHolder="Type your username"
-                            inputValue={nickName ?? null}
+                            inputValue={nickName ?? ''}
                             handleValue={handleValueChange}
                         />
                     </div>
@@ -77,6 +76,8 @@ export function AuthContainerBody({ currentUser }) {
 }
 
 export function AuthContainerButton({ currentUser }) {
+    const { nickName, profileColor } = useContext(ProfileConfigurationContext);
+
     return (
         <div className="auth-container-body__button">
             <div className="button-container">
@@ -84,7 +85,7 @@ export function AuthContainerButton({ currentUser }) {
 
                     <>
                         <div className="button-container__redirect">
-                            <Link to="/" >Continue</Link>
+                            <Link to="/" className={`${nickName && profileColor ? '' : 'disabled-link'}`} onClick={(event) => `${nickName && profileColor ? event.default() : event.preventDefault()}`} >Continue</Link>
                         </div>
                         <Button
                             buttonText="Log out"

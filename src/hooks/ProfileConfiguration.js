@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "./AuthContext";
-import { useAuthState } from "../helper/auth";
+import { useAuthState } from "../helper/Auth";
 import { firestore } from "../Firebase";
 
 export const ProfileConfigurationContext = React.createContext();
@@ -20,6 +20,7 @@ export default function ProfileConfigurationProvider({ children }) {
 
     const [nickName, setNickName] = useState("");
     const [profileColor, setProfileColor] = useState("");
+    const [isProfileLoading, setProfileLoading] = useState(true);
 
 
     useEffect(() => {
@@ -45,6 +46,7 @@ export default function ProfileConfigurationProvider({ children }) {
             filterUser(userCollection, currentUser).then(data => {
                 setNickName(data.nickname);
                 setProfileColor(data.color);
+                setProfileLoading(false);
             });
         }
 
@@ -53,7 +55,7 @@ export default function ProfileConfigurationProvider({ children }) {
     }, [isAuthenticated]);
 
     return (
-        <ProfileConfigurationContext.Provider value={{ nickName, setNickName, profileColor, setProfileColor }}>
+        <ProfileConfigurationContext.Provider value={{ nickName, setNickName, profileColor, setProfileColor, isProfileLoading }}>
             {children}
         </ProfileConfigurationContext.Provider>
     );

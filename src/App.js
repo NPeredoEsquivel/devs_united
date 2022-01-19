@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from './containers/Login/Login';
 import Home from './containers/Home/Home';
 import PrivateRoute from "./containers/Routes/PrivateRoute";
-import { useAuthState } from "./helper/auth";
+import { useAuthState } from "./helper/Auth";
 export const images = require.context('./icons', true);
 
 function App() {

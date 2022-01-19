@@ -1,6 +1,7 @@
 @import './config.scss';
 @import '../containers/Home/Body/TweetContainer/TweetCard/TweetCard';
 @import '../containers/Login/Login';
+@import '../components/common/Loading';
 
 .App {
     background-color: #2E132C;
