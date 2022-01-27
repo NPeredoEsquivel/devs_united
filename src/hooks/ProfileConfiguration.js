@@ -24,7 +24,8 @@ export default function ProfileConfigurationProvider({ children }) {
 
 
     useEffect(() => {
-        async function filterUser(userCollection, currentUser) {
+        async function filterUser(currentUser) {
+            const userCollection = firestore.collection("user");
             let res = await userCollection.where("user_uid", "==", currentUser.uid).get();
             if (!res.empty) {
                 let data = await res.docs[0].data();
@@ -41,9 +42,8 @@ export default function ProfileConfigurationProvider({ children }) {
         }
 
         if (isAuthenticated) {
-            const userCollection = firestore.collection("user");
 
-            filterUser(userCollection, currentUser).then(data => {
+            filterUser(currentUser).then(data => {
                 setNickName(data.nickname);
                 setProfileColor(data.color);
                 setProfileLoading(false);

@@ -6,6 +6,7 @@ import { ProfileConfigurationContext } from "../../hooks/ProfileConfiguration";
 import { images } from "../../App";
 import { useAuthState } from "../../helper/Auth";
 import Loading from "../../components/common/Loading";
+
 export default function Login() {
     const { currentUser } = useContext(AuthContext);
     const { isAuthLoading } = useAuthState();
@@ -13,7 +14,7 @@ export default function Login() {
 
     let date = new Date().getFullYear();
     return (
-        <div className="login-container">
+        <div className="App login-container">
             <div className="logo-container">
                 <img className="logo-container__logo" src={images('./logo-mobile.svg').default} />
                 <img className="logo-container__title" src={images('./title-mobile.svg').default} />

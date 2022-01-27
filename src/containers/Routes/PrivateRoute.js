@@ -4,10 +4,9 @@ import { useAuthState } from "../../helper/Auth";
 import Loading from "../../components/common/Loading";
 
 export default function PrivateRoute({ children }) {
-    const { isLoading, isAuthenticated } = useAuthState();
+    const { isAuthLoading, isAuthenticated } = useAuthState();
     return (
-        !isLoading ?
-            isAuthenticated ? children : <Navigate to={"/login"} />
+        !isAuthLoading ? isAuthenticated ? children : <Navigate to={"/login"} />
             : (
                 <Loading />
             )

@@ -3,14 +3,21 @@ import Header from './Header/Header.jsx';
 
 export default function Home({ sendTweetHandler, handleChange, likeTweetHandler, deleteTweetHandler }) {
     return (
-        <div className="home-container">
-            <Header />
-            <Body
-                sendTweetHandler={sendTweetHandler}
-                handleChange={handleChange}
-                likeTweetHandler={likeTweetHandler}
-                deleteTweet={deleteTweetHandler}
-            />
-        </div>
+        <>
+            <header className="header-container">
+                <Header />
+            </header>
+            <div className="main-container">
+                <Body
+                    sendTweetHandler={sendTweetHandler}
+                    handleChange={handleChange}
+                    likeTweetHandler={likeTweetHandler}
+                    deleteTweet={deleteTweetHandler}
+                />
+            </div>
+            <footer className="footer-container">
+
+            </footer>
+        </>
     );
 }

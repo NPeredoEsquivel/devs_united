@@ -80,34 +80,23 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <>
-        <Routes>
-          <Route exact path="/" element={
-            <PrivateRoute>
-              <Home
-                sendTweetHandler={sendTweetHandler}
-                handleChange={handleChange}
-                likeTweetHandler={likeTweetHandler}
-                deleteTweet={deleteTweetHandler}
-              />
-            </PrivateRoute>
-          } />
-          <Route exact path="/profilerr" element={
-            <PrivateRoute>
-              <Home
-                sendTweetHandler={sendTweetHandler}
-                handleChange={handleChange}
-                likeTweetHandler={likeTweetHandler}
-                deleteTweet={deleteTweetHandler}
-              />
-            </PrivateRoute>
-          } />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+    <>
+      <Routes>
+        <Route exact path="/" element={
+          <PrivateRoute>
+            <Home
+              sendTweetHandler={sendTweetHandler}
+              handleChange={handleChange}
+              likeTweetHandler={likeTweetHandler}
+              deleteTweet={deleteTweetHandler}
+            />
+          </PrivateRoute>
+        } />
 
-      </>
-    </div>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+
+    </>
   );
 }
 
