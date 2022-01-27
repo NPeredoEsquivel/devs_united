@@ -9,10 +9,12 @@ import Login from './containers/Login/Login';
 import Home from './containers/Home/Home';
 import PrivateRoute from "./containers/Routes/PrivateRoute";
 import { useAuthState } from "./helper/Auth";
+import { AuthContext } from "./hooks/AuthContext";
 export const images = require.context('./icons', true);
 
 function App() {
   const { tweetsArrayState, tweetState, userState } = useContext(StatesContext);
+  const { currentUser } = useContext(AuthContext);
 
 
   const { isAuthenticated } = useAuthState();
@@ -53,10 +55,10 @@ function App() {
   const handleChange = (e) => {
     let newTweet = {
       text: e.target.value,
-      author: userState.user.displayName,
-      photoURL: userState.user.photoURL,
-      uid: userState.user.uid,
-      email: userState.user.email,
+      author: currentUser.displayName,
+      photoURL: currentUser.photoURL,
+      uid: currentUser.uid,
+      email: currentUser.email,
       timestamp: serverTimestamp
     };
     tweetState.setTweet(newTweet);
