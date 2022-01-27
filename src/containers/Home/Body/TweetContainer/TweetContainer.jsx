@@ -6,7 +6,7 @@ function TweetContainer({ likeTweetHandler, deleteTweet }) {
 
     const { tweetsArrayState, userState } = useContext(StatesContext);
     return (
-        <div className="tweet-container">
+        <div className="tweet-list-container">
             {tweetsArrayState.tweets.map((tweet, i) =>
                 <TweetCard
                     key={i}
