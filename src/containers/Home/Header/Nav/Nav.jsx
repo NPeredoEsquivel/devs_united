@@ -1,9 +1,10 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import { images } from "../../../../App";
 import { AuthContext } from "../../../../hooks/AuthContext";
 import { ProfileConfigurationContext } from "../../../../hooks/ProfileConfiguration";
 import { colors } from "../../../../hooks/ProfileConfiguration";
-
+import ProfilePhoto from "../../../../components/common/ProfilePhoto";
+import ImageContainer from "../../../../components/common/ImageContainer";
 export default function Nav() {
     const { currentUser } = useContext(AuthContext);
     const { profileColor } = useContext(ProfileConfigurationContext);
@@ -15,11 +16,20 @@ export default function Nav() {
     return (
         <nav className="nav-container">
             <div className="nav-container__avatar">
-                <img src={currentUser.photoURL} alt="img" className={`nav-container__avatar__${imgBorder.name}`} />
+                <ProfilePhoto
+                    className={`nav-container__avatar__${imgBorder.name}`}
+                    imgSrc={currentUser.photoURL}
+                />
             </div>
             <div className="nav-container__logo">
-                <img className="logo" src={images('./logo-mobile.svg').default} />
-                <img className="title" src={images('./title-mobile.svg').default} />
+                <ImageContainer
+                    imgSrc={images('./logo-mobile.svg').default}
+                    className={"logo"}
+                />
+                <ImageContainer
+                    imgSrc={images('./title-mobile.svg').default}
+                    className={"title"}
+                />
             </div>
         </nav>
     );

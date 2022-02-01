@@ -1,4 +1,4 @@
-function TextArea({ tweet, handleChange, placeholder }) {
+export default function TextArea({ tweet, handleChange, placeholder }) {
     let maxLength = 200;
     let tweetText = tweet.text.length;
     let percentage = Math.floor((tweetText * 100) / maxLength);
@@ -10,7 +10,6 @@ function TextArea({ tweet, handleChange, placeholder }) {
     const hslColor = handleGetBarColor(percentage);
 
 
-    console.log(hslColor);
     return (
         <>
             <textarea
@@ -23,10 +22,12 @@ function TextArea({ tweet, handleChange, placeholder }) {
                 value={tweet.text}
                 onChange={handleChange}
             />
-            <div className="max-input-available-bar" style={{ 'width': percentage + '%', 'background-color': hslColor }}></div>
-            <p className="max-input-available-text">200 max.</p>
+            <div className="max-input-available-bar" style={{ width: percentage + '%', backgroundColor: hslColor }}></div>
+            <div className="text-area-information">
+                <p className="text-area-information__length">{tweetText}</p>
+                <p className="text-area-information__available-text">200 max.</p>
+            </div>
+
         </>
     );
 }
-
-export default TextArea;

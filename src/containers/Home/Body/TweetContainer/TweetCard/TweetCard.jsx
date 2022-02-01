@@ -1,10 +1,14 @@
-import { images } from '../../../../../App';
-import Span from '../../../../../components/common/Span';
+import { images } from "../../../../../App";
+import Span from "../../../../../components/common/Span";
+import ProfilePhoto from "../../../../../components/common/ProfilePhoto";
+
 function TweetCard({ tweet, likeTweetHandler, deleteTweet, user }) {
     return (
         <div className="tweet">
             <div className="tweet__user-img">
-                <img src={tweet.photoURL} alt="img" />
+                <ProfilePhoto
+                    imgSrc={tweet.photoURL}
+                />
             </div>
             <div className="tweet__information">
                 <div className="author">

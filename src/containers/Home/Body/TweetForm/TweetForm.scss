@@ -1,5 +1,5 @@
 .tweet-form-container {
-    background-color: #250C23;
+    background-color: #150714;
     display: flex;
     padding: 20px 16px 12px 16px;
 
@@ -49,13 +49,22 @@
                 height: 3px;
             }
 
-            .max-input-available-text {
-                color: #F50D5A;
-                font-family: 'Fira Code',
-                    monospace;
+            .text-area-information {
+                display: flex;
+                justify-content: space-around;
                 padding: 6px 0;
-                text-align: right;
-                width: 100%;
+
+                &__length {
+                    color: #FFFFFF;
+                }
+
+                &__available-text {
+                    color: #F50D5A;
+                    font-family: 'Fira Code',
+                        monospace;
+                    text-align: right;
+                    width: 100%;
+                }
             }
         }
 

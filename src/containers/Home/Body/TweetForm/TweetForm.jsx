@@ -1,7 +1,8 @@
-import TextArea from '../../../../components/common/TextArea';
-import Button from '../../../../components/common/Button';
-import { StatesContext } from '../../../../hooks/StatesContext';
+import TextArea from "../../../../components/common/TextArea";
+import Button from "../../../../components/common/Button";
+import { StatesContext } from "../../../../hooks/StatesContext";
 import { AuthContext } from "../../../../hooks/AuthContext";
+import ProfilePhoto from "../../../../components/common/ProfilePhoto";
 import { useContext } from 'react';
 
 function TweetForm({ sendTweetHandler, handleChange }) {
@@ -11,7 +12,9 @@ function TweetForm({ sendTweetHandler, handleChange }) {
     return (
         <div className="tweet-form-container">
             <div className="tweet-form-container__avatar">
-                <img src={currentUser.photoURL} alt="img" />
+                <ProfilePhoto
+                    imgSrc={currentUser.photoURL}
+                />
             </div>
             <div className="tweet-form-container__input">
                 <div className="tweet-form-container__input__text-area">
@@ -23,6 +26,7 @@ function TweetForm({ sendTweetHandler, handleChange }) {
                 </div>
                 <div className="tweet-form-container__input__submit-button">
                     <Button
+                        disabled={!(tweetState.tweet.text.length > 0)}
                         buttonText="Post"
                         onClickEvent={sendTweetHandler}
                     />
