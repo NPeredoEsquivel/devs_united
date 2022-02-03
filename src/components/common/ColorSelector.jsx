@@ -1,5 +1,5 @@
 import { ProfileConfigurationContext } from "../../hooks/ProfileConfiguration";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 export default function ColorSelector({ color }) {
     const { profileColor, setProfileColor } = useContext(ProfileConfigurationContext);

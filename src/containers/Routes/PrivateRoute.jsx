@@ -8,7 +8,9 @@ export default function PrivateRoute({ children }) {
     return (
         !isAuthLoading ? isAuthenticated ? children : <Navigate to={"/login"} />
             : (
-                <Loading />
+                <div className="loading-container">
+                    <Loading />
+                </div>
             )
     );
 };

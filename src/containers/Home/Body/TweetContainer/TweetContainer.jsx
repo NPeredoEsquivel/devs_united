@@ -1,23 +1,33 @@
-import TweetCard from './TweetCard/TweetCard.jsx';
-import { StatesContext } from '../../../../hooks/StatesContext';
-import { useContext } from 'react';
+import TweetCard from "./TweetCard/TweetCard.jsx";
+import { StatesContext } from "../../../../hooks/StatesContext";
+import { useContext } from "react";
+import { firestore } from "../../../../Firebase";
 
-function TweetContainer({ likeTweetHandler, deleteTweet }) {
+export default function TweetContainer() {
 
-    const { tweetsArrayState, userState } = useContext(StatesContext);
+    const { tweetsArrayState } = useContext(StatesContext);
+
+    const deleteTweetHandler = (id) => {
+        firestore.doc(`tweets/${id}`).delete();
+
+    }
+    const likeTweetHandler = (id, numLikes) => {
+        if (!numLikes) {
+            numLikes = 0;
+        }
+        firestore.doc(`tweets/${id}`).update({ likes: numLikes + 1 });
+    }
+
     return (
         <div className="tweet-list-container">
-            {tweetsArrayState.tweets.map((tweet, i) =>
+            {tweetsArrayState.tweetsArray.map((tweet, i) =>
                 <TweetCard
                     key={i}
                     tweet={tweet}
                     likeTweetHandler={likeTweetHandler}
-                    deleteTweet={deleteTweet}
-                    user={userState.user}
+                    deleteTweet={deleteTweetHandler}
                 />
             )}
         </div>
     );
 }
-
-export default TweetContainer

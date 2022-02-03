@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "./AuthContext";
 import { useAuthState } from "../helper/Auth";
-import { firestore } from "../Firebase";
+import filterUser from "../helper/filerUserFromCollection";
 
 export const ProfileConfigurationContext = React.createContext();
 
@@ -24,26 +24,10 @@ export default function ProfileConfigurationProvider({ children }) {
 
 
     useEffect(() => {
-        async function filterUser(currentUser) {
-            const userCollection = firestore.collection("user");
-            let res = await userCollection.where("user_uid", "==", currentUser.uid).get();
-            if (!res.empty) {
-                let data = await res.docs[0].data();
-                return {
-                    'nickname': data.nickname,
-                    'color': data.profile_color
-                }
-            } else {
-                return {
-                    'nickname': null,
-                    'color': null
-                }
-            }
-        }
 
         if (isAuthenticated) {
 
-            filterUser(currentUser).then(data => {
+            filterUser(currentUser.uid).then(data => {
                 setNickName(data.nickname);
                 setProfileColor(data.color);
                 setProfileLoading(false);

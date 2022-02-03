@@ -3,11 +3,29 @@ import Button from "../../../../components/common/Button";
 import { StatesContext } from "../../../../hooks/StatesContext";
 import { AuthContext } from "../../../../hooks/AuthContext";
 import ProfilePhoto from "../../../../components/common/ProfilePhoto";
-import { useContext } from 'react';
+import { useContext } from "react";
+import { firestore, serverTimestamp } from "../../../../Firebase";
 
-function TweetForm({ sendTweetHandler, handleChange }) {
+function TweetForm() {
     const { tweetState } = useContext(StatesContext);
     const { currentUser } = useContext(AuthContext);
+
+    const handleChange = (e) => {
+        let newTweet = {
+            text: e.target.value,
+            author: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+            userUid: currentUser.uid,
+            email: currentUser.email,
+            timestamp: serverTimestamp
+        };
+        tweetState.setTweet(newTweet);
+    }
+
+    const sendTweetHandler = (e) => {
+        e.preventDefault();
+        firestore.collection("tweets").add(tweetState.tweet);
+    }
 
     return (
         <div className="tweet-form-container">

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { ProfileConfigurationContext } from "../../hooks/ProfileConfiguration";
 import Loading from "../../components/common/Loading";
 
-export default function Home({ sendTweetHandler, handleChange, likeTweetHandler, deleteTweetHandler }) {
+export default function Home() {
     const { isAuthLoading } = useAuthState();
     const { isProfileLoading } = useContext(ProfileConfigurationContext);
 
@@ -17,18 +17,16 @@ export default function Home({ sendTweetHandler, handleChange, likeTweetHandler,
                         <Header />
                     </header>
                     <div className="main-container">
-                        <Body
-                            sendTweetHandler={sendTweetHandler}
-                            handleChange={handleChange}
-                            likeTweetHandler={likeTweetHandler}
-                            deleteTweet={deleteTweetHandler}
-                        />
+                        <Body />
                     </div>
                     <footer className="footer-container">
 
                     </footer>
                 </>
-            ) : <Loading />
+            ) :
+                <div className="loading-container">
+                    <Loading />
+                </div>
             }
         </>
     );

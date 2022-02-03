@@ -1,14 +1,14 @@
-import TextContainer from "../common/TextContainer";
-import ColorSelector from "../Login/ColorSelector";
-import InputText from "../common/InputText";
-import Button from "../common/Button";
+import TextContainer from "../../../components/common/TextContainer";
+import ColorSelector from "../../../components/common/ColorSelector";
+import InputText from "../../../components/common/InputText";
+import Button from "../../../components/common/Button";
 import { Link, useNavigate } from "react-router-dom";
-import { images } from "../../App";
-import { loginWithGoogle, logOut } from "../../Firebase";
-import { ProfileConfigurationContext } from "../../hooks/ProfileConfiguration";
-import { colors } from "../../hooks/ProfileConfiguration";
+import { images } from "../../../App";
+import { loginWithGoogle, logOut } from "../../../Firebase";
+import { ProfileConfigurationContext } from "../../../hooks/ProfileConfiguration";
+import { colors } from "../../../hooks/ProfileConfiguration";
 import { useContext } from "react";
-import firebaseUserConfig from "../../helper/FirebaseUserConfig";
+import firebaseUserConfig from "../../../helper/FirebaseUserConfig";
 
 
 export function AuthContainerTitle({ currentUser }) {
@@ -39,7 +39,7 @@ export function AuthContainerTitle({ currentUser }) {
 
 export function AuthContainerBody({ currentUser }) {
 
-    const { nickName, setNickName, isLoading } = useContext(ProfileConfigurationContext);
+    const { nickName, setNickName } = useContext(ProfileConfigurationContext);
     let handleValueChange = (e) => {
         setNickName(e.target.value);
     }
@@ -103,7 +103,7 @@ export function AuthContainerButton({ currentUser }) {
                 ) : (
                         <div className="button-container__login">
                             <div className="button-container__login__img-container">
-                                <img src={images('./google-icon.svg').default} />
+                                <img src={images('./google-icon.svg').default} alt="google-login-icon" />
                             </div>
                             <Button
                                 buttonText="Sign in with Google"

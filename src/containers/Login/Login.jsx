@@ -1,5 +1,5 @@
 
-import { AuthContainerTitle, AuthContainerBody, AuthContainerButton } from "../../components/Login/AuthContainer";
+import { AuthContainerTitle, AuthContainerBody, AuthContainerButton } from "./AuthContainer/AuthContainer";
 import { useContext } from "react";
 import { AuthContext } from "../../hooks/AuthContext";
 import { ProfileConfigurationContext } from "../../hooks/ProfileConfiguration";
@@ -16,8 +16,8 @@ export default function Login() {
     return (
         <div className="App login-container">
             <div className="logo-container">
-                <img className="logo-container__logo" src={images('./logo-mobile.svg').default} />
-                <img className="logo-container__title" src={images('./title-mobile.svg').default} />
+                <img className="logo-container__logo" src={images('./logo-mobile.svg').default} alt="logo-mobile" />
+                <img className="logo-container__title" src={images('./title-mobile.svg').default} alt="title-mobile" />
             </div>
 
 
