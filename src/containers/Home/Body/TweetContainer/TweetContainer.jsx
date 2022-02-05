@@ -2,6 +2,7 @@ import TweetCard from "./TweetCard/TweetCard.jsx";
 import { StatesContext } from "../../../../hooks/StatesContext";
 import { useContext } from "react";
 import { firestore } from "../../../../Firebase";
+import Loading from "../../../../components/common/Loading.jsx";
 
 export default function TweetContainer() {
 
@@ -17,17 +18,21 @@ export default function TweetContainer() {
         }
         firestore.doc(`tweets/${id}`).update({ likes: numLikes + 1 });
     }
-
     return (
-        <div className="tweet-list-container">
-            {tweetsArrayState.tweetsArray.map((tweet, i) =>
-                <TweetCard
-                    key={i}
-                    tweet={tweet}
-                    likeTweetHandler={likeTweetHandler}
-                    deleteTweet={deleteTweetHandler}
-                />
-            )}
-        </div>
+        <>
+            <div className="tweet-list-container">
+                {tweetsArrayState.tweetsArray.length ? (
+                    tweetsArrayState.tweetsArray.map((tweet, i) =>
+                        <TweetCard
+                            key={i}
+                            tweet={tweet}
+                            likeTweetHandler={likeTweetHandler}
+                            deleteTweet={deleteTweetHandler}
+                        />
+                    )
+                ) : <Loading />
+                }
+            </div>
+        </>
     );
 }

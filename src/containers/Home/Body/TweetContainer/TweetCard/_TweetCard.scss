@@ -27,19 +27,79 @@
         height: 100%;
         position: relative;
 
-        .author {
+        .tweet-author {
             display: flex;
             justify-content: space-between;
             width: 100%;
+            align-items: center;
+
+            &__headline {
+                display: flex;
+
+                &>div>p {
+                    font-family: 'Silkscreen',
+                        sans-serif;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    line-height: 1rem;
+                    letter-spacing: -0.33px;
+                }
+
+                >span {
+                    color: #FFFFFF;
+                    font-family: 'Fira Code',
+                        monospace;
+                    padding-left: 10px;
+                }
+
+                .author {
+
+                    &__red {
+                        background-color: #F50D5A;
+                    }
+
+                    &__orange {
+                        background-color: #FF865C;
+                    }
+
+                    &__yellow {
+                        background-color: #FFEA5C;
+                    }
+
+                    &__green {
+                        background-color: #00DA76;
+                    }
+
+                    &__light-blue {
+                        background-color: #0096CE;
+                    }
+
+                    &__purple {
+                        background-color: #800FFF;
+                    }
+                }
+            }
+
+            &__delete-action {
+                .trash-can {
+                    height: 18px;
+                }
+            }
         }
+
 
         .text {
             padding-top: 0.8rem;
             display: flex;
-            font-size: 1rem;
+            font-size: 0.875rem;
+            font-family: 'Fira Code',
+                monospace;
             text-align: start;
             max-width: 100%;
-
+            font-weight: 450;
+            line-height: 1.125rem;
+            letter-spacing: -0.33px;
+            color: #FFFFFF;
         }
 
         .like-icon {

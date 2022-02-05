@@ -1,7 +1,9 @@
 export default function Loading() {
     return (
         <>
-            <div className="dot-flashing"></div>
+            <div className="loading-components">
+                <div className="dot-flashing"></div>
+            </div>
         </>
     );
 }
