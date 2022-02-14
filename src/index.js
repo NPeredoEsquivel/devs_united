@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import StatesContextProvider from './hooks/StatesContext'
+//import StatesContextProvider from './hooks/StatesContext'
 import AuthProvider from "./hooks/AuthContext";
-import ProvileConfigurationProvider from "./hooks/ProfileConfiguration";
+import ProfileConfigurationProvider from "./hooks/ProfileConfiguration";
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <ProvileConfigurationProvider>
-          <StatesContextProvider>
-            <App />
-          </StatesContextProvider>
-        </ProvileConfigurationProvider>
+        <ProfileConfigurationProvider>
+          <App />
+        </ProfileConfigurationProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

@@ -24,9 +24,7 @@ export default function ProfileConfigurationProvider({ children }) {
 
 
     useEffect(() => {
-
         if (isAuthenticated) {
-
             filterUser(currentUser.uid).then(data => {
                 setNickName(data.nickname);
                 setProfileColor(data.color);

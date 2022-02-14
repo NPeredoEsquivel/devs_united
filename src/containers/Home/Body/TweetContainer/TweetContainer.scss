@@ -2,12 +2,11 @@
 
 .tweet-list-container {
     background-color: #2E132C;
-    display: flex;
-    justify-content: center;
 
     .loading-components {
         align-items: center;
         display: flex;
         height: 10rem;
+        justify-content: center;
     }
 }

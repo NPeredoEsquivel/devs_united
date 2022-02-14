@@ -18,6 +18,7 @@ export default function TweetContainer() {
         }
         firestore.doc(`tweets/${id}`).update({ likes: numLikes + 1 });
     }
+    console.log(tweetsArrayState.tweetsArray.length);
     return (
         <>
             <div className="tweet-list-container">

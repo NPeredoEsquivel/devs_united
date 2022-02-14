@@ -36,14 +36,20 @@
             &__headline {
                 display: flex;
 
-                &>div>p {
-                    font-family: 'Silkscreen',
-                        sans-serif;
-                    font-size: 1rem;
-                    font-weight: 700;
-                    line-height: 1rem;
-                    letter-spacing: -0.33px;
+                &>div {
+                    display: flex;
+                    align-items: center;
+
+                    >p {
+                        font-family: 'Silkscreen',
+                            sans-serif;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        line-height: 1rem;
+                        letter-spacing: -0.33px;
+                    }
                 }
+
 
                 >span {
                     color: #FFFFFF;
@@ -81,6 +87,9 @@
             }
 
             &__delete-action {
+                display: flex;
+                align-items: center;
+
                 .trash-can {
                     height: 18px;
                 }
