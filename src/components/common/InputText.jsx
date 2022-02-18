@@ -7,3 +7,9 @@ export default function InputText({ placeHolder, inputValue, handleValue }) {
         />
     );
 }
+
+export function LoadingInputText({ className }) {
+    return (
+        <div className={className}></div>
+    );
+}

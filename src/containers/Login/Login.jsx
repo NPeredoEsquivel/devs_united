@@ -1,16 +1,11 @@
 
 import { AuthContainerTitle, AuthContainerBody, AuthContainerButton } from "./AuthContainer/AuthContainer";
-import { useContext } from "react";
-import { AuthContext } from "../../hooks/AuthContext";
-import { ProfileConfigurationContext } from "../../hooks/ProfileConfiguration";
 import { images } from "../../App";
 import { useAuthState } from "../../helper/Auth";
 import Loading from "../../components/common/Loading";
 
 export default function Login() {
-    const { currentUser } = useContext(AuthContext);
     const { isAuthLoading } = useAuthState();
-    const { isProfileLoading } = useContext(ProfileConfigurationContext);
 
     let date = new Date().getFullYear();
     return (
@@ -21,19 +16,12 @@ export default function Login() {
             </div>
 
 
-            {!isAuthLoading && !isProfileLoading ? (
+            {!isAuthLoading ? (
                 <div className="auth-container">
                     <div className="auth-container-body">
-                        <AuthContainerTitle
-                            currentUser={currentUser}
-                        />
-                        <AuthContainerBody
-                            currentUser={currentUser}
-                        />
-
-                        <AuthContainerButton
-                            currentUser={currentUser}
-                        />
+                        <AuthContainerTitle />
+                        <AuthContainerBody />
+                        <AuthContainerButton />
                     </div>
                 </div>
             ) : <Loading />

@@ -16,11 +16,11 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={
-          <PrivateRoute>
-            <StatesContextProvider>
+          <StatesContextProvider>
+            <PrivateRoute>
               <Home />
-            </StatesContextProvider>
-          </PrivateRoute>
+            </PrivateRoute>
+          </StatesContextProvider>
         } />
 
         <Route path="/login" element={<Login />} />

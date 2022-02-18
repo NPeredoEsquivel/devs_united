@@ -1,6 +1,6 @@
 import TextContainer from "../../../components/common/TextContainer";
 import ColorSelector from "../../../components/common/ColorSelector";
-import InputText from "../../../components/common/InputText";
+import InputText, { LoadingInputText } from "../../../components/common/InputText";
 import Button from "../../../components/common/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../App";
@@ -9,9 +9,10 @@ import { ProfileConfigurationContext } from "../../../hooks/ProfileConfiguration
 import { colors } from "../../../hooks/ProfileConfiguration";
 import { useContext } from "react";
 import firebaseUserConfig from "../../../helper/FirebaseUserConfig";
+import { AuthContext } from "../../../hooks/AuthContext";
 
-
-export function AuthContainerTitle({ currentUser }) {
+export function AuthContainerTitle() {
+    const { currentUser } = useContext(AuthContext);
 
     const htmlContent = currentUser ?
         <>WELCOME <br></br> <span>{currentUser.displayName}</span></> :
@@ -37,9 +38,10 @@ export function AuthContainerTitle({ currentUser }) {
     );
 }
 
-export function AuthContainerBody({ currentUser }) {
+export function AuthContainerBody() {
+    const { currentUser } = useContext(AuthContext);
 
-    const { nickName, setNickName } = useContext(ProfileConfigurationContext);
+    const { nickName, setNickName, profileColor } = useContext(ProfileConfigurationContext);
     let handleValueChange = (e) => {
         setNickName(e.target.value);
     }
@@ -48,21 +50,29 @@ export function AuthContainerBody({ currentUser }) {
         <div className="auth-container-body__body">
             {currentUser ? (
                 <>
-                    <div className="body__input">
-                        <InputText
-                            placeHolder="Type your username"
-                            inputValue={nickName ?? ''}
-                            handleValue={handleValueChange}
-                        />
+                    <div className="body-input">
+                        {nickName ? (
+                            <InputText
+                                placeHolder="Type your username"
+                                inputValue={nickName ?? ''}
+                                handleValue={handleValueChange}
+                            />
+                        ) : <LoadingInputText
+                                className="body-input__loading-input" />
+                        }
                     </div>
                     <div className="body__color-picker">
                         <TextContainer
                             className="color-picker__title"
                             contentText="Select your favorite color"
                         />
-                        <div className="color-picker__colors">
+                        <div className="color-picker__selector">
                             {colors.map(color => {
-                                return <ColorSelector key={color.hex} color={color} />
+                                return <ColorSelector
+                                    key={color.hex}
+                                    hexColor={color.hex}
+                                    className={profileColor ? (`color-picker__selector__color ${color.name} ${profileColor === color.hex ? "selected" : ""}`) : "color-picker__selector__loading"}
+                                />
                             })}
                         </div>
                     </div>
@@ -77,7 +87,8 @@ export function AuthContainerBody({ currentUser }) {
     );
 }
 
-export function AuthContainerButton({ currentUser }) {
+export function AuthContainerButton() {
+    const { currentUser } = useContext(AuthContext);
     const { nickName, profileColor } = useContext(ProfileConfigurationContext);
     const navigate = useNavigate();
 
