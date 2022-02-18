@@ -47,7 +47,6 @@ export default function StatesContextProvider({ children }) {
                 color.hex === profileColor
             );
 
-            console.log(color);
             let subs = null;
             getUsers().then((users) => {
                 subs = firestore
@@ -82,7 +81,6 @@ export default function StatesContextProvider({ children }) {
                             userUid: "",
                         })
 
-                        console.log(tweets);
                         setTweetsArray(tweets);
 
                     });

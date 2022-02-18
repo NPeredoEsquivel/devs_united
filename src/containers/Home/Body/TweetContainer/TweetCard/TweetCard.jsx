@@ -11,6 +11,8 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     let tweetAuthorColor = colors.find(color =>
         color.hex === tweet.userProfileColor
     )
+    console.log(tweet.timestamp);
+    console.log(new Date(tweet.timestamp));
     return (
         <div className="tweet">
             <div className="tweet__user-img">
