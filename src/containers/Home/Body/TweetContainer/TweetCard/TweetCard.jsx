@@ -11,8 +11,12 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     let tweetAuthorColor = colors.find(color =>
         color.hex === tweet.userProfileColor
     )
-    console.log(tweet.timestamp);
-    console.log(new Date(tweet.timestamp));
+    let date = tweet.timestamp.toDate();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    date = date.toLocaleDateString('es-CL', options).replaceAll(' de ', ' ');
+    let fillHearth = tweet.userLikesArr ? (
+        tweet.userLikesArr.includes(currentUser.uid) ? true : false
+    ) : false;
     return (
         <div className="tweet">
             <div className="tweet__user-img">
@@ -26,7 +30,7 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                         <div className={`author__${tweetAuthorColor.name}`}>
                             <p>{tweet.userNickName}</p>
                         </div>
-                        <span> - 5 jun.</span>
+                        <span>{date}.</span>
                     </div>
                     <Span
                         classOfSpan="tweet-author__delete-action"
@@ -48,8 +52,8 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                 <div className="like-icon">
                     <Span
                         classOfSpan="like-icon__img"
-                        onClickHandler={() => likeTweetHandler(tweet.id, tweet.likes)}
-                        contentOfSpan={<img height="13px" alt="hearth" src={images('./hearth.svg').default} />}
+                        onClickHandler={() => likeTweetHandler(tweet)}
+                        contentOfSpan={<img height="13px" alt="hearth" src={`${fillHearth ? images('./hearth.svg').default : images('./empty-hearth.svg').default}`} />}
                     />
                     <Span
                         classOfSpan=""

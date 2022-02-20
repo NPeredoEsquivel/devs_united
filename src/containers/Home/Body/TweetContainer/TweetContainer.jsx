@@ -3,20 +3,39 @@ import { StatesContext } from "../../../../hooks/StatesContext";
 import { useContext } from "react";
 import { firestore } from "../../../../Firebase";
 import Loading from "../../../../components/common/Loading.jsx";
+import { AuthContext } from "../../../../hooks/AuthContext";
 
 export default function TweetContainer() {
-
+    const { currentUser } = useContext(AuthContext);
     const { tweetsArrayState } = useContext(StatesContext);
 
     const deleteTweetHandler = (id) => {
         firestore.doc(`tweets/${id}`).delete();
 
     }
-    const likeTweetHandler = (id, numLikes) => {
-        if (!numLikes) {
-            numLikes = 0;
+
+    const likeTweetHandler = (tweet) => {
+        if (!tweet.likes) {
+            tweet.likes = 0;
         }
-        firestore.doc(`tweets/${id}`).update({ likes: numLikes + 1 });
+
+        if (!tweet.userLikesArr) {
+            tweet.userLikesArr = [];
+        }
+
+        let userLikesArr = tweet.userLikesArr;
+        if (!userLikesArr.includes(currentUser.uid)) {
+            userLikesArr.push(currentUser.uid);
+            const updatedLikes = tweet.likes + 1;
+            firestore.doc(`tweets/${tweet.id}`).update({ likes: updatedLikes, userLikesArr: userLikesArr });
+
+        } else {
+            let indexToDelete = userLikesArr.indexOf(currentUser.uid);
+            userLikesArr.splice(indexToDelete, 1);
+            const updatedLikes = tweet.likes - 1;
+            firestore.doc(`tweets/${tweet.id}`).update({ likes: updatedLikes, userLikesArr: userLikesArr });
+
+        }
     }
 
     return (
@@ -24,6 +43,7 @@ export default function TweetContainer() {
             <div className="tweet-list-container">
                 {tweetsArrayState.tweetsArray.length ? (
                     tweetsArrayState.tweetsArray.map((tweet, i) =>
+
                         <TweetCard
                             key={i}
                             tweet={tweet}

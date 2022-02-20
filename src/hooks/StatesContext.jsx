@@ -36,9 +36,12 @@ export default function StatesContextProvider({ children }) {
         {
             text: "",
             author: "",
-            photoUrl: "",
-            uid: "",
-            email: ""
+            photoURL: "",
+            email: "",
+            timestamp: "",
+            userUid: "",
+            likes: "",
+            userLikesArr: [],
         });
 
     useEffect(() => {
@@ -67,6 +70,7 @@ export default function StatesContextProvider({ children }) {
                                 timestamp: doc.data().timestamp,
                                 id: doc.id,
                                 userUid: doc.data().userUid,
+                                userLikesArr: doc.data().userLikesArr,
                                 userNickName: filteredUser.nickName ?? "",
                                 userProfileColor: currentUser.uid === doc.data().userUid ? color.hex : filteredUser.profileColor
                             };
@@ -79,6 +83,8 @@ export default function StatesContextProvider({ children }) {
                             email: "",
                             timestamp: "",
                             userUid: "",
+                            likes: "",
+                            userLikesArr: []
                         })
 
                         setTweetsArray(tweets);
