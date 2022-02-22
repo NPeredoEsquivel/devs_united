@@ -1,5 +1,6 @@
-
-import { AuthContainerTitle, AuthContainerBody, AuthContainerButton } from "./AuthContainer/AuthContainer";
+import TitleSection from "./LoginSections/TitleSection/TitleSection";
+import BodySection from "./LoginSections/BodySection/BodySection";
+import BottomSection from "./LoginSections/BottomSection/BottomSection";
 import { images } from "../../App";
 import { useAuthState } from "../../helper/Auth";
 import Loading from "../../components/common/Loading";
@@ -8,6 +9,7 @@ export default function Login() {
     const { isAuthLoading } = useAuthState();
 
     let date = new Date().getFullYear();
+
     return (
         <div className="App login-container">
             <div className="logo-container">
@@ -19,9 +21,9 @@ export default function Login() {
             {!isAuthLoading ? (
                 <div className="auth-container">
                     <div className="auth-container-body">
-                        <AuthContainerTitle />
-                        <AuthContainerBody />
-                        <AuthContainerButton />
+                        <TitleSection />
+                        <BodySection />
+                        <BottomSection />
                     </div>
                 </div>
             ) : <Loading />

@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { images } from "../../../../../App";
 import Span from "../../../../../components/common/Span";
 import ProfilePhoto from "../../../../../components/common/ProfilePhoto";
-import { AuthContext } from "../../../../../hooks/AuthContext";
+import { useAuthState } from "../../../../../helper/Auth";
 import { colors } from "../../../../../hooks/ProfileConfiguration";
 import ImageContainer from "../../../../../components/common/ImageContainer";
 
 function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser } = useAuthState();
     let tweetAuthorColor = colors.find(color =>
         color.hex === tweet.userProfileColor
     )
@@ -17,6 +17,7 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     let fillHearth = tweet.userLikesArr ? (
         tweet.userLikesArr.includes(currentUser.uid) ? true : false
     ) : false;
+
     return (
         <div className="tweet">
             <div className="tweet__user-img">
