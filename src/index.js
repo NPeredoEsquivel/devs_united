@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import StatesContextProvider from './hooks/StatesContext'
+import StatesContextProvider from './hooks/StatesContext'
 import AuthProvider from "./hooks/AuthContext";
 import ProfileConfigurationProvider from "./hooks/ProfileConfiguration";
 import { BrowserRouter } from 'react-router-dom';
@@ -13,7 +13,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <ProfileConfigurationProvider>
-          <App />
+          <StatesContextProvider>
+            <App />
+          </StatesContextProvider>
         </ProfileConfigurationProvider>
       </AuthProvider>
     </BrowserRouter>

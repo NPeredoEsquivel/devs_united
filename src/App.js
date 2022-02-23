@@ -1,13 +1,12 @@
 
 import './App.css';
 import './styles/main.scss';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Login from './containers/Login/Login';
 import Home from './containers/Home/Home';
 import PrivateRoute from "./containers/Routes/PrivateRoute";
-import StatesContextProvider from "./hooks/StatesContext";
+import NotFound from "./components/common/NotFound";
 export const images = require.context('./icons', true);
-
 
 
 function App() {
@@ -15,13 +14,20 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={
-          <StatesContextProvider>
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          </StatesContextProvider>
+        <Route exact path="/home" element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
         } />
+        <Route
+          path="/"
+          element={<Navigate to="/home" />}
+        />
+        <Route
+          path="/*"
+          element={<NotFound />}
+        />
+
 
         <Route path="/login" element={<Login />} />
       </Routes>

@@ -15,7 +15,7 @@ export default function BottomSection() {
     let handleRedirect = (e, currentUser, nickName, profileColor) => {
         e.preventDefault();
         firebaseUserConfig(currentUser, nickName, profileColor);
-        navigate('/');
+        navigate('/home');
     }
 
     let handleLogOut = () => {
@@ -32,7 +32,7 @@ export default function BottomSection() {
 
                     <>
                         <div className="button-container__redirect">
-                            <Link to="/" className={`${nickName && profileColor ? '' : 'disabled-link'}`} onClick={(e) => `${nickName && profileColor ? handleRedirect(e, currentUser, nickName, profileColor) : e.preventDefault()}`} >Continue</Link>
+                            <Link to="/home" className={`${nickName && profileColor ? '' : 'disabled-link'}`} onClick={(e) => `${nickName && profileColor ? handleRedirect(e, currentUser, nickName, profileColor) : e.preventDefault()}`} >Continue</Link>
                         </div>
                         <Button
                             buttonText="Log out"
