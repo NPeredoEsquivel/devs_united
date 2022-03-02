@@ -2,7 +2,7 @@ import TweetCard from "./TweetCard/TweetCard.jsx";
 import { StatesContext } from "../../../../hooks/StatesContext";
 import { useContext } from "react";
 import { firestore } from "../../../../Firebase";
-import Loading from "../../../../components/common/Loading.jsx";
+import Loading from "../../../../components/Loading/Loading.jsx";
 import { AuthContext } from "../../../../hooks/AuthContext";
 
 export default function TweetContainer() {

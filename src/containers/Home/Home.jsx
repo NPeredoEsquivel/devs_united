@@ -3,7 +3,7 @@ import Header from "./Header/Header";
 import { useAuthState } from "../../helper/Auth";
 import { useContext } from "react";
 import { ProfileConfigurationContext } from "../../hooks/ProfileConfiguration";
-import Loading from "../../components/common/Loading";
+import Loading from "../../components/Loading/Loading";
 
 export default function Home() {
     const { isAuthLoading } = useAuthState();

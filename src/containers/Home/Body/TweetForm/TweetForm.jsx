@@ -1,8 +1,8 @@
-import TextArea from "../../../../components/common/TextArea";
-import Button from "../../../../components/common/Button";
+import TextArea from "../../../../components/TextArea";
+import Button from "../../../../components/Button";
 import { StatesContext } from "../../../../hooks/StatesContext";
 import { AuthContext } from "../../../../hooks/AuthContext";
-import ProfilePhoto from "../../../../components/common/ProfilePhoto";
+import ProfilePhoto from "../../../../components/ProfilePhoto";
 import { useContext } from "react";
 import { firestore, serverTimestamp } from "../../../../Firebase";
 

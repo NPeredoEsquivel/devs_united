@@ -1,4 +1,4 @@
-import TextContainer from "../../../../components/common/TextContainer";
+import TextContainer from "../../../../components/TextContainer";
 import { useAuthState } from "../../../../helper/Auth";
 
 

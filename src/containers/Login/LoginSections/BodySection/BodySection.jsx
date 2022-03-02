@@ -1,8 +1,8 @@
 import { useAuthState } from "../../../../helper/Auth";
 import { ProfileConfigurationContext } from "../../../../hooks/ProfileConfiguration";
-import InputText, { LoadingInputText } from "../../../../components/common/InputText";
-import TextContainer from "../../../../components/common/TextContainer";
-import ColorSelector from "../../../../components/common/ColorSelector";
+import InputText, { LoadingInputText } from "../../../../components/InputText";
+import TextContainer from "../../../../components/TextContainer";
+import ColorSelector from "../../../../components/ColorSelector";
 import { useContext } from "react";
 import { colors } from "../../../../hooks/ProfileConfiguration";
 
@@ -16,7 +16,7 @@ export default function AuthContainerBody() {
         setNickName(e.target.value);
     }
 
-    const isProfileSet = (nickName && profileColor) ?? false;
+    const isProfileSet = (nickName || profileColor) ?? false;
     return (
         <div className="auth-container-body__body">
             {currentUser ? (

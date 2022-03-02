@@ -29,7 +29,7 @@ async function getUsers() {
 }
 
 export default function StatesContextProvider({ children }) {
-    const { profileColor } = useContext(ProfileConfigurationContext);
+    const { nickName, profileColor } = useContext(ProfileConfigurationContext);
     const { currentUser } = useContext(AuthContext);
     const [tweetsArray, setTweetsArray] = useState([]);
     const [tweet, setTweet] = useState(
@@ -71,7 +71,7 @@ export default function StatesContextProvider({ children }) {
                                 id: doc.id,
                                 userUid: doc.data().userUid,
                                 userLikesArr: doc.data().userLikesArr,
-                                userNickName: filteredUser.nickName ?? "",
+                                userNickName: currentUser.uid === doc.data().userUid ? nickName : filteredUser.nickName ?? "",
                                 userProfileColor: currentUser.uid === doc.data().userUid ? color.hex : filteredUser.profileColor
                             };
                         });
@@ -95,7 +95,7 @@ export default function StatesContextProvider({ children }) {
 
             return () => subs;
         }
-    }, [profileColor])
+    }, [nickName, profileColor])
 
 
     const tweetsArrayState = { tweetsArray, setTweetsArray };

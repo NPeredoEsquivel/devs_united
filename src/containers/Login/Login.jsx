@@ -3,7 +3,7 @@ import BodySection from "./LoginSections/BodySection/BodySection";
 import BottomSection from "./LoginSections/BottomSection/BottomSection";
 import { images } from "../../App";
 import { useAuthState } from "../../helper/Auth";
-import Loading from "../../components/common/Loading";
+import Loading from "../../components/Loading/Loading";
 
 export default function Login() {
     const { isAuthLoading } = useAuthState();

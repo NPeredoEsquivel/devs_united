@@ -5,7 +5,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Login from './containers/Login/Login';
 import Home from './containers/Home/Home';
 import PrivateRoute from "./containers/Routes/PrivateRoute";
-import NotFound from "./components/common/NotFound";
+import NotFound from "./components/NotFound/NotFound";
 export const images = require.context('./icons', true);
 
 

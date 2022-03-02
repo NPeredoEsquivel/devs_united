@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('http://fonts.cdnfonts.com/css/silkscreen');
 @import './config.scss';
-@import '../containers/Login/Login';
-@import '../components/common/Loading';
-@import '../containers/Home/Header/Nav/Nav';
-@import '../containers/Home/Header/Header';
-@import '../containers/Home/Body/Body';
-@import '../containers/Home/Home.scss';
+@import '../containers/Login/_Login';
+@import '../components/Loading/_Loading';
+@import '../containers/Home/Header/Nav/_Nav';
+@import '../containers/Home/Header/_Header';
+@import '../containers/Home/Body/_Body';
+@import '../containers/Home/_Home';
 
 .App {
     background-color: #2E132C;

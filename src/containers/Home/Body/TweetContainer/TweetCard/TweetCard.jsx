@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { images } from "../../../../../App";
-import Span from "../../../../../components/common/Span";
-import ProfilePhoto from "../../../../../components/common/ProfilePhoto";
+import Span from "../../../../../components/Span";
+import ProfilePhoto from "../../../../../components/ProfilePhoto";
 import { useAuthState } from "../../../../../helper/Auth";
 import { colors } from "../../../../../hooks/ProfileConfiguration";
-import ImageContainer from "../../../../../components/common/ImageContainer";
+import ImageContainer from "../../../../../components/ImageContainer";
 
 function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     const { currentUser } = useAuthState();
@@ -17,7 +17,7 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     let fillHearth = tweet.userLikesArr ? (
         tweet.userLikesArr.includes(currentUser.uid) ? true : false
     ) : false;
-
+    console.log(tweet.photoURL);
     return (
         <div className="tweet">
             <div className="tweet__user-img">

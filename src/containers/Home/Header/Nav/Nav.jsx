@@ -3,8 +3,8 @@ import { images } from "../../../../App";
 import { AuthContext } from "../../../../hooks/AuthContext";
 import { ProfileConfigurationContext } from "../../../../hooks/ProfileConfiguration";
 import { colors } from "../../../../hooks/ProfileConfiguration";
-import ProfilePhoto from "../../../../components/common/ProfilePhoto";
-import ImageContainer from "../../../../components/common/ImageContainer";
+import ProfilePhoto from "../../../../components/ProfilePhoto";
+import ImageContainer from "../../../../components/ImageContainer";
 export default function Nav() {
     const { currentUser } = useContext(AuthContext);
     const { profileColor } = useContext(ProfileConfigurationContext);
