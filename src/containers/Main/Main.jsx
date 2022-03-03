@@ -1,4 +1,4 @@
-import Body from "./Body/Body";
+import Body from "./Body/MainBody/Body";
 import Header from "./Header/Header";
 import { useAuthState } from "../../helper/Auth";
 import { useContext } from "react";

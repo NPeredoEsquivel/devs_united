@@ -1,5 +1,5 @@
-import TweetContainer from './MainBody/TweetContainer/TweetContainer'
-import TweetForm from './MainBody/TweetForm/TweetForm'
+import TweetContainer from './TweetContainer/TweetContainer'
+import TweetForm from './TweetForm/TweetForm'
 function Body() {
     return (
         <div className="tweet-body-container">
