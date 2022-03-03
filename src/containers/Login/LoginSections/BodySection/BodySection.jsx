@@ -13,7 +13,7 @@ export default function AuthContainerBody() {
     const { nickName, setNickName, profileColor } = useContext(ProfileConfigurationContext);
 
     let handleValueChange = (e) => {
-        setNickName(e.target.value);
+        setNickName(e.target.value.replace(/\s/g, ''));
     }
 
     const isProfileSet = (nickName || profileColor) ?? false;

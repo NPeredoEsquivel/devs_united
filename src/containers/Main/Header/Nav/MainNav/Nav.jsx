@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { images } from "../../../../App";
-import { AuthContext } from "../../../../hooks/AuthContext";
-import { ProfileConfigurationContext } from "../../../../hooks/ProfileConfiguration";
-import { colors } from "../../../../hooks/ProfileConfiguration";
-import ProfilePhoto from "../../../../components/ProfilePhoto";
-import ImageContainer from "../../../../components/ImageContainer";
+import { images } from "../../../../../App";
+import { AuthContext } from "../../../../../hooks/AuthContext";
+import { ProfileConfigurationContext, colors } from "../../../../../hooks/ProfileConfiguration";
+import ProfilePhoto from "../../../../../components/ProfilePhoto";
+import ImageContainer from "../../../../../components/ImageContainer";
+import { Link } from "react-router-dom";
+
 export default function Nav() {
     const { currentUser } = useContext(AuthContext);
-    const { profileColor } = useContext(ProfileConfigurationContext);
+    const { nickName, profileColor } = useContext(ProfileConfigurationContext);
 
     let imgBorder = colors.find(color =>
         color.hex === profileColor
@@ -16,10 +17,13 @@ export default function Nav() {
     return (
         <nav className="nav-container">
             <div className="nav-container__avatar">
-                <ProfilePhoto
-                    className={`nav-container__avatar__${imgBorder.name}`}
-                    imgSrc={currentUser.photoURL}
-                />
+                <Link to={`/${nickName}`} >
+
+                    <ProfilePhoto
+                        className={`nav-container__avatar__${imgBorder.name}`}
+                        imgSrc={currentUser.photoURL}
+                    />
+                </Link>
             </div>
             <div className="nav-container__logo">
                 <ImageContainer

@@ -4,10 +4,10 @@
 @import './config.scss';
 @import '../containers/Login/_Login';
 @import '../components/Loading/_Loading';
-@import '../containers/Home/Header/Nav/_Nav';
-@import '../containers/Home/Header/_Header';
-@import '../containers/Home/Body/_Body';
-@import '../containers/Home/_Home';
+@import '../containers/Main/Header/Nav/MainNav/_Nav';
+@import '../containers/Main/Header/_Header';
+@import '../containers/Main/Body/_Body';
+@import '../containers/Main/_Home';
 
 .App {
     background-color: #2E132C;

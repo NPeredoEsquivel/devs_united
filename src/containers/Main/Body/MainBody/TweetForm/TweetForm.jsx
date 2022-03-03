@@ -1,10 +1,10 @@
-import TextArea from "../../../../components/TextArea";
-import Button from "../../../../components/Button";
-import { StatesContext } from "../../../../hooks/StatesContext";
-import { AuthContext } from "../../../../hooks/AuthContext";
-import ProfilePhoto from "../../../../components/ProfilePhoto";
+import TextArea from "../../../../../components/TextArea";
+import Button from "../../../../../components/Button";
+import { StatesContext } from "../../../../../hooks/StatesContext";
+import { AuthContext } from "../../../../../hooks/AuthContext";
+import ProfilePhoto from "../../../../../components/ProfilePhoto";
 import { useContext } from "react";
-import { firestore, serverTimestamp } from "../../../../Firebase";
+import { firestore, serverTimestamp } from "../../../../../Firebase";
 
 function TweetForm() {
     const { tweetState } = useContext(StatesContext);
