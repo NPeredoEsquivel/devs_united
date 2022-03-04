@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-export default function Profile() {
+export default function ProfileBody() {
     let { nickName } = useParams();
     return (
         <div className="profile-container">
