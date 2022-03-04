@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import ProfileContainer from "./ProfileContainer/ProfileContainer";
+import ProfileTweetContainer from "./ProfileTweetContainer/ProfileTweetContainer";
 
 export default function ProfileBody() {
-    let { nickName } = useParams();
     return (
-        <div className="profile-container">
-            <p>{`This is a test to see if the profile component renders ${nickName}.`}</p>
+        <div className="profile-body-container">
+            <ProfileContainer />
+            <ProfileTweetContainer />
         </div>
     );
 }

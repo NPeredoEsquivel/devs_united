@@ -1,6 +1,6 @@
 import { firestore } from "../Firebase";
 
-export default async function filterUser(uid) {
+export default async function FilterUser(uid) {
     const userCollection = firestore.collection("user");
     let res = await userCollection.where("user_uid", "==", uid).get();
 

@@ -1,10 +1,33 @@
-import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { useAuthState } from "../../../helper/Auth";
+import { ProfileConfigurationContext } from "../../../hooks/ProfileConfiguration";
+import Loading from "../../../components/Loading/Loading";
+import Header from "./Header/Header";
+import Body from "./Body/Body";
 
 export default function ProfileFeed() {
-    let { nickName } = useParams();
+
+    const { isAuthLoading } = useAuthState();
+    const { isProfileLoading } = useContext(ProfileConfigurationContext);
+
     return (
-        <div className="profile-container">
-            <p>{`This is a test to see if the profile component renders ${nickName}.`}</p>
-        </div>
+        <>
+            {
+                !isAuthLoading && !isProfileLoading ? (
+                    <>
+                        <header className="header-container">
+                            <Header />
+                        </header>
+                        <div className="main-container">
+                            <Body />
+                        </div>
+                    </>
+                )
+                    :
+                    <div className="loading-container">
+                        <Loading />
+                    </div>
+            }
+        </>
     );
 }

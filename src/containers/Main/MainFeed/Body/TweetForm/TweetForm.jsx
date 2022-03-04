@@ -1,5 +1,5 @@
 import TextArea from "../../../../../components/TextArea";
-import Button from "../../../../../components/Button";
+import Button from "./../../../../../components/Button";
 import { StatesContext } from "../../../../../hooks/StatesContext";
 import { AuthContext } from "../../../../../hooks/AuthContext";
 import ProfilePhoto from "../../../../../components/ProfilePhoto";
