@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { images } from "../../../../../App";
 import { AuthContext } from "../../../../../hooks/AuthContext";
 import { ProfileConfigurationContext, colors } from "../../../../../hooks/ProfileConfiguration";
-import ProfilePhoto from "../../../../../components/ProfilePhoto";
 import ImageContainer from "../../../../../components/ImageContainer";
 import { Link } from "react-router-dom";
 
@@ -19,7 +18,7 @@ export default function Nav() {
             <div className="nav-container__avatar">
                 <Link to={`/${nickName}`} >
 
-                    <ProfilePhoto
+                    <ImageContainer
                         className={`nav-container__avatar__${imgBorder.name}`}
                         imgSrc={currentUser.photoURL}
                     />

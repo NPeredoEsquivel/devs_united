@@ -15,10 +15,10 @@ export default function ProfileFeed() {
             {
                 !isAuthLoading && !isProfileLoading ? (
                     <>
-                        <header className="header-container">
+                        <header className="profile-header-container">
                             <Header />
                         </header>
-                        <div className="main-container">
+                        <div className="profile-main-container">
                             <Body />
                         </div>
                     </>

@@ -1,6 +1,5 @@
 import { images } from "../../../../../../App";
 import Span from "../../../../../../components/Span";
-import ProfilePhoto from "../../../../../../components/ProfilePhoto";
 import { useAuthState } from "../../../../../../helper/Auth";
 import { colors } from "../../../../../../hooks/ProfileConfiguration";
 import ImageContainer from "../../../../../../components/ImageContainer";
@@ -20,7 +19,7 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     return (
         <div className="tweet">
             <div className="tweet__user-img">
-                <ProfilePhoto
+                <ImageContainer
                     imgSrc={tweet.photoURL}
                 />
             </div>

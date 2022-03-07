@@ -3,6 +3,9 @@ import { AuthContext } from "../../../../../hooks/AuthContext";
 import { ProfileConfigurationContext } from "../../../../../hooks/ProfileConfiguration";
 import Button from "./../../../../../components/Button";
 import { logOut } from "./../../../../../Firebase";
+import { images } from "../../../../../App";
+import ImageContainer from "../../../../../components/ImageContainer";
+
 
 export default function Nav() {
     const { currentUser, setCurrentUser } = useContext(AuthContext);
@@ -18,12 +21,27 @@ export default function Nav() {
 
     return (
         <nav className="nav-container">
-            <div className="nav-container__avatar">
+
+            <div className="nav-container__back-action">
+                <ImageContainer
+                    className="nav-container__back-action__svg"
+                    imgSrc={images('./back-action.svg').default}
+                    alternative="back-action"
+                />
+            </div>
+            <div className="nav-container__nickname">
                 {nickName}
             </div>
-            <div className="nav-container__logo">
+            <div className="nav-container__button">
                 <Button
-                    buttonText="Log out"
+                    buttonText="Logout"
+                    childrenComponent={
+                        <ImageContainer
+                            className="logout-svg"
+                            imgSrc={images('./logout-icon.svg').default}
+                            alternative="logout-icon"
+                        />
+                    }
                     onClickEvent={handleLogOut}
                 />
             </div>

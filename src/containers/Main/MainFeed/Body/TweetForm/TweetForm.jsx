@@ -2,7 +2,7 @@ import TextArea from "../../../../../components/TextArea";
 import Button from "./../../../../../components/Button";
 import { StatesContext } from "../../../../../hooks/StatesContext";
 import { AuthContext } from "../../../../../hooks/AuthContext";
-import ProfilePhoto from "../../../../../components/ProfilePhoto";
+import ImageContainer from "../../../../../components/ImageContainer";
 import { useContext } from "react";
 import { firestore, serverTimestamp } from "../../../../../Firebase";
 
@@ -30,7 +30,7 @@ function TweetForm() {
     return (
         <div className="tweet-form-container">
             <div className="tweet-form-container__avatar">
-                <ProfilePhoto
+                <ImageContainer
                     imgSrc={currentUser.photoURL}
                 />
             </div>

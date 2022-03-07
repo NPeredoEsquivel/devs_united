@@ -1,6 +1,6 @@
 import TweetContainer from './TweetContainer/TweetContainer'
 import TweetForm from './TweetForm/TweetForm'
-function Body() {
+export default function Body() {
     return (
         <div className="tweet-body-container">
             <TweetForm />
@@ -8,5 +8,3 @@ function Body() {
         </div >
     );
 }
-
-export default Body;
