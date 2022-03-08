@@ -5,17 +5,19 @@ import Button from "./../../../../../components/Button";
 import { logOut } from "./../../../../../Firebase";
 import { images } from "../../../../../App";
 import ImageContainer from "../../../../../components/ImageContainer";
-
+import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
     const { currentUser, setCurrentUser } = useContext(AuthContext);
     const { nickName, setNickName, profileColor, setProfileColor } = useContext(ProfileConfigurationContext);
+    const navigate = useNavigate();
 
     let handleLogOut = () => {
         setCurrentUser(null);
         setNickName("");
         setProfileColor("");
         logOut();
+        navigate('/login');
     }
 
 

@@ -35,7 +35,6 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                         classOfSpan="tweet-author__delete-action"
                         onClickHandler={(currentUser && currentUser.uid === tweet.userUid) ? () => deleteTweet(tweet.id) : ""}
                         contentOfSpan={(currentUser && currentUser.uid === tweet.userUid) ? (
-                            // <img height="13px" alt="trash-can" src={images('./trash-can.png').default} />
                             <ImageContainer
                                 imgSrc={images('./trash-can.svg').default}
                                 className="trash-can"
