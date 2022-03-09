@@ -29,10 +29,13 @@ export default function BottomSection() {
         <div className="auth-container-body__button">
             <div className="button-container">
                 {currentUser ? (
-
                     <>
                         <div className="button-container__redirect">
-                            <Link to="/home" className={`${nickName && profileColor ? '' : 'disabled-link'}`} onClick={(e) => `${nickName && profileColor ? handleRedirect(e, currentUser, nickName, profileColor) : e.preventDefault()}`} >Continue</Link>
+                            <Link to="/home"
+                                className={`${nickName && profileColor ? '' : 'disabled-link'}`}
+                                onClick={(e) => `${nickName && profileColor ? handleRedirect(e, currentUser, nickName, profileColor) : e.preventDefault()}`} >
+                                Continue
+                            </Link>
                         </div>
                         <Button
                             buttonText="Log out"

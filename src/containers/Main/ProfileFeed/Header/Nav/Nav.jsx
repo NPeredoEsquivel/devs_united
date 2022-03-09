@@ -5,7 +5,7 @@ import Button from "./../../../../../components/Button";
 import { logOut } from "./../../../../../Firebase";
 import { images } from "../../../../../App";
 import ImageContainer from "../../../../../components/ImageContainer";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Nav() {
     const { currentUser, setCurrentUser } = useContext(AuthContext);
@@ -25,11 +25,13 @@ export default function Nav() {
         <nav className="nav-container">
 
             <div className="nav-container__back-action">
-                <ImageContainer
-                    className="nav-container__back-action__svg"
-                    imgSrc={images('./back-action.svg').default}
-                    alternative="back-action"
-                />
+                <Link to="/home">
+                    <ImageContainer
+                        className="nav-container__back-action__svg"
+                        imgSrc={images('./back-action.svg').default}
+                        alternative="back-action"
+                    />
+                </Link>
             </div>
             <div className="nav-container__nickname">
                 {nickName}
