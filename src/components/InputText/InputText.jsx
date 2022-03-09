@@ -1,9 +1,10 @@
-export default function InputText({ placeHolder, inputValue, handleValue }) {
+export default function InputText({ placeHolder, inputValue, handleValue, className = null }) {
     return (
         <input
             placeholder={placeHolder}
             type="text" value={inputValue}
             onChange={handleValue}
+            className={className}
         />
     );
 }

@@ -5,9 +5,11 @@ import { firestore } from "../../../../../Firebase";
 import Loading from "../../../../../components/Loading/Loading.jsx";
 import { AuthContext } from "../../../../../hooks/AuthContext";
 
-export default function TweetContainer() {
+export default function TweetContainer({ tweetsArray = null }) {
     const { currentUser } = useContext(AuthContext);
     const { tweetsArrayState } = useContext(StatesContext);
+
+    let tweets = tweetsArray ?? tweetsArrayState.tweetsArray;
 
     const deleteTweetHandler = (id) => {
         firestore.doc(`tweets/${id}`).delete();
@@ -41,8 +43,8 @@ export default function TweetContainer() {
     return (
         <>
             <div className="tweet-list-container">
-                {tweetsArrayState.tweetsArray.length ? (
-                    tweetsArrayState.tweetsArray.map((tweet, i) =>
+                {tweets.length ? (
+                    tweets.map((tweet, i) =>
 
                         <TweetCard
                             key={i}

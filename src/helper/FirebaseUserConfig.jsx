@@ -1,6 +1,6 @@
 import { firestore } from "../Firebase";
 
-export default function firebaseUserConfig(currentUser, nickName, profileColor) {
+export default function FirebaseUserConfig(currentUser, nickName, profileColor) {
     async function filterUser(currentUser) {
         const userCollection = firestore.collection("user");
         let res = await userCollection.where("user_uid", "==", currentUser.uid).get();

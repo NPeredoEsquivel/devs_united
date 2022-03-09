@@ -6,7 +6,7 @@ import { colors } from "../hooks/ProfileConfiguration";
 
 export const StatesContext = React.createContext();
 
-async function getUsers() {
+export async function getUsers() {
     let users = null;
     try {
         await firestore

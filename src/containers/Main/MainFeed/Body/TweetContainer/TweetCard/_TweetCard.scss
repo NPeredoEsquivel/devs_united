@@ -2,7 +2,7 @@
     display: flex;
     align-items: flex-start;
     height: 208px;
-    width: 100vw;
+    width: 100%;
     border-bottom: 2px solid #60265B;
 
 
@@ -10,7 +10,7 @@
         padding-left: 1rem;
         padding-top: 1.2rem;
 
-        >img {
+        >a>img {
             border-radius: 50%;
             width: 4rem;
             height: 4rem;

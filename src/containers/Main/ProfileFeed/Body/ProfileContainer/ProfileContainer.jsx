@@ -2,6 +2,8 @@ import ImageContainer from "../../../../../components/ImageContainer";
 import { useContext } from "react";
 import { ProfileConfigurationContext, colors } from "../../../../../hooks/ProfileConfiguration";
 import { AuthContext } from "../../../../../hooks/AuthContext";
+import { useParams } from "react-router-dom";
+
 
 export default function ProfileContainer() {
     const { currentUser } = useContext(AuthContext);

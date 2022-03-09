@@ -1,8 +1,9 @@
 import { images } from "../../../../../../App";
-import Span from "../../../../../../components/Span";
+import Span from "../../../../../../components/Span/Span";
 import { useAuthState } from "../../../../../../helper/Auth";
 import { colors } from "../../../../../../hooks/ProfileConfiguration";
 import ImageContainer from "../../../../../../components/ImageContainer";
+import { Link } from "react-router-dom";
 
 function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     const { currentUser } = useAuthState();
@@ -19,9 +20,12 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     return (
         <div className="tweet">
             <div className="tweet__user-img">
-                <ImageContainer
-                    imgSrc={tweet.photoURL}
-                />
+
+                <Link to={`/${tweet.userNickName}`} >
+                    <ImageContainer
+                        imgSrc={tweet.photoURL}
+                    />
+                </Link>
             </div>
             <div className="tweet__information">
                 <div className="tweet-author">
@@ -32,7 +36,7 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                         <span>{date}.</span>
                     </div>
                     <Span
-                        classOfSpan="tweet-author__delete-action"
+                        className="tweet-author__delete-action"
                         onClickHandler={(currentUser && currentUser.uid === tweet.userUid) ? () => deleteTweet(tweet.id) : ""}
                         contentOfSpan={(currentUser && currentUser.uid === tweet.userUid) ? (
                             <ImageContainer
@@ -49,12 +53,12 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                 </div>
                 <div className="like-icon">
                     <Span
-                        classOfSpan="like-icon__img"
+                        className="like-icon__img"
                         onClickHandler={() => likeTweetHandler(tweet)}
                         contentOfSpan={<img height="13px" alt="hearth" src={`${fillHearth ? images('./hearth.svg').default : images('./empty-hearth.svg').default}`} />}
                     />
                     <Span
-                        classOfSpan=""
+                        className=""
                         onClickHandler=""
                         contentOfSpan={tweet.likes ? tweet.likes : "0"}
                     />

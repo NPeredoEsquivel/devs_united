@@ -1,6 +1,6 @@
 import { firestore } from "../Firebase";
 
-export default async function FilterUser(uid) {
+export async function FilterUserByUid(uid) {
     const userCollection = firestore.collection("user");
     let res = await userCollection.where("user_uid", "==", uid).get();
 
@@ -14,6 +14,26 @@ export default async function FilterUser(uid) {
         return {
             'nickname': null,
             'color': null
+        }
+    }
+}
+
+export async function FilterUserByNickName(nickName) {
+    const userCollection = firestore.collection("user");
+    let res = await userCollection.where("nickname", "==", nickName).get();
+
+    if (!res.empty) {
+        let data = res.docs[0].data();
+        return {
+            'userUid': data.user_uid,
+            'nickname': data.nickname,
+            'color': data.profile_color,
+        }
+    } else {
+        return {
+            'userUid': null,
+            'nickname': null,
+            'color': null,
         }
     }
 }

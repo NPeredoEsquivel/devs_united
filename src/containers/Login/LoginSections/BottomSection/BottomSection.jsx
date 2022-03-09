@@ -4,19 +4,34 @@ import { loginWithGoogle, logOut } from "../../../../Firebase";
 import Button from "../../../../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../../App";
-import firebaseUserConfig from "../../../../helper/FirebaseUserConfig";
-import { useContext } from "react";
+import FirebaseUserConfig from "../../../../helper/FirebaseUserConfig";
+import { useContext, useState } from "react";
+import { FilterUserByNickName } from "../../../../helper/FilterUserFromCollection";
 
 export default function BottomSection() {
     const { currentUser, setCurrentUser } = useAuthState();
     const { nickName, setNickName, profileColor, setProfileColor } = useContext(ProfileConfigurationContext);
     const navigate = useNavigate();
 
+    const [validNickName, setValidNickName] = useState(true);
     let handleRedirect = (e, currentUser, nickName, profileColor) => {
         e.preventDefault();
-        firebaseUserConfig(currentUser, nickName, profileColor);
-        navigate('/home');
+        FilterUserByNickName(nickName).then(data => {
+            if (data.userUid) {
+                if (currentUser.uid != data.userUid) {
+                    setValidNickName(false);
+                } else {
+                    FirebaseUserConfig(currentUser, nickName, profileColor);
+                    navigate('/home');
+                }
+            } else {
+                FirebaseUserConfig(currentUser, nickName, profileColor);
+                navigate('/home');
+            }
+        });
     }
+
+    console.log(validNickName);
 
     let handleLogOut = () => {
         setCurrentUser(null);
@@ -32,7 +47,7 @@ export default function BottomSection() {
                     <>
                         <div className="button-container__redirect">
                             <Link to="/home"
-                                className={`${nickName && profileColor ? '' : 'disabled-link'}`}
+                                className={`${nickName && profileColor && validNickName ? '' : 'disabled-link'}`}
                                 onClick={(e) => `${nickName && profileColor ? handleRedirect(e, currentUser, nickName, profileColor) : e.preventDefault()}`} >
                                 Continue
                             </Link>

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "./AuthContext";
 import { useAuthState } from "../helper/Auth";
-import FilterUser from "../helper/FilterUserFromCollection";
+import { FilterUserByUid } from "../helper/FilterUserFromCollection";
 
 export const ProfileConfigurationContext = React.createContext();
 
@@ -25,7 +25,7 @@ export default function ProfileConfigurationProvider({ children }) {
 
     useEffect(() => {
         if (isAuthenticated) {
-            FilterUser(currentUser.uid).then(data => {
+            FilterUserByUid(currentUser.uid).then(data => {
                 setNickName(data.nickname);
                 setProfileColor(data.color);
                 setProfileLoading(false);

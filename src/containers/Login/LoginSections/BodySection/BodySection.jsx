@@ -1,19 +1,31 @@
 import { useAuthState } from "../../../../helper/Auth";
 import { ProfileConfigurationContext } from "../../../../hooks/ProfileConfiguration";
-import InputText, { LoadingInputText } from "../../../../components/InputText";
+import InputText, { LoadingInputText } from "../../../../components/InputText/InputText";
+import Span from "../../../../components/Span/Span"
 import TextContainer from "../../../../components/TextContainer";
 import ColorSelector from "../../../../components/ColorSelector";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { colors } from "../../../../hooks/ProfileConfiguration";
-
+import { getUsers } from "../../../../hooks/StatesContext";
 
 export default function AuthContainerBody() {
     const { currentUser } = useAuthState();
-
     const { nickName, setNickName, profileColor } = useContext(ProfileConfigurationContext);
+    const [validNickName, setValidNickName] = useState(true);
 
     let handleValueChange = (e) => {
-        setNickName(e.target.value.replace(/\s/g, ''));
+        let nickNameValue = e.target.value.replace(/\s/g, '');
+        getUsers().then((users) => {
+            let filteredUser = users.find((user) => {
+                return user.nickName.toLowerCase() === nickNameValue.toLowerCase() && user.user_uid != currentUser.uid
+            })
+            if (filteredUser) {
+                setValidNickName(false);
+            } else {
+                setValidNickName(true);
+            }
+        })
+        setNickName(nickNameValue.toLowerCase());
     }
 
     const isProfileSet = (nickName || profileColor) ?? false;
@@ -23,11 +35,22 @@ export default function AuthContainerBody() {
                 <>
                     <div className="body-input">
                         {isProfileSet ? (
-                            <InputText
-                                placeHolder="Type your username"
-                                inputValue={nickName ?? ''}
-                                handleValue={handleValueChange}
-                            />
+                            <>
+                                <InputText
+                                    placeHolder="Type your username"
+                                    inputValue={nickName ?? ''}
+                                    handleValue={handleValueChange}
+                                    className={!validNickName ? "validation-error" : ""}
+                                />
+                                {!validNickName ?
+                                    (
+                                        <Span
+                                            className="validation-error"
+                                            contentOfSpan="El nickname ya está en uso"
+                                        />
+                                    ) : null
+                                }
+                            </>
                         ) : <LoadingInputText
                                 className="body-input__loading-input" />
                         }

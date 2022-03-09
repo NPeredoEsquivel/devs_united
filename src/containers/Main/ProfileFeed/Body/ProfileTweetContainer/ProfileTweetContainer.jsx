@@ -1,5 +1,8 @@
-import { useState } from "react";
-
+import { StatesContext } from "../../../../../hooks/StatesContext";
+import { AuthContext } from "../../../../../hooks/AuthContext";
+import { useState, useContext } from "react";
+import TweetContainer from "../../../MainFeed/Body/TweetContainer/TweetContainer";
+import Loading from "../../../../../components/Loading/Loading";
 
 export default function ProfileTweetContainer() {
     let tweetsViewerOptions = {
@@ -7,23 +10,44 @@ export default function ProfileTweetContainer() {
         'favoritedTweets': false,
     };
     const [listConfig, setListConfig] = useState(tweetsViewerOptions);
+    const { currentUser } = useContext(AuthContext);
+    const { tweetsArrayState } = useContext(StatesContext);
 
     const handleListConfiguration = (idViewOption) => {
+
         let option = (idViewOption === 'postedTweets') ?
             (
                 {
-                    ...tweetsViewerOptions = false,
+                    'favoritedTweets': false,
                     'postedTweets': true,
                 }
             ) :
             (
                 {
-                    ...tweetsViewerOptions = false,
+                    'postedTweets': false,
                     'favoritedTweets': true,
                 }
             );
         setListConfig(option);
     }
+
+    let tweets = null;
+
+    console.log("postedTweets", listConfig.postedTweets);
+    console.log("favoritedTweets", listConfig.favoritedTweets);
+    if (listConfig.postedTweets) {
+        tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
+            tweet.userUid === currentUser.uid
+        )
+    }
+
+    if (listConfig.favoritedTweets) {
+        tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
+            tweet.userLikesArr.includes(currentUser.uid)
+        )
+    }
+
+
 
     return (
         <div className="profile-tweets-container">
@@ -41,6 +65,12 @@ export default function ProfileTweetContainer() {
                     <span>FAVORITES</span>
                 </div>
             </div>
+            {tweets ? (
+                <TweetContainer
+                    tweetsArray={tweets}
+                />
+            ) : <Loading />
+            }
         </div>
     );
 }
