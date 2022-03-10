@@ -5,33 +5,25 @@ import Button from "../../../../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../../App";
 import FirebaseUserConfig from "../../../../helper/FirebaseUserConfig";
-import { useContext, useState } from "react";
-import { FilterUserByNickName } from "../../../../helper/FilterUserFromCollection";
+import { useContext } from "react";
 
 export default function BottomSection() {
     const { currentUser, setCurrentUser } = useAuthState();
-    const { nickName, setNickName, profileColor, setProfileColor } = useContext(ProfileConfigurationContext);
+    const { profileConfiguration } = useContext(ProfileConfigurationContext);
     const navigate = useNavigate();
 
-    const [validNickName, setValidNickName] = useState(true);
-    let handleRedirect = (e, currentUser, nickName, profileColor) => {
-        e.preventDefault();
-        FilterUserByNickName(nickName).then(data => {
-            if (data.userUid) {
-                if (currentUser.uid != data.userUid) {
-                    setValidNickName(false);
-                } else {
-                    FirebaseUserConfig(currentUser, nickName, profileColor);
-                    navigate('/home');
-                }
-            } else {
-                FirebaseUserConfig(currentUser, nickName, profileColor);
-                navigate('/home');
-            }
-        });
-    }
+    const nickNameConfigured = profileConfiguration.nickName.getNickName;
+    const profileColorConfigured = profileConfiguration.profileColor.getProfileColor;
+    const isNickNameUnique = profileConfiguration.nickName.isNickNameUnique;
 
-    console.log(validNickName);
+    const setNickName = profileConfiguration.nickName.setNickName;
+    const setProfileColor = profileConfiguration.profileColor.setProfileColor;
+
+    let handleRedirect = (e, currentUser, nickNameConfigured, profileColorConfigured) => {
+        e.preventDefault();
+        FirebaseUserConfig(currentUser, nickNameConfigured, profileColorConfigured);
+        navigate('/home');
+    }
 
     let handleLogOut = () => {
         setCurrentUser(null);
@@ -47,8 +39,8 @@ export default function BottomSection() {
                     <>
                         <div className="button-container__redirect">
                             <Link to="/home"
-                                className={`${nickName && profileColor && validNickName ? '' : 'disabled-link'}`}
-                                onClick={(e) => `${nickName && profileColor ? handleRedirect(e, currentUser, nickName, profileColor) : e.preventDefault()}`} >
+                                className={`${nickNameConfigured && profileColorConfigured && isNickNameUnique ? '' : 'disabled-link'}`}
+                                onClick={(e) => `${nickNameConfigured && profileColorConfigured ? handleRedirect(e, currentUser, nickNameConfigured, profileColorConfigured) : e.preventDefault()}`} >
                                 Continue
                             </Link>
                         </div>

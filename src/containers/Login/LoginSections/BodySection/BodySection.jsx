@@ -10,25 +10,28 @@ import { getUsers } from "../../../../hooks/StatesContext";
 
 export default function AuthContainerBody() {
     const { currentUser } = useAuthState();
-    const { nickName, setNickName, profileColor } = useContext(ProfileConfigurationContext);
-    const [validNickName, setValidNickName] = useState(true);
+    const { profileConfiguration } = useContext(ProfileConfigurationContext);
 
-    let handleValueChange = (e) => {
-        let nickNameValue = e.target.value.replace(/\s/g, '');
+    const handleValueChange = (e) => {
+        const nickNameValue = e.target.value.replace(/\s/g, '');
         getUsers().then((users) => {
-            let filteredUser = users.find((user) => {
+            const filteredUser = users.find((user) => {
                 return user.nickName.toLowerCase() === nickNameValue.toLowerCase() && user.user_uid != currentUser.uid
             })
             if (filteredUser) {
-                setValidNickName(false);
+                profileConfiguration.nickName.setNickNameUnique(false);
             } else {
-                setValidNickName(true);
+                profileConfiguration.nickName.setNickNameUnique(true);
             }
         })
-        setNickName(nickNameValue.toLowerCase());
+        profileConfiguration.nickName.setNickName(nickNameValue.toLowerCase());
     }
 
-    const isProfileSet = (nickName || profileColor) ?? false;
+    const nickNameConfigured = profileConfiguration.nickName.getNickName;
+    const profileColorConfigured = profileConfiguration.profileColor.getProfileColor;
+    const isNickNameUnique = profileConfiguration.nickName.isNickNameUnique;
+
+    const isProfileSet = (nickNameConfigured || profileColorConfigured) ?? false;
     return (
         <div className="auth-container-body__body">
             {currentUser ? (
@@ -38,11 +41,11 @@ export default function AuthContainerBody() {
                             <>
                                 <InputText
                                     placeHolder="Type your username"
-                                    inputValue={nickName ?? ''}
+                                    inputValue={nickNameConfigured ?? ''}
                                     handleValue={handleValueChange}
-                                    className={!validNickName ? "validation-error" : ""}
+                                    className={!isNickNameUnique ? "validation-error" : ""}
                                 />
-                                {!validNickName ?
+                                {!isNickNameUnique ?
                                     (
                                         <Span
                                             className="validation-error"
@@ -65,7 +68,7 @@ export default function AuthContainerBody() {
                                 return <ColorSelector
                                     key={color.hex}
                                     hexColor={color.hex}
-                                    className={isProfileSet ? (`color-picker__selector__color ${color.name} ${profileColor === color.hex ? "selected" : ""}`) : "color-picker__selector__loading"}
+                                    className={isProfileSet ? (`color-picker__selector__color ${color.name} ${profileColorConfigured === color.hex ? "selected" : ""}`) : "color-picker__selector__loading"}
                                 />
                             })}
                         </div>

@@ -20,6 +20,7 @@ export default function ProfileConfigurationProvider({ children }) {
 
     const [nickName, setNickName] = useState("");
     const [profileColor, setProfileColor] = useState("");
+    const [validNickName, setValidNickName] = useState(true);
     const [isProfileLoading, setProfileLoading] = useState(true);
 
 
@@ -36,8 +37,21 @@ export default function ProfileConfigurationProvider({ children }) {
 
     }, [isAuthenticated]);
 
+    let profileConfiguration = {
+        'nickName': {
+            'getNickName': nickName,
+            'setNickName': setNickName,
+            'isNickNameUnique': validNickName,
+            'setNickNameUnique': setValidNickName,
+        },
+        'profileColor': {
+            'getProfileColor': profileColor,
+            'setProfileColor': setProfileColor,
+        },
+    }
+
     return (
-        <ProfileConfigurationContext.Provider value={{ nickName, setNickName, profileColor, setProfileColor, isProfileLoading }}>
+        <ProfileConfigurationContext.Provider value={{ profileConfiguration, nickName, setNickName, profileColor, setProfileColor, isProfileLoading }}>
             {children}
         </ProfileConfigurationContext.Provider>
     );
