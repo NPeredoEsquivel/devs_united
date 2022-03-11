@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { firestore } from "../Firebase";
-import { ProfileConfigurationContext } from "../hooks/ProfileConfiguration";
-import { AuthContext } from "../hooks/AuthContext";
-import { colors } from "../hooks/ProfileConfiguration";
+import { firestore } from "../../Firebase";
+import { AuthContext } from "./AuthContext";
+import { ProfileConfigurationContext, colors } from "./ProfileContext";
 
 export const StatesContext = React.createContext();
 

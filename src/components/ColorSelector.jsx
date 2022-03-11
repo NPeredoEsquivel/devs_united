@@ -1,4 +1,4 @@
-import { ProfileConfigurationContext } from "../hooks/ProfileConfiguration";
+import { ProfileConfigurationContext } from "../hooks/ContextHooks/ProfileContext";
 import { useContext } from "react";
 
 export default function ColorSelector({ hexColor, className }) {

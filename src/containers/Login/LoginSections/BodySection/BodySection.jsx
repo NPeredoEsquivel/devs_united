@@ -1,12 +1,11 @@
-import { useAuthState } from "../../../../helper/Auth";
-import { ProfileConfigurationContext } from "../../../../hooks/ProfileConfiguration";
+import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
+import { ProfileConfigurationContext, colors } from "../../../../hooks/ContextHooks/ProfileContext";
 import InputText, { LoadingInputText } from "../../../../components/InputText/InputText";
 import Span from "../../../../components/Span/Span"
 import TextContainer from "../../../../components/TextContainer";
 import ColorSelector from "../../../../components/ColorSelector";
-import { useContext, useState } from "react";
-import { colors } from "../../../../hooks/ProfileConfiguration";
-import { getUsers } from "../../../../hooks/StatesContext";
+import { useContext } from "react";
+import { getUsers } from "../../../../hooks/ContextHooks/StatesContext";
 
 export default function AuthContainerBody() {
     const { currentUser } = useAuthState();

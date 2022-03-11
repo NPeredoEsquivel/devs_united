@@ -20,7 +20,7 @@ function App() {
           </PrivateRoute>
         }
         />
-        <Route path="/:nickName" element={<Main />} />
+        <Route path="/:profileNickName" element={<Main />} />
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/login" element={<Login />} />

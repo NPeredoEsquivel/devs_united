@@ -1,6 +1,6 @@
-import { useAuthState } from "../../../../helper/Auth";
-import { ProfileConfigurationContext } from "../../../../hooks/ProfileConfiguration";
-import { loginWithGoogle, logOut } from "../../../../Firebase";
+import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
+import { ProfileConfigurationContext } from "../../../../hooks/ContextHooks/ProfileContext";
+import { loginWithGoogle } from "../../../../Firebase";
 import Button from "../../../../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../../App";
@@ -8,7 +8,7 @@ import FirebaseUserConfig from "../../../../helper/FirebaseUserConfig";
 import { useContext } from "react";
 
 export default function BottomSection() {
-    const { currentUser, setCurrentUser } = useAuthState();
+    const { currentUser } = useAuthState();
     const { profileConfiguration } = useContext(ProfileConfigurationContext);
     const navigate = useNavigate();
 
@@ -16,20 +16,10 @@ export default function BottomSection() {
     const profileColorConfigured = profileConfiguration.profileColor.getProfileColor;
     const isNickNameUnique = profileConfiguration.nickName.isNickNameUnique;
 
-    const setNickName = profileConfiguration.nickName.setNickName;
-    const setProfileColor = profileConfiguration.profileColor.setProfileColor;
-
     let handleRedirect = (e, currentUser, nickNameConfigured, profileColorConfigured) => {
         e.preventDefault();
         FirebaseUserConfig(currentUser, nickNameConfigured, profileColorConfigured);
         navigate('/home');
-    }
-
-    let handleLogOut = () => {
-        setCurrentUser(null);
-        setNickName("");
-        setProfileColor("");
-        logOut();
     }
 
     return (
@@ -44,10 +34,6 @@ export default function BottomSection() {
                                 Continue
                             </Link>
                         </div>
-                        <Button
-                            buttonText="Log out"
-                            onClickEvent={handleLogOut}
-                        />
                     </>
                 ) : (
                         <div className="button-container__login">

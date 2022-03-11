@@ -1,9 +1,9 @@
 import TweetCard from "./TweetCard/TweetCard.jsx";
-import { StatesContext } from "../../../../../hooks/StatesContext";
+import { StatesContext } from "../../../hooks/ContextHooks/StatesContext";
 import { useContext } from "react";
-import { firestore } from "../../../../../Firebase";
-import Loading from "../../../../../components/Loading/Loading.jsx";
-import { AuthContext } from "../../../../../hooks/AuthContext";
+import { firestore } from "../../../Firebase";
+import Loading from "../../../components/Loading/Loading";
+import { AuthContext } from "../../../hooks/ContextHooks/AuthContext";
 
 export default function TweetContainer({ tweetsArray = null }) {
     const { currentUser } = useContext(AuthContext);

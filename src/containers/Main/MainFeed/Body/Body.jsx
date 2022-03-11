@@ -1,4 +1,4 @@
-import TweetContainer from './TweetContainer/TweetContainer'
+import TweetContainer from "../../../Main/TweetContainer/TweetContainer"
 import TweetForm from './TweetForm/TweetForm'
 export default function Body() {
     return (

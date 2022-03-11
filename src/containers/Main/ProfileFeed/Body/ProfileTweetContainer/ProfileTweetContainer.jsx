@@ -1,20 +1,18 @@
-import { StatesContext } from "../../../../../hooks/StatesContext";
-import { AuthContext } from "../../../../../hooks/AuthContext";
+import { StatesContext } from "../../../../../hooks/ContextHooks/StatesContext";
 import { useState, useContext } from "react";
-import TweetContainer from "../../../MainFeed/Body/TweetContainer/TweetContainer";
+import TweetContainer from "../../../TweetContainer/TweetContainer";
 import Loading from "../../../../../components/Loading/Loading";
 
-export default function ProfileTweetContainer() {
-    let tweetsViewerOptions = {
-        'postedTweets': true,
-        'favoritedTweets': false,
-    };
+const tweetsViewerOptions = {
+    'postedTweets': true,
+    'favoritedTweets': false,
+};
+
+export default function ProfileTweetContainer({ profileUser }) {
     const [listConfig, setListConfig] = useState(tweetsViewerOptions);
-    const { currentUser } = useContext(AuthContext);
     const { tweetsArrayState } = useContext(StatesContext);
 
     const handleListConfiguration = (idViewOption) => {
-
         let option = (idViewOption === 'postedTweets') ?
             (
                 {
@@ -30,41 +28,48 @@ export default function ProfileTweetContainer() {
             );
         setListConfig(option);
     }
-
     let tweets = null;
+    if (profileUser.isFilteredUserCurrentUser) {
+        if (listConfig.postedTweets) {
+            tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
+                tweet.userUid === profileUser.filteredUser.userUid
+            )
+        }
 
-    console.log("postedTweets", listConfig.postedTweets);
-    console.log("favoritedTweets", listConfig.favoritedTweets);
-    if (listConfig.postedTweets) {
+        if (listConfig.favoritedTweets) {
+            tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
+                tweet.userLikesArr.includes(profileUser.filteredUser.userUid)
+            )
+        }
+    } else {
         tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
-            tweet.userUid === currentUser.uid
+            tweet.userUid === profileUser.filteredUser.userUid
         )
     }
 
-    if (listConfig.favoritedTweets) {
-        tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
-            tweet.userLikesArr.includes(currentUser.uid)
-        )
-    }
 
 
 
     return (
         <div className="profile-tweets-container">
-            <div className="profile-tweets-container__categories">
-                <div
-                    className={`posts ${listConfig.postedTweets ? 'active' : ''}`}
-                    onClick={() => handleListConfiguration('postedTweets')}
-                >
-                    <span>POSTS</span>
-                </div>
-                <div
-                    className={`favorites ${listConfig.favoritedTweets ? 'active' : ''}`}
-                    onClick={() => handleListConfiguration('favoritedTweets')}
-                >
-                    <span>FAVORITES</span>
-                </div>
-            </div>
+            {profileUser.isFilteredUserCurrentUser ?
+                (
+                    <div className="profile-tweets-container__categories">
+                        <div
+                            className={`posts ${listConfig.postedTweets ? 'active' : ''}`}
+                            onClick={() => handleListConfiguration('postedTweets')}
+                        >
+                            <span>POSTS</span>
+                        </div>
+                        <div
+                            className={`favorites ${listConfig.favoritedTweets ? 'active' : ''}`}
+                            onClick={() => handleListConfiguration('favoritedTweets')}
+                        >
+                            <span>FAVORITES</span>
+                        </div>
+                    </div>
+                ) : <></>
+            }
             {tweets ? (
                 <TweetContainer
                     tweetsArray={tweets}

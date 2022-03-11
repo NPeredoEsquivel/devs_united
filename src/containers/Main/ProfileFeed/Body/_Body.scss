@@ -1,2 +1,12 @@
 @import './ProfileContainer/_ProfileContainer';
 @import './ProfileTweetContainer/_ProfileTweetContainer';
+
+.profile-body-container {
+
+    .loading-components {
+        align-items: center;
+        display: flex;
+        height: 10rem;
+        justify-content: center;
+    }
+}

@@ -1,26 +1,20 @@
 import ImageContainer from "../../../../../components/ImageContainer";
-import { useContext } from "react";
-import { ProfileConfigurationContext, colors } from "../../../../../hooks/ProfileConfiguration";
-import { AuthContext } from "../../../../../hooks/AuthContext";
-import { useParams } from "react-router-dom";
+import { colors } from "../../../../../hooks/ContextHooks/ProfileContext";
 
-
-export default function ProfileContainer() {
-    const { currentUser } = useContext(AuthContext);
-    const { nickName, profileColor } = useContext(ProfileConfigurationContext);
+export default function ProfileContainer({ profileUser }) {
 
     let imgBorder = colors.find(color =>
-        color.hex === profileColor
+        color.hex === profileUser.filteredUser.profileColor
     )
     return (
         <div className="profile-information">
             <ImageContainer
                 className={`profile-information__avatar__${imgBorder.name}`}
-                imgSrc={currentUser.photoURL}
+                imgSrc={profileUser.filteredUser.profileUrlPhoto}
             />
             <div className="profile-information__nickname">
                 <span className={`profile-information__nickname__${imgBorder.name}`}>
-                    {nickName}
+                    {profileUser.filteredUser.nickName}
                 </span>
             </div>
         </div>

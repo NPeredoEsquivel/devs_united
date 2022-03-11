@@ -2,7 +2,7 @@ import TitleSection from "./LoginSections/TitleSection/TitleSection";
 import BodySection from "./LoginSections/BodySection/BodySection";
 import BottomSection from "./LoginSections/BottomSection/BottomSection";
 import { images } from "../../App";
-import { useAuthState } from "../../helper/Auth";
+import { useAuthState } from "../../hooks/CustomHooks/AuthHook";
 import Loading from "../../components/Loading/Loading";
 
 export default function Login() {

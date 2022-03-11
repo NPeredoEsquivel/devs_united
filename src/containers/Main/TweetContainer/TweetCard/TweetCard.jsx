@@ -1,8 +1,8 @@
-import { images } from "../../../../../../App";
-import Span from "../../../../../../components/Span/Span";
-import { useAuthState } from "../../../../../../helper/Auth";
-import { colors } from "../../../../../../hooks/ProfileConfiguration";
-import ImageContainer from "../../../../../../components/ImageContainer";
+import { images } from "../../../../App";
+import Span from "../../../../components/Span/Span";
+import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
+import { colors } from "../../../../hooks/ContextHooks/ProfileContext";
+import ImageContainer from "../../../../components/ImageContainer";
 import { Link } from "react-router-dom";
 
 function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
@@ -16,7 +16,8 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
     let fillHearth = tweet.userLikesArr ? (
         tweet.userLikesArr.includes(currentUser.uid) ? true : false
     ) : false;
-    console.log(tweet.photoURL);
+
+
     return (
         <div className="tweet">
             <div className="tweet__user-img">
@@ -37,7 +38,7 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                     </div>
                     <Span
                         className="tweet-author__delete-action"
-                        onClickHandler={(currentUser && currentUser.uid === tweet.userUid) ? () => deleteTweet(tweet.id) : ""}
+                        onClickHandler={(currentUser && currentUser.uid === tweet.userUid) ? () => deleteTweet(tweet.id) : null}
                         contentOfSpan={(currentUser && currentUser.uid === tweet.userUid) ? (
                             <ImageContainer
                                 imgSrc={images('./trash-can.svg').default}
@@ -59,7 +60,6 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                     />
                     <Span
                         className=""
-                        onClickHandler=""
                         contentOfSpan={tweet.likes ? tweet.likes : "0"}
                     />
                 </div>

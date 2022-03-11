@@ -1,8 +1,18 @@
-@import './ProfileFeed/ProfileFeed';
+@import './ProfileFeed/Header/_Header';
+@import './ProfileFeed/Body/_Body';
+@import './MainFeed/Header/_Header';
+@import './MainFeed/Body/_Body';
+@import './TweetContainer/_TweetContainer';
 
 .loading-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.header {
+    background-color: #250C23;
+    height: 3rem;
+
 }

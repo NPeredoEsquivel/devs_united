@@ -1,5 +1,5 @@
 import TextContainer from "../../../../components/TextContainer";
-import { useAuthState } from "../../../../helper/Auth";
+import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 
 
 export default function TitleSection() {

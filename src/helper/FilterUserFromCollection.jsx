@@ -26,14 +26,16 @@ export async function FilterUserByNickName(nickName) {
         let data = res.docs[0].data();
         return {
             'userUid': data.user_uid,
-            'nickname': data.nickname,
-            'color': data.profile_color,
+            'nickName': data.nickname,
+            'profileColor': data.profile_color,
+            'profileUrlPhoto': data.profile_photo,
         }
     } else {
         return {
             'userUid': null,
-            'nickname': null,
-            'color': null,
+            'nickName': null,
+            'profileColor': null,
+            'profileUrlPhoto': null,
         }
     }
 }

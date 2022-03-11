@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import StatesContextProvider from './hooks/StatesContext'
-import AuthProvider from "./hooks/AuthContext";
-import ProfileConfigurationProvider from "./hooks/ProfileConfiguration";
+import StatesContextProvider from './hooks/ContextHooks/StatesContext'
+import AuthProvider from "./hooks/ContextHooks/AuthContext";
+import ProfileConfigurationProvider from "./hooks/ContextHooks/ProfileContext";
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
