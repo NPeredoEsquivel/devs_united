@@ -1,12 +1,11 @@
 
 import "./App.css";
-import "./styles/main.scss";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Login from "./containers/Login/Login";
 import Main from "./containers/Main/Main";
 import PrivateRoute from "./containers/Routes/PrivateRoute";
 import NotFound from "./components/NotFound/NotFound";
-export const images = require.context('./icons', true);
+export const images = require.context('./assets/icons', true);
 
 
 function App() {
