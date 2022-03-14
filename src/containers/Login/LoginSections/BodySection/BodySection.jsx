@@ -7,7 +7,7 @@ import ColorSelector from "../../../../components/ColorSelector/ColorSelector";
 import { useContext } from "react";
 import { getUsers } from "../../../../hooks/ContextHooks/StatesContext";
 
-export default function AuthContainerBody() {
+function AuthContainerBody() {
     const { currentUser } = useAuthState();
     const { profileConfiguration } = useContext(ProfileConfigurationContext);
 
@@ -82,3 +82,5 @@ export default function AuthContainerBody() {
         </div>
     );
 }
+
+export default AuthContainerBody;

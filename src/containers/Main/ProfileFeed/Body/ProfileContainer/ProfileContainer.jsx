@@ -1,7 +1,7 @@
 import ImageContainer from "../../../../../components/ImageContainer/ImageContainer";
 import { colors } from "../../../../../hooks/ContextHooks/ProfileContext";
 
-export default function ProfileContainer({ profileUser }) {
+function ProfileContainer({ profileUser }) {
 
     let imgBorder = colors.find(color =>
         color.hex === profileUser.filteredUser.profileColor
@@ -20,3 +20,5 @@ export default function ProfileContainer({ profileUser }) {
         </div>
     );
 }
+
+export default ProfileContainer;

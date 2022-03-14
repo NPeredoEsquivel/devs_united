@@ -1,7 +1,7 @@
 import { ProfileConfigurationContext } from "../../hooks/ContextHooks/ProfileContext";
 import { useContext } from "react";
 
-export default function ColorSelector({ hexColor, className }) {
+function ColorSelector({ hexColor, className }) {
     const { setProfileColor } = useContext(ProfileConfigurationContext);
 
     return (
@@ -13,3 +13,5 @@ export default function ColorSelector({ hexColor, className }) {
         </div>
     );
 }
+
+export default ColorSelector;

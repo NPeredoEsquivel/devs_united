@@ -1,4 +1,4 @@
-export default function Loading() {
+function Loading() {
     return (
         <>
             <div className="loading-components">
@@ -7,3 +7,5 @@ export default function Loading() {
         </>
     );
 }
+
+export default Loading;

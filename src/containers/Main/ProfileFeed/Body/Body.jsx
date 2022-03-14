@@ -6,7 +6,7 @@ import { FilterUserByNickName } from "../../../../utils/helper/FilterUserFromCol
 import Loading from "../../../../components/Loading/Loading";
 import { useParams } from "react-router-dom";
 
-export default function ProfileBody() {
+function ProfileBody() {
     const { currentUser } = useContext(AuthContext);
     const [filteredUser, setFilteredUser] = useState(null);
     const { profileNickName } = useParams();
@@ -47,3 +47,5 @@ export default function ProfileBody() {
         </div>
     );
 }
+
+export default ProfileBody;

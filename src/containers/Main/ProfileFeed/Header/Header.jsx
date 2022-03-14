@@ -7,7 +7,7 @@ import { images } from "../../../../App";
 import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-export default function Header() {
+function Header() {
     const { setCurrentUser } = useContext(AuthContext);
     const { nickName, setNickName, setProfileColor } = useContext(ProfileConfigurationContext);
     const navigate = useNavigate();
@@ -55,4 +55,6 @@ export default function Header() {
             </div>
         </nav>
     );
-} 
+}
+
+export default Header;

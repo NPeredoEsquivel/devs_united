@@ -5,7 +5,7 @@ import { images } from "../../App";
 import { useAuthState } from "../../hooks/CustomHooks/AuthHook";
 import Loading from "../../components/Loading/Loading";
 
-export default function Login() {
+function Login() {
     const { isAuthLoading } = useAuthState();
 
     let date = new Date().getFullYear();
@@ -36,3 +36,5 @@ export default function Login() {
         </div>
     );
 }
+
+export default Login;

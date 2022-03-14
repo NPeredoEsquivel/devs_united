@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuthState } from "../../hooks/CustomHooks/AuthHook";
 import Loading from "../../components/Loading/Loading";
 
-export default function PrivateRoute({ children }) {
+function PrivateRoute({ children }) {
     const { isAuthenticated, isAuthLoading } = useAuthState();
     console.log("isAuthenticated", isAuthenticated);
     console.log("isAuthLoading", isAuthLoading);
@@ -20,3 +20,5 @@ export default function PrivateRoute({ children }) {
 
     );
 };
+
+export default PrivateRoute;

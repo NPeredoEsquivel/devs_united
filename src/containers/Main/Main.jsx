@@ -8,7 +8,7 @@ import { default as ProfileFeedBody } from "./ProfileFeed/Body/Body";
 import { default as MainFeedHeader } from "./MainFeed/Header/Header";
 import { default as MainFeedBody } from "./MainFeed/Body/Body";
 
-export default function Main() {
+function Main() {
     const { profileNickName } = useParams();
     const { isAuthLoading } = useAuthState();
     const { isProfileLoading } = useContext(ProfileConfigurationContext);
@@ -42,3 +42,5 @@ export default function Main() {
         </>
     );
 }
+
+export default Main;

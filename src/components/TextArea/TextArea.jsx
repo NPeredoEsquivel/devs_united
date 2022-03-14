@@ -1,4 +1,4 @@
-export default function TextArea({ tweet, handleChange, placeholder }) {
+function TextArea({ tweet, handleChange, placeholder }) {
     let maxLength = 200;
     let tweetText = tweet.text.length;
     let percentage = Math.floor((tweetText * 100) / maxLength);
@@ -31,3 +31,5 @@ export default function TextArea({ tweet, handleChange, placeholder }) {
         </>
     );
 }
+
+export default TextArea;

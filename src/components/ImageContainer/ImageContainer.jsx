@@ -1,5 +1,7 @@
-export default function ImageContainer({ imgSrc, className, alternative }) {
+function ImageContainer({ imgSrc, className, alternative }) {
     return (
         <img className={className} src={imgSrc} alt={alternative} />
     );
 }
+
+export default ImageContainer;

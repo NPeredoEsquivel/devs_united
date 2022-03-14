@@ -2,7 +2,7 @@ import TextContainer from "../../../../components/TextContainer/TextContainer";
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 
 
-export default function TitleSection() {
+function TitleSection() {
     const { currentUser } = useAuthState();
 
     const htmlContent = currentUser ?
@@ -27,3 +27,5 @@ export default function TitleSection() {
         </div>
     );
 }
+
+export default TitleSection;

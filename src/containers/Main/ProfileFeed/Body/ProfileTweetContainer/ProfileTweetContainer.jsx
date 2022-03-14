@@ -6,7 +6,7 @@ import { tweetsViewerOptions } from "../../../../../utils/constants/view_options
 import { handleListConfiguration } from "../../../../../utils/helper/TweetListHelper";
 import Span from "../../../../../components/Span/Span";
 
-export default function ProfileTweetContainer({ profileUser }) {
+function ProfileTweetContainer({ profileUser }) {
     const [listConfig, setListConfig] = useState(tweetsViewerOptions);
     const { tweetsArrayState } = useContext(StatesContext);
 
@@ -63,3 +63,5 @@ export default function ProfileTweetContainer({ profileUser }) {
         </div>
     );
 }
+
+export default ProfileTweetContainer;

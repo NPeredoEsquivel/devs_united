@@ -6,7 +6,7 @@ import ImageContainer from "../../../../components/ImageContainer/ImageContainer
 import { Link } from "react-router-dom";
 import FindTweetAuthorColor from "../../../../utils/helper/TweetAuthorColor";
 
-export default function Header() {
+function Header() {
     const { currentUser } = useContext(AuthContext);
     const { nickName, profileColor } = useContext(ProfileConfigurationContext);
     let imgBorder = FindTweetAuthorColor(profileColor);
@@ -34,4 +34,6 @@ export default function Header() {
             </div>
         </nav>
     );
-} 
+}
+
+export default Header;

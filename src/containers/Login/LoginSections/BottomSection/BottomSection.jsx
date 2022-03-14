@@ -7,7 +7,7 @@ import { images } from "../../../../App";
 import FirebaseUserConfig from "../../../../utils/helper/FirebaseUserConfig";
 import { useContext } from "react";
 
-export default function BottomSection() {
+function BottomSection() {
     const { currentUser } = useAuthState();
     const { profileConfiguration } = useContext(ProfileConfigurationContext);
     const navigate = useNavigate();
@@ -51,3 +51,5 @@ export default function BottomSection() {
         </div >
     );
 }
+
+export default BottomSection;

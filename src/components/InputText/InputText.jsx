@@ -1,4 +1,4 @@
-export default function InputText({ placeHolder, inputValue, handleValue, className = null }) {
+function InputText({ placeHolder, inputValue, handleValue, className = null }) {
     return (
         <input
             placeholder={placeHolder}
@@ -14,3 +14,5 @@ export function LoadingInputText({ className }) {
         <div className={className}></div>
     );
 }
+
+export default InputText;
