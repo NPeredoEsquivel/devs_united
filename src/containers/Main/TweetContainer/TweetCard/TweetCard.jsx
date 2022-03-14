@@ -1,9 +1,8 @@
 import { images } from "../../../../App";
 import Span from "../../../../components/Span/Span";
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
-import ImageContainer from "../../../../components/ImageContainer";
+import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
 import { Link } from "react-router-dom";
-import { deleteTweetHandler } from "../../../../utils/helper/DeleteTweetHelper";
 import { likeTweetHandler } from "../../../../utils/helper/LikeTweetHelper";
 import FindTweetAuthorColor from "../../../../utils/helper/TweetAuthorColor";
 import Modal from "../../../../components/Modal/Modal";

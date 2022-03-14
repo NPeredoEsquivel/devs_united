@@ -1,6 +1,6 @@
 import { deleteTweetHandler } from "../../utils/helper/DeleteTweetHelper";
 import Span from "../Span/Span";
-import Button from "../Button";
+import Button from "../Button/Button";
 
 function Modal({ setOpenModal, idTweet }) {
     let closeModalAndDeleteHandler = (idTweet) => {

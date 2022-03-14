@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../../hooks/ContextHooks/AuthContext";
 import { ProfileConfigurationContext } from "../../../../hooks/ContextHooks/ProfileContext";
-import Button from "../../../../components/Button";
+import Button from "../../../../components/Button/Button";
 import { logOut } from "../../../../Firebase";
 import { images } from "../../../../App";
-import ImageContainer from "../../../../components/ImageContainer";
+import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Header() {

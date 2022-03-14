@@ -1,4 +1,4 @@
-import TextContainer from "../../../../components/TextContainer";
+import TextContainer from "../../../../components/TextContainer/TextContainer";
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 
 

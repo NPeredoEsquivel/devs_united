@@ -1,0 +1,15 @@
+.no-tweets-container {
+    align-items: center;
+    border-bottom: 2px solid #60265B;
+    display: flex;
+    height: 208px;
+    justify-content: center;
+    width: 100%;
+
+    >span {
+        color: #FFFFFF;
+        font-family: 'Fira Code',
+            monospace;
+        font-size: 1.2rem;
+    }
+}

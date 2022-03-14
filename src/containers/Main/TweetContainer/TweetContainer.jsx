@@ -2,8 +2,9 @@ import TweetCard from "./TweetCard/TweetCard.jsx";
 import { StatesContext } from "../../../hooks/ContextHooks/StatesContext";
 import { useContext } from "react";
 import Loading from "../../../components/Loading/Loading";
+import NoTweets from "../../../components/NoTweets/NoTweets";
 
-export default function TweetContainer({ tweetsArray = null }) {
+function TweetContainer({ tweetsArray = null }) {
     const { tweetsArrayState } = useContext(StatesContext);
 
     let tweets = tweetsArray ?? tweetsArrayState.tweetsArray;
@@ -19,10 +20,12 @@ export default function TweetContainer({ tweetsArray = null }) {
                                 key={i}
                                 tweet={tweet}
                             />
-                        )) : "no tienes"
+                        )) : <NoTweets />
                 ) : <Loading />
                 }
             </div>
         </>
     );
 }
+
+export default TweetContainer;

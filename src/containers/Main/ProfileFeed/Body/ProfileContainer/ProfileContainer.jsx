@@ -1,4 +1,4 @@
-import ImageContainer from "../../../../../components/ImageContainer";
+import ImageContainer from "../../../../../components/ImageContainer/ImageContainer";
 import { colors } from "../../../../../hooks/ContextHooks/ProfileContext";
 
 export default function ProfileContainer({ profileUser }) {

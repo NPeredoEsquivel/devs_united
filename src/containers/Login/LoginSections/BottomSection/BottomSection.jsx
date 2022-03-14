@@ -1,7 +1,7 @@
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 import { ProfileConfigurationContext } from "../../../../hooks/ContextHooks/ProfileContext";
 import { loginWithGoogle } from "../../../../Firebase";
-import Button from "../../../../components/Button";
+import Button from "../../../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../../App";
 import FirebaseUserConfig from "../../../../utils/helper/FirebaseUserConfig";

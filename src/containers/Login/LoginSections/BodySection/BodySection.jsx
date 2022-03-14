@@ -2,8 +2,8 @@ import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 import { ProfileConfigurationContext, colors } from "../../../../hooks/ContextHooks/ProfileContext";
 import InputText, { LoadingInputText } from "../../../../components/InputText/InputText";
 import Span from "../../../../components/Span/Span"
-import TextContainer from "../../../../components/TextContainer";
-import ColorSelector from "../../../../components/ColorSelector";
+import TextContainer from "../../../../components/TextContainer/TextContainer";
+import ColorSelector from "../../../../components/ColorSelector/ColorSelector";
 import { useContext } from "react";
 import { getUsers } from "../../../../hooks/ContextHooks/StatesContext";
 
