@@ -4,14 +4,12 @@ import { AuthContext } from "../../../../hooks/ContextHooks/AuthContext";
 import { ProfileConfigurationContext, colors } from "../../../../hooks/ContextHooks/ProfileContext";
 import ImageContainer from "../../../../components/ImageContainer";
 import { Link } from "react-router-dom";
+import FindTweetAuthorColor from "../../../../utils/helper/TweetAuthorColor";
 
 export default function Header() {
     const { currentUser } = useContext(AuthContext);
     const { nickName, profileColor } = useContext(ProfileConfigurationContext);
-
-    let imgBorder = colors.find(color =>
-        color.hex === profileColor
-    )
+    let imgBorder = FindTweetAuthorColor(profileColor);
 
     return (
         <nav className="header-container">

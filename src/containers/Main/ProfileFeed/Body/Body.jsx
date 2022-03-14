@@ -2,7 +2,7 @@ import ProfileContainer from "./ProfileContainer/ProfileContainer";
 import ProfileTweetContainer from "./ProfileTweetContainer/ProfileTweetContainer";
 import { AuthContext } from "../../../../hooks/ContextHooks/AuthContext";
 import { useContext, useEffect, useState } from "react";
-import { FilterUserByNickName } from "../../../../helper/FilterUserFromCollection";
+import { FilterUserByNickName } from "../../../../utils/helper/FilterUserFromCollection";
 import Loading from "../../../../components/Loading/Loading";
 import { useParams } from "react-router-dom";
 

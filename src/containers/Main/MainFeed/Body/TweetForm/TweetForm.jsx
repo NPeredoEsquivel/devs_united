@@ -17,7 +17,8 @@ function TweetForm() {
             photoURL: currentUser.photoURL,
             userUid: currentUser.uid,
             email: currentUser.email,
-            timestamp: serverTimestamp
+            timestamp: serverTimestamp,
+            userLikesArr: [],
         };
         tweetState.setTweet(newTweet);
     }

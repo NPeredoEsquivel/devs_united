@@ -1,0 +1,131 @@
+.modal-background {
+    background-color: rgba(46, 19, 44, 0.85);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+    .modal-container {
+        background-color: #250C23;
+        width: 25rem;
+        height: 12rem;
+        border: 1px solid #61273E;
+        border-radius: 15px;
+        z-index: 2;
+        position: relative;
+
+        &__modal-header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 3rem;
+            padding: 10px;
+
+            >span {
+                color: #FFFFFF;
+                font-size: 1.2rem;
+                font-family: 'Silkscreen',
+                    sans-serif;
+            }
+
+            &__close-btn {
+                background-color: #F50D5A;
+                cursor: pointer;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                width: 1.5rem;
+                height: 100%;
+
+                >span {
+                    color: #FFFFFF;
+                    font-size: 0.8rem;
+                    font-family: 'Silkscreen',
+                        sans-serif;
+                }
+
+            }
+        }
+
+        &__modal-body {
+            height: 6rem;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            padding: 10px;
+
+            >span {
+                color: #FFFFFF;
+                font-size: 1rem;
+                font-family: 'Silkscreen',
+                    sans-serif;
+            }
+        }
+
+        &__modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 3rem;
+            padding: 10px;
+
+            &__cancel-btn {
+                cursor: pointer;
+                align-items: center;
+                background-color: #F50D5A;
+                display: flex;
+                justify-content: center;
+                height: 1.5rem;
+                margin-right: 10px;
+                padding: 5px;
+
+            }
+
+            &__confirm-btn {
+                cursor: pointer;
+                align-items: center;
+                background-color: #00DA76;
+                display: flex;
+                justify-content: center;
+                height: 1.5rem;
+                padding: 5px;
+            }
+
+            >*>span {
+                color: #FFFFFF;
+                font-size: 0.8rem;
+                font-family: 'Silkscreen',
+                    sans-serif;
+            }
+        }
+    }
+
+}
+
+/* &__redirect {
+    align-items: center;
+    background-color: #00DA76;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+    a {
+        align-items: center;
+        color: #FFFFFF;
+        display: flex;
+        font-family: 'Silkscreen',
+            sans-serif;
+        font-size: 0.8rem;
+        height: 100%;
+        justify-content: center;
+        text-decoration: none;
+        width: 100%;
+    } */

@@ -31,6 +31,7 @@ export default function StatesContextProvider({ children }) {
     const { nickName, profileColor } = useContext(ProfileConfigurationContext);
     const { currentUser } = useContext(AuthContext);
     const [tweetsArray, setTweetsArray] = useState([]);
+    const [loadedTweets, setLoadedTweets] = useState(false);
     const [tweet, setTweet] = useState(
         {
             text: "",
@@ -87,7 +88,7 @@ export default function StatesContextProvider({ children }) {
                         })
 
                         setTweetsArray(tweets);
-
+                        setLoadedTweets(true);
                     });
 
             });
@@ -97,7 +98,13 @@ export default function StatesContextProvider({ children }) {
     }, [nickName, profileColor])
 
 
-    const tweetsArrayState = { tweetsArray, setTweetsArray };
+    const tweetsArrayState = {
+        'tweetsArray': tweetsArray,
+        'setTweetsArray': setTweetsArray,
+        'tweetArrayValidation': {
+            'tweetLoadingProcessOver': loadedTweets,
+        },
+    };
     const tweetState = { tweet, setTweet };
 
     return (

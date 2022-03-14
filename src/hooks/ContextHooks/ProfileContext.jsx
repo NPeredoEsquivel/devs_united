@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "./AuthContext";
 import { useAuthState } from "../CustomHooks/AuthHook";
-import { FilterUserByUid } from "../../helper/FilterUserFromCollection";
+import { FilterUserByUid } from "../../utils/helper/FilterUserFromCollection";
 
 export const ProfileConfigurationContext = React.createContext();
 

@@ -89,6 +89,7 @@
             &__delete-action {
                 display: flex;
                 align-items: center;
+                cursor: pointer;
 
                 .trash-can {
                     height: 18px;

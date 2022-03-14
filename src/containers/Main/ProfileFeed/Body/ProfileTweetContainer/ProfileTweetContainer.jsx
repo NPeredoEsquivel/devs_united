@@ -2,32 +2,14 @@ import { StatesContext } from "../../../../../hooks/ContextHooks/StatesContext";
 import { useState, useContext } from "react";
 import TweetContainer from "../../../TweetContainer/TweetContainer";
 import Loading from "../../../../../components/Loading/Loading";
-
-const tweetsViewerOptions = {
-    'postedTweets': true,
-    'favoritedTweets': false,
-};
+import { tweetsViewerOptions } from "../../../../../utils/constants/view_options.constants";
+import { handleListConfiguration } from "../../../../../utils/helper/TweetListHelper";
+import Span from "../../../../../components/Span/Span";
 
 export default function ProfileTweetContainer({ profileUser }) {
     const [listConfig, setListConfig] = useState(tweetsViewerOptions);
     const { tweetsArrayState } = useContext(StatesContext);
 
-    const handleListConfiguration = (idViewOption) => {
-        let option = (idViewOption === 'postedTweets') ?
-            (
-                {
-                    'favoritedTweets': false,
-                    'postedTweets': true,
-                }
-            ) :
-            (
-                {
-                    'postedTweets': false,
-                    'favoritedTweets': true,
-                }
-            );
-        setListConfig(option);
-    }
     let tweets = null;
     if (profileUser.isFilteredUserCurrentUser) {
         if (listConfig.postedTweets) {
@@ -37,6 +19,7 @@ export default function ProfileTweetContainer({ profileUser }) {
         }
 
         if (listConfig.favoritedTweets) {
+            console.log(tweetsArrayState);
             tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
                 tweet.userLikesArr.includes(profileUser.filteredUser.userUid)
             )
@@ -47,9 +30,6 @@ export default function ProfileTweetContainer({ profileUser }) {
         )
     }
 
-
-
-
     return (
         <div className="profile-tweets-container">
             {profileUser.isFilteredUserCurrentUser ?
@@ -57,15 +37,19 @@ export default function ProfileTweetContainer({ profileUser }) {
                     <div className="profile-tweets-container__categories">
                         <div
                             className={`posts ${listConfig.postedTweets ? 'active' : ''}`}
-                            onClick={() => handleListConfiguration('postedTweets')}
+                            onClick={() => handleListConfiguration('postedTweets', setListConfig)}
                         >
-                            <span>POSTS</span>
+                            <Span
+                                contentOfSpan={"POSTS"}
+                            />
                         </div>
                         <div
                             className={`favorites ${listConfig.favoritedTweets ? 'active' : ''}`}
-                            onClick={() => handleListConfiguration('favoritedTweets')}
+                            onClick={() => handleListConfiguration('favoritedTweets', setListConfig)}
                         >
-                            <span>FAVORITES</span>
+                            <Span
+                                contentOfSpan={"FAVORITES"}
+                            />
                         </div>
                     </div>
                 ) : <></>

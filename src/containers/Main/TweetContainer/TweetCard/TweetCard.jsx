@@ -1,22 +1,28 @@
 import { images } from "../../../../App";
 import Span from "../../../../components/Span/Span";
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
-import { colors } from "../../../../hooks/ContextHooks/ProfileContext";
 import ImageContainer from "../../../../components/ImageContainer";
 import { Link } from "react-router-dom";
+import { deleteTweetHandler } from "../../../../utils/helper/DeleteTweetHelper";
+import { likeTweetHandler } from "../../../../utils/helper/LikeTweetHelper";
+import FindTweetAuthorColor from "../../../../utils/helper/TweetAuthorColor";
+import Modal from "../../../../components/Modal/Modal";
+import { useState } from "react";
 
-function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
+function TweetCard({ tweet }) {
     const { currentUser } = useAuthState();
-    let tweetAuthorColor = colors.find(color =>
-        color.hex === tweet.userProfileColor
-    )
+    let tweetAuthorColor = FindTweetAuthorColor(tweet.userProfileColor);
+
+    const [openModal, setOpenModal] = useState(false);
+
     let date = tweet.timestamp.toDate();
+
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     date = date.toLocaleDateString('es-CL', options).replaceAll(' de ', ' ');
+
     let fillHearth = tweet.userLikesArr ? (
         tweet.userLikesArr.includes(currentUser.uid) ? true : false
     ) : false;
-
 
     return (
         <div className="tweet">
@@ -38,8 +44,8 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                     </div>
                     <Span
                         className="tweet-author__delete-action"
-                        onClickHandler={(currentUser && currentUser.uid === tweet.userUid) ? () => deleteTweet(tweet.id) : null}
-                        contentOfSpan={(currentUser && currentUser.uid === tweet.userUid) ? (
+                        onClickHandler={(currentUser && currentUser.uid === tweet.userUid) ? () => setOpenModal(true) : null}
+                        contentOfSpan={(!openModal && currentUser && currentUser.uid === tweet.userUid) ? (
                             <ImageContainer
                                 imgSrc={images('./trash-can.svg').default}
                                 className="trash-can"
@@ -48,6 +54,10 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
 
                         ) : ""}
                     />
+                    {openModal && <Modal
+                        setOpenModal={setOpenModal}
+                        idTweet={tweet.id}
+                    />}
                 </div>
                 <div className="text">
                     <p>{tweet.text}</p>
@@ -55,7 +65,7 @@ function TweetCard({ tweet, likeTweetHandler, deleteTweet }) {
                 <div className="like-icon">
                     <Span
                         className="like-icon__img"
-                        onClickHandler={() => likeTweetHandler(tweet)}
+                        onClickHandler={() => likeTweetHandler(tweet, currentUser)}
                         contentOfSpan={<img height="13px" alt="hearth" src={`${fillHearth ? images('./hearth.svg').default : images('./empty-hearth.svg').default}`} />}
                     />
                     <Span

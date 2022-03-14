@@ -1,4 +1,4 @@
-import { firestore } from "../Firebase";
+import { firestore } from "../../Firebase";
 
 export async function FilterUserByUid(uid) {
     const userCollection = firestore.collection("user");

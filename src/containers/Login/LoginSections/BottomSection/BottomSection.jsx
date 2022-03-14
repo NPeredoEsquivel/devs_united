@@ -4,7 +4,7 @@ import { loginWithGoogle } from "../../../../Firebase";
 import Button from "../../../../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../../App";
-import FirebaseUserConfig from "../../../../helper/FirebaseUserConfig";
+import FirebaseUserConfig from "../../../../utils/helper/FirebaseUserConfig";
 import { useContext } from "react";
 
 export default function BottomSection() {

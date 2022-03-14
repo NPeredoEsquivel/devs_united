@@ -1,4 +1,4 @@
-import { firestore } from "../Firebase";
+import { firestore } from "../../Firebase";
 
 export default function FirebaseUserConfig(currentUser, nickName, profileColor) {
     async function filterUser(currentUser) {

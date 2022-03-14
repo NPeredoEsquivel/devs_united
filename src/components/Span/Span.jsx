@@ -1,6 +1,6 @@
-export default function Span({ className, contentOfSpan, onClickHandler = null }) {
+export default function Span({ contentOfSpan, className = null, onClickHandler = null }) {
     return (
-        <span className={className} onClick={onClickHandler ?? null}>
+        <span className={className ?? null} onClick={onClickHandler ?? null}>
             {contentOfSpan}
         </span>
     );
