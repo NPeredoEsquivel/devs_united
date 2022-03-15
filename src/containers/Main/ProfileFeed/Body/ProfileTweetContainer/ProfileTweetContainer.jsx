@@ -21,7 +21,8 @@ function ProfileTweetContainer({ profileUser }) {
         if (listConfig.favoritedTweets) {
             console.log(tweetsArrayState);
             tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
-                tweet.userLikesArr.includes(profileUser.filteredUser.userUid)
+                tweet.userLikesArr.includes(profileUser.filteredUser.userUid) &&
+                tweet.userUid !== profileUser.filteredUser.userUid
             )
         }
     } else {

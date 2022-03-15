@@ -23,11 +23,11 @@ function BottomSection() {
     }
 
     return (
-        <div className="auth-container-body__button">
-            <div className="button-container">
+        <div className="auth-container-body__bottom">
+            <div className="bottom-container">
                 {currentUser ? (
                     <>
-                        <div className="button-container__redirect">
+                        <div className="bottom-container__redirect">
                             <Link to="/home"
                                 className={`${nickNameConfigured && profileColorConfigured && isNickNameUnique ? '' : 'disabled-link'}`}
                                 onClick={(e) => `${nickNameConfigured && profileColorConfigured ? handleRedirect(e, currentUser, nickNameConfigured, profileColorConfigured) : e.preventDefault()}`} >
@@ -36,13 +36,13 @@ function BottomSection() {
                         </div>
                     </>
                 ) : (
-                        <div className="button-container__login">
-                            <div className="button-container__login__img-container">
+                        <div className="bottom-container__login">
+                            <div className="bottom-container__login__img-container">
                                 <img src={images('./google-icon.svg').default} alt="google-login-icon" />
                             </div>
                             <Button
                                 buttonText="Sign in with Google"
-                                buttonClass="button-container__login__button"
+                                buttonClass="bottom-container__login__button"
                                 onClickEvent={loginWithGoogle}
                             />
                         </div>

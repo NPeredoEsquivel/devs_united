@@ -5,9 +5,20 @@
     height: 100%;
     position: relative;
 
+
     &__back-action {
         position: absolute;
         left: 1rem;
+
+        >button {
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+        }
+
     }
 
     &__nickname {

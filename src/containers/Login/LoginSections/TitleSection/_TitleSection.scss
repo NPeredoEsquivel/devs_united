@@ -1,0 +1,15 @@
+.auth-container-body__title {
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Silkscreen',
+        sans-serif;
+    font-weight: 700;
+    text-align: initial;
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+
+    span {
+        color: red;
+    }
+}

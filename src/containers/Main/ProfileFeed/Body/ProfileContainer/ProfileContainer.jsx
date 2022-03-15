@@ -2,7 +2,6 @@ import ImageContainer from "../../../../../components/ImageContainer/ImageContai
 import { colors } from "../../../../../hooks/ContextHooks/ProfileContext";
 
 function ProfileContainer({ profileUser }) {
-
     let imgBorder = colors.find(color =>
         color.hex === profileUser.filteredUser.profileColor
     )

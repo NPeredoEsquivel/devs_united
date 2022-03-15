@@ -8,18 +8,21 @@ import { useParams } from "react-router-dom";
 
 function ProfileBody() {
     const { currentUser } = useContext(AuthContext);
-    const [filteredUser, setFilteredUser] = useState(null);
+    const [filteringUser, setFilterigUser] = useState(true);
+    const [filteredUser, setFilteredUser] = useState({});
     const { profileNickName } = useParams();
 
     useEffect(() => {
+        setFilterigUser(true);
         let userFilteredPromise = FilterUserByNickName(profileNickName)
             .then(user => {
                 setFilteredUser(user);
+                setFilterigUser(false);
                 return user;
             });
 
         return () => userFilteredPromise;
-    }, [])
+    }, [profileNickName])
 
     const userProfileInformation = filteredUser ? {
         'filteredUser': filteredUser,
@@ -28,7 +31,7 @@ function ProfileBody() {
 
     return (
         <div className="profile-body-container">
-            {filteredUser ?
+            {filteredUser && !filteringUser ?
                 (
                     <>
                         <ProfileContainer

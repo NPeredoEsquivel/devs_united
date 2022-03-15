@@ -25,13 +25,16 @@ function Header() {
     return (
         <nav className="header-container">
             <div className="header-container__back-action">
-                <Link to="/home">
-                    <ImageContainer
-                        className="header-container__back-action__svg"
-                        imgSrc={images('./back-action.svg').default}
-                        alternative="back-action"
-                    />
-                </Link>
+                <Button
+                    onClickEvent={() => navigate(-1)}
+                    childrenComponent={
+                        <ImageContainer
+                            className="header-container__back-action__svg"
+                            imgSrc={images('./back-action.svg').default}
+                            alternative="back-action"
+                        />
+                    }
+                />
             </div>
             <div className="header-container__nickname">
                 {profileNickName}

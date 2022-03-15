@@ -1,21 +1,22 @@
-import { images } from "../../../../App";
-import Span from "../../../../components/Span/Span";
+import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
-import { Link } from "react-router-dom";
+import Span from "../../../../components/Span/Span";
+import Modal from "../../../../components/Modal/Modal";
 import { likeTweetHandler } from "../../../../utils/helper/LikeTweetHelper";
 import FindTweetAuthorColor from "../../../../utils/helper/TweetAuthorColor";
-import Modal from "../../../../components/Modal/Modal";
-import { useState } from "react";
+import { images } from "../../../../App";
 
 function TweetCard({ tweet }) {
-    const { currentUser } = useAuthState();
+    const [openModal, setOpenModal] = useState(false);
     let tweetAuthorColor = FindTweetAuthorColor(tweet.userProfileColor);
 
-    const [openModal, setOpenModal] = useState(false);
+    const { currentUser } = useAuthState();
+    let { profileNickName } = useParams();
+
 
     let date = tweet.timestamp.toDate();
-
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     date = date.toLocaleDateString('es-CL', options).replaceAll(' de ', ' ');
 
@@ -23,15 +24,37 @@ function TweetCard({ tweet }) {
         tweet.userLikesArr.includes(currentUser.uid) ? true : false
     ) : false;
 
+    const differentTweetUserAndProfileParam = profileNickName !== tweet.userNickName;
     return (
         <div className="tweet">
             <div className="tweet__user-img">
-
-                <Link to={`/${tweet.userNickName}`} >
-                    <ImageContainer
-                        imgSrc={tweet.photoURL}
-                    />
-                </Link>
+                {
+                    profileNickName ?
+                        (
+                            differentTweetUserAndProfileParam ?
+                                (
+                                    <Link to={`/${tweet.userNickName}`} >
+                                        <ImageContainer
+                                            className={"avatar-photo"}
+                                            imgSrc={tweet.photoURL}
+                                        />
+                                    </Link>
+                                ) :
+                                (
+                                    <ImageContainer
+                                        className={"avatar-photo"}
+                                        imgSrc={tweet.photoURL}
+                                    />
+                                )
+                        ) : (
+                            <Link to={`/${tweet.userNickName}`} >
+                                <ImageContainer
+                                    className={"avatar-photo"}
+                                    imgSrc={tweet.photoURL}
+                                />
+                            </Link>
+                        )
+                }
             </div>
             <div className="tweet__information">
                 <div className="tweet-author">
@@ -68,7 +91,7 @@ function TweetCard({ tweet }) {
                         contentOfSpan={<img height="13px" alt="hearth" src={`${fillHearth ? images('./hearth.svg').default : images('./empty-hearth.svg').default}`} />}
                     />
                     <Span
-                        className=""
+                        className={`like-icon__${fillHearth ? "red-counter" : "white-counter"}`}
                         contentOfSpan={tweet.likes ? tweet.likes : "0"}
                     />
                 </div>

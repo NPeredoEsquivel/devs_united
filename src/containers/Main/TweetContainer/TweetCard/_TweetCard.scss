@@ -10,7 +10,7 @@
         padding-left: 1rem;
         padding-top: 1.2rem;
 
-        >a>img {
+        .avatar-photo {
             border-radius: 50%;
             width: 4rem;
             height: 4rem;
@@ -120,6 +120,23 @@
 
             &__img {
                 padding-right: 0.5rem;
+                transition: width 2s;
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+
+            &__red-counter {
+                color: #F50D5A;
+            }
+
+            &__white-counter {
+                color: #FFFFFF;
             }
         }
 

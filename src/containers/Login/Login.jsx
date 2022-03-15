@@ -20,7 +20,7 @@ function Login() {
 
             {!isAuthLoading ? (
                 <div className="auth-container">
-                    <div className="auth-container-body">
+                    <div className="auth-container__body">
                         <TitleSection />
                         <BodySection />
                         <BottomSection />
