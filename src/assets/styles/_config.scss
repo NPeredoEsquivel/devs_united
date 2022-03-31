@@ -2,9 +2,9 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: 3px solid black;
 }
 
-$primary-color: #272727;
 
 @mixin media-md {
     @media screen and (min-width: 768px) {

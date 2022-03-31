@@ -5,7 +5,8 @@ import Button from "../../../../components/Button/Button";
 import { logOut } from "../../../../Firebase";
 import { images } from "../../../../App";
 import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 function Header() {
     const { setCurrentUser } = useContext(AuthContext);

@@ -1,10 +1,26 @@
+import { motion } from 'framer-motion/dist/framer-motion'
+
 function Button({ disabled, buttonText, buttonClass, onClickEvent, childrenComponent = null }) {
 
+    const styles = {
+        cursor: 'pointer',
+        'background-color': 'transparent',
+        scale: 1.05,
+        transition: 'all .5s ease-in-out',
+
+    }
+
     return (
-        <button disabled={disabled} className={buttonClass} onClick={onClickEvent}>
+        <motion.button
+            disabled={disabled}
+            className={buttonClass}
+            onClick={onClickEvent}
+            whileHover={disabled ? {} : styles}
+            whileTap={disabled ? {} : { scale: 0.9, x: "-5px", y: "5px" }}
+        >
             {buttonText}
             {childrenComponent}
-        </button>
+        </motion.button>
     );
 }
 

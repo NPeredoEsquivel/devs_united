@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { images } from "../../../../App";
 import { AuthContext } from "../../../../hooks/ContextHooks/AuthContext";
-import { ProfileConfigurationContext, colors } from "../../../../hooks/ContextHooks/ProfileContext";
+import { ProfileConfigurationContext } from "../../../../hooks/ContextHooks/ProfileContext";
 import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
 import { Link } from "react-router-dom";
 import FindTweetAuthorColor from "../../../../utils/helper/TweetAuthorColor";

@@ -2,7 +2,14 @@
 @import './LoginSections/BottomSection/_bottomsection';
 @import './LoginSections/TitleSection/_titlesection';
 
+
+
+
 .login-container {
+    @include media-lg {
+        flex-direction: row;
+    }
+
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -18,13 +25,22 @@
         flex-direction: column;
         position: absolute;
         top: 4rem;
-        width: 100%;
+        width: 50%;
+
+        @include media-lg {
+            position: relative;
+            top: 0;
+        }
 
 
-        &__logo {
+        &__logo-mobile {
             height: 120px;
             width: 180px;
+        }
 
+        &__logo-desktop {
+            height: 120px;
+            width: 180px;
         }
 
         &__title {
@@ -41,7 +57,12 @@
         flex-direction: column;
         position: absolute;
         bottom: 4rem;
-        width: 100%;
+        width: 50%;
+
+        @include media-lg {
+            position: relative;
+            bottom: 0;
+        }
 
         &__body {
             width: 20rem;
@@ -49,20 +70,22 @@
             flex-direction: column;
             padding-bottom: 2rem;
         }
-    }
 
-    .login-footer-container {
-        font-family: 'Fira Code',
-            monospace;
-        position: absolute;
-        bottom: 2rem;
-        color: #60265B;
-        width: 100%;
+        &__footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fira Code',
+                monospace;
+            color: #60265B;
+            width: 100%;
 
-        span {
-            color: red;
+            span {
+                color: red;
+            }
         }
     }
+
 
 }
 

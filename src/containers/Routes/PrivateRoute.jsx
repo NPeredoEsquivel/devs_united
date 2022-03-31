@@ -5,8 +5,6 @@ import Loading from "../../components/Loading/Loading";
 
 function PrivateRoute({ children }) {
     const { isAuthenticated, isAuthLoading } = useAuthState();
-    console.log("isAuthenticated", isAuthenticated);
-    console.log("isAuthLoading", isAuthLoading);
     /** 
     * isAuthLoading state changes when onAuthStateChanges. It takes some time.
     * The first thernary is to manage this delta time and the second is to manage

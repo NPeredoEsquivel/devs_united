@@ -1,1 +1,7 @@
 @import './TweetForm/TweetForm';
+
+.tweet-body-container {
+    &>div {
+        overflow: hidden;
+    }
+}
