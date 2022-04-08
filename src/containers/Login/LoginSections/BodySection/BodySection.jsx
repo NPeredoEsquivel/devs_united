@@ -83,7 +83,7 @@ function AuthContainerBody() {
                 </>
             ) : (
                     <TextContainer
-                        className=""
+                        className="auth-container-body__body__text"
                         contentText="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
                     />
                 )}

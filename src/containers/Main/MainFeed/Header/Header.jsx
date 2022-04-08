@@ -24,7 +24,7 @@ function Header() {
             </div>
             <div className="header-container__logo">
                 <ImageContainer
-                    imgSrc={images('./logo-mobile.svg').default}
+                    imgSrc={images('./logo-small.svg').default}
                     className={"logo"}
                 />
                 <ImageContainer

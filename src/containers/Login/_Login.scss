@@ -39,8 +39,8 @@
         }
 
         &__logo-desktop {
-            height: 120px;
-            width: 180px;
+            height: 21.3rem;
+            width: 32.8rem;
         }
 
         &__title {
@@ -55,17 +55,21 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        justify-content: center;
         position: absolute;
         bottom: 4rem;
-        width: 50%;
+        width: 100%;
 
         @include media-lg {
             position: relative;
             bottom: 0;
+            height: 100%;
+            width: 50%;
         }
 
         &__body {
-            width: 20rem;
+            width: 100%;
+            align-items: center;
             display: flex;
             flex-direction: column;
             padding-bottom: 2rem;
@@ -78,8 +82,13 @@
             font-family: 'Fira Code',
                 monospace;
             color: #60265B;
-            width: 100%;
+            width: 20rem;
 
+            @include media-lg {
+                position: absolute;
+                bottom: 200px;
+                width: 100%;
+            }
             span {
                 color: red;
             }

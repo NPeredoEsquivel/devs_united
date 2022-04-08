@@ -1,15 +1,35 @@
 .auth-container-body__title {
-    color: white;
-    display: flex;
-    justify-content: center;
-    font-family: 'Silkscreen',
-        sans-serif;
-    font-weight: 700;
-    text-align: initial;
-    font-size: 1.6rem;
+    display: inline;
     padding-bottom: 1rem;
+    width: 20rem;
 
-    span {
-        color: red;
+    @include media-lg {
+        width: 27rem;
+    }
+
+    &__text {
+        color: #FFFFFF;
+        font-size: 2.25rem;
+        font-family: 'Silkscreen',
+            sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.33px;
+        line-height: 50px;
+
+        @include media-lg {
+            font-size: 3.125rem;
+            width: 27rem;
+        }
+
+        span {
+            color: red;
+            font-size: 2.25rem;
+
+            @include media-lg {
+                font-size: 3.125rem;
+                width: 27rem;
+            }
+        }
+
     }
 }

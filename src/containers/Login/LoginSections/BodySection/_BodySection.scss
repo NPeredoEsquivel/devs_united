@@ -1,15 +1,27 @@
 .auth-container-body__body {
-    color: white;
-    font-family: 'Fira Code',
-        monospace;
-    font-weight: 200;
-    font-size: 1rem;
-    line-height: 23px;
-    letter-spacing: -0.33px;
     padding-bottom: 1.5rem;
+    width: 20rem;
+
+    @include media-lg {
+        width: 27rem;
+    }
+
+    &__text {
+        font-weight: 450;
+        font-size: 1.125rem;
+        line-height: 24px;
+        letter-spacing: -0.33px;
+        color: #FFFFFF;
+        font-family: 'Fira Code',
+            monospace;
 
 
-
+        @include media-lg {
+            font-size: 1.5rem;
+            line-height: 31px;
+            width: 27rem;
+        }
+    }
 
     .body-input {
         padding-bottom: 1rem;
@@ -25,6 +37,10 @@
 
             &::placeholder {
                 color: #914D8B;
+            }
+
+            @include media-lg {
+                font-size: 1.5rem;
             }
         }
 
@@ -42,9 +58,15 @@
         .color-picker__title {
             font-family: 'Fira Code',
                 monospace;
+            color: #FFFFFF;
             font-weight: 400;
             font-size: 0.9rem;
             padding-bottom: 1rem;
+
+
+            @include media-lg {
+                font-size: 1.5rem;
+            }
         }
 
         .color-picker__selector {
@@ -52,6 +74,11 @@
             justify-content: space-evenly;
             align-items: center;
             height: 2.5rem;
+
+            @include media-lg {
+                height: 4rem;
+
+            }
 
             &__color {
                 display: flex;
@@ -62,6 +89,12 @@
                 height: 2rem;
                 width: 2rem;
 
+                @include media-lg {
+                    height: 3.625rem;
+                    width: 3.625rem;
+
+                }
+
                 &:hover {
                     border: 2px solid #FFFFFF;
                     transition: border-width 0.1s linear;
@@ -69,6 +102,13 @@
                     width: 2.2rem;
                     transition: width 0.1s,
                         height 0.1s;
+
+
+                    @include media-lg {
+                        height: 3.825rem;
+                        width: 3.825rem;
+
+                    }
                 }
 
                 &.red {
@@ -120,6 +160,12 @@
                     /* cross thickness */
                     background: #FFFFFF;
                     box-shadow: 1px 1px 3px 1px #868686;
+
+
+                    @include media-lg {                    
+                        width: 3rem;
+                        height: 3px;
+                    }
                 }
 
                 &:before {

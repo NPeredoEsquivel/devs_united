@@ -4,9 +4,8 @@ function Button({ disabled, buttonText, buttonClass, onClickEvent, childrenCompo
 
     const styles = {
         cursor: 'pointer',
-        'background-color': 'transparent',
         scale: 1.05,
-        transition: 'all .5s ease-in-out',
+        transition: 'all .2s ease-in-out',
 
     }
 
