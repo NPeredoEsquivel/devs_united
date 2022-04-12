@@ -9,7 +9,8 @@ body {
 }
 
 #root {
-  height: 100vh;
+  height: auto;
+  min-height: 100%;
   background-color: #2E132C;
   z-index: 0;
 }

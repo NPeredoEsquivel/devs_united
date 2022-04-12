@@ -1,8 +1,13 @@
 .header-container {
-    height: 100%;
     align-items: center;
     display: flex;
+    height: 100%;
     justify-content: space-between;
+
+
+    @include media-lg {
+        width: 42%;
+    }
 
     &__avatar {
         padding-left: 1rem;
@@ -38,8 +43,8 @@
     }
 
     &__logo {
-        padding-right: 1rem;
         display: flex;
+        padding-right: 1rem;
 
         .logo {
             width: 2.8rem;

@@ -3,8 +3,8 @@
 
     .bottom-container {
         display: flex;
-        justify-content: center;
         height: 2rem;
+        justify-content: center;
         width: 100%;
 
 
@@ -13,16 +13,16 @@
         }
 
         &__login {
+            border: 1px solid #4285F4;
             display: flex;
             justify-content: center;
-            border: 1px solid #4285F4;
 
 
             &__img-container {
-                display: flex;
-                justify-content: center;
                 align-items: center;
                 background-color: white;
+                display: flex;
+                justify-content: center;
                 height: 100%;
                 width: 1.5rem;
 
@@ -45,23 +45,23 @@
                 box-sizing: border-box;
                 border-width: 1px;
                 color: white;
+                cursor: pointer;
                 font-family: 'Roboto',
                     sans-serif;
                 font-size: 0.8rem;
                 height: 100%;
-                width: 18rem;
-                cursor: pointer;
+                line-height: 1.3rem;
                 transition: all .1s ease-in-out;
-                    line-height: 1.3rem;
+                width: 18rem;
 
                 &:hover {
                     background-color: #6aa0f8;
                 }
 
                 @include media-lg {
-                    line-height: 1.75rem;
                     font-size: 1.5rem;
                     height: 3rem;
+                    line-height: 1.75rem;
                     width: 22.9rem;
                 }
 
@@ -72,8 +72,8 @@
             align-items: center;
             background-color: #00DA76;
             display: flex;
-            justify-content: center;
             height: 100%;
+            justify-content: center;
             width: 20rem;
 
             @include media-lg {
@@ -88,21 +88,21 @@
                 font-family: 'Silkscreen',
                     sans-serif;
                 font-size: 0.8rem;
+                font-weight: 700;
                 height: 100%;
                 justify-content: center;
-                text-decoration: none;
-                width: 100%;
-                transition: all .1s ease-in-out;
                 letter-spacing: -0.33px;
-                font-weight: 700;
+                text-decoration: none;
+                transition: all .1s ease-in-out;
+                width: 100%;
 
                 &:hover {
                     background-color: #4ef2a6;
                 }
 
                 @include media-lg {
-                    line-height: 1.5rem;
                     font-size: 1.5rem;
+                    line-height: 1.5rem;
                 }
             }
 

@@ -1,17 +1,28 @@
 .profile-tweets-container {
-    &__categories {
+
+    @include media-lg {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+    }
+
+    &__categories {
         align-items: center;
+        background-color: #150714;
+        display: flex;
         height: 2.1rem;
+        justify-content: center;
 
         >div {
+            align-items: center;
             background-color: #150714;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50%;
             height: 100%;
+            justify-content: center;
+            width: 50%;
+
+            @include media-lg {
+                width: 21%;
+            }
 
 
             >span {
@@ -19,14 +30,14 @@
                 font-family: 'Silkscreen',
                     sans-serif;
                 font-size: 1.25rem;
+                font-weight: 700;
                 line-height: 1.25rem;
                 letter-spacing: -0.33px;
-                font-weight: 700;
             }
         }
 
         .active {
-            background-color: #2E132C;
+            background-color: #60265B;
 
             >span {
                 color: #150714;

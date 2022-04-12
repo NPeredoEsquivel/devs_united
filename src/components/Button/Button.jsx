@@ -5,7 +5,7 @@ function Button({ disabled, buttonText, buttonClass, onClickEvent, childrenCompo
     const styles = {
         cursor: 'pointer',
         scale: 1.05,
-        transition: 'all .2s ease-in-out',
+        transition: 'all .8s ease-in-out',
 
     }
 

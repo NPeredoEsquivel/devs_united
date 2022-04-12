@@ -5,14 +5,22 @@
 @import './TweetContainer/_tweetcontainer';
 
 .loading-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+
 }
 
 .header {
     background-color: #250C23;
+    display: flex;
     height: 3rem;
+    justify-content: center;
+}
 
+.main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }

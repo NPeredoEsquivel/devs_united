@@ -4,6 +4,12 @@
     background-color: #2E132C;
     z-index: 0;
 
+
+    @include media-lg {
+        margin: auto;
+        width: 42%;
+    }
+
     .loading-components {
         align-items: center;
         display: flex;

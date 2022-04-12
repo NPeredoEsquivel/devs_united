@@ -1,7 +1,14 @@
 @import './TweetForm/TweetForm';
 
 .tweet-body-container {
+    width: 100%;
+
     &>div {
         overflow: hidden;
+    }
+
+    @include media-lg {
+        display: flex;
+        flex-direction: column;
     }
 }
