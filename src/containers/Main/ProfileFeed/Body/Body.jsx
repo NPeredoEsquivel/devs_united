@@ -4,10 +4,11 @@ import { AuthContext } from "../../../../hooks/ContextHooks/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { FilterUserByNickName } from "../../../../utils/helper/FilterUserFromCollection";
 import Loading from "../../../../components/Loading/Loading";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function ProfileBody() {
     const { currentUser } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [filteringUser, setFilterigUser] = useState(true);
     const [filteredUser, setFilteredUser] = useState({});
     const { profileNickName } = useParams();
@@ -16,6 +17,7 @@ function ProfileBody() {
         setFilterigUser(true);
         let userFilteredPromise = FilterUserByNickName(profileNickName)
             .then(user => {
+                !user && navigate('/main');
                 setFilteredUser(user);
                 setFilterigUser(false);
                 return user;

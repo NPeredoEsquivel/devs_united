@@ -2,6 +2,8 @@ import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 import { ProfileConfigurationContext } from "../../../../hooks/ContextHooks/ProfileContext";
 import { loginWithGoogle } from "../../../../Firebase";
 import Button from "../../../../components/Button/Button";
+import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
+import ScaledContainer from "../../../../components/AnimatedContainer/ScaledContainer";
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../../App";
 import FirebaseUserConfig from "../../../../utils/helper/FirebaseUserConfig";
@@ -19,7 +21,7 @@ function BottomSection() {
     let handleRedirect = (e, currentUser, nickNameConfigured, profileColorConfigured) => {
         e.preventDefault();
         FirebaseUserConfig(currentUser, nickNameConfigured, profileColorConfigured);
-        navigate('/home');
+        navigate('/main');
     }
 
     return (
@@ -36,17 +38,23 @@ function BottomSection() {
                         </div>
                     </>
                 ) : (
-                        <div className="bottom-container__login">
-                            <div className="bottom-container__login__img-container">
-                                <img src={images('./google-icon.svg').default} alt="google-login-icon" />
-                            </div>
-                            <Button
-                                buttonText="Sign in with Google"
-                                buttonClass="bottom-container__login__button"
-                                onClickEvent={loginWithGoogle}
-                            />
-                        </div>
-                    )}
+                    <ScaledContainer
+                        className="bottom-container__login"
+                        childrenComponent={
+                            <>
+                                <div className="bottom-container__login__img-container">
+                                    <ImageContainer imgSrc={images('./google-icon.svg').default} className="bottom-container__login__img-container_google" alternative="google-login-icon" />
+                                </div>
+                                <Button
+                                    buttonText="Sign in with Google"
+                                    buttonClass="bottom-container__login__button"
+                                    onClickEvent={loginWithGoogle}
+                                    enableAnimation={false}
+                                />
+                            </>
+                        }
+                    />
+                )}
             </div>
         </div >
     );

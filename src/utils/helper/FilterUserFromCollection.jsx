@@ -31,11 +31,6 @@ export async function FilterUserByNickName(nickName) {
             'profileUrlPhoto': data.profile_photo,
         }
     } else {
-        return {
-            'userUid': null,
-            'nickName': null,
-            'profileColor': null,
-            'profileUrlPhoto': null,
-        }
+        return null;
     }
 }
