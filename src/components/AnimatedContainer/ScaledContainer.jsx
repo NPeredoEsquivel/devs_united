@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion/dist/framer-motion'
 
-function ScaledContainer({ className, childrenComponent }) {
+function ScaledContainer({ className, children }) {
 
     const styles = {
         cursor: 'pointer',
@@ -21,7 +21,7 @@ function ScaledContainer({ className, childrenComponent }) {
             whileHover={styles}
             whileTap={scale}
         >
-            {childrenComponent}
+            {children}
         </motion.div>
     );
 }

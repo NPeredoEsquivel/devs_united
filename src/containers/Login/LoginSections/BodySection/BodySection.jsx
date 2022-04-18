@@ -57,9 +57,7 @@ function AuthContainerBody() {
                         ) :
 
                             <TranslatedContainer>
-                                <LoadingInputText
-                                    className="body-input__loading-input" />
-
+                                <LoadingInputText className="body-input__loading-input" />
                             </TranslatedContainer>
                         }
                     </div>
@@ -82,11 +80,11 @@ function AuthContainerBody() {
                     </div>
                 </>
             ) : (
-                    <TextContainer
-                        className="auth-container-body__body__text"
-                        contentText="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                    />
-                )}
+                <TextContainer
+                    className="auth-container-body__body__text"
+                    contentText="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                />
+            )}
         </div>
     );
 }

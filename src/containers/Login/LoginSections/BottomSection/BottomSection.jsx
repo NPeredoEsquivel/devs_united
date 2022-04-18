@@ -38,22 +38,17 @@ function BottomSection() {
                         </div>
                     </>
                 ) : (
-                    <ScaledContainer
-                        className="bottom-container__login"
-                        childrenComponent={
-                            <>
-                                <div className="bottom-container__login__img-container">
-                                    <ImageContainer imgSrc={images('./google-icon.svg').default} className="bottom-container__login__img-container_google" alternative="google-login-icon" />
-                                </div>
-                                <Button
-                                    buttonText="Sign in with Google"
-                                    buttonClass="bottom-container__login__button"
-                                    onClickEvent={loginWithGoogle}
-                                    enableAnimation={false}
-                                />
-                            </>
-                        }
-                    />
+                    <ScaledContainer className="bottom-container__login">
+                        <div className="bottom-container__login__img-container">
+                            <ImageContainer imgSrc={images('./google-icon.svg').default} className="bottom-container__login__img-container_google" alternative="google-login-icon" />
+                        </div>
+                        <Button
+                            buttonText="Sign in with Google"
+                            buttonClass="bottom-container__login__button"
+                            onClickEvent={loginWithGoogle}
+                            enableAnimation={false}
+                        />
+                    </ScaledContainer>
                 )}
             </div>
         </div >

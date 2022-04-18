@@ -1,4 +1,5 @@
 import ImageContainer from "../../../../../components/ImageContainer/ImageContainer";
+import Span from "../../../../../components/Span/Span";
 import { colors } from "../../../../../hooks/ContextHooks/ProfileContext";
 
 function ProfileContainer({ profileUser }) {
@@ -12,9 +13,10 @@ function ProfileContainer({ profileUser }) {
                 imgSrc={profileUser.filteredUser.profileUrlPhoto}
             />
             <div className="profile-information__nickname">
-                <span className={`profile-information__nickname__${imgBorder.name}`}>
-                    {profileUser.filteredUser.nickName}
-                </span>
+                <Span
+                    className={`profile-information__nickname__${imgBorder.name}`}
+                    contentOfSpan={profileUser.filteredUser.nickName}
+                />
             </div>
         </div>
     );

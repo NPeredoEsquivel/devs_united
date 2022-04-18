@@ -2,24 +2,24 @@ import { StatesContext } from "../../../../../hooks/ContextHooks/StatesContext";
 import { useState, useContext } from "react";
 import TweetContainer from "../../../TweetContainer/TweetContainer";
 import Loading from "../../../../../components/Loading/Loading";
-import { tweetsViewerOptions } from "../../../../../utils/constants/view_options.constants";
-import { handleListConfiguration } from "../../../../../utils/helper/TweetListHelper";
+import { profileTabs } from "../../../../../utils/constants/view_options.constants";
 import Span from "../../../../../components/Span/Span";
+import ProfileTab from "../../../../../components/ProfileTab/ProfileTab";
+import { handleListConfiguration } from "../../../../../utils/helper/TweetListHelper";
 
 function ProfileTweetContainer({ profileUser }) {
-    const [listConfig, setListConfig] = useState(tweetsViewerOptions);
+    const [tweetListToList, setTweetListToList] = useState(profileTabs);
     const { tweetsArrayState } = useContext(StatesContext);
 
     let tweets = null;
     if (profileUser.isFilteredUserCurrentUser) {
-        if (listConfig.postedTweets) {
+        if (tweetListToList.postedTweets) {
             tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
                 tweet.userUid === profileUser.filteredUser.userUid
             )
         }
 
-        if (listConfig.favoritedTweets) {
-            console.log(tweetsArrayState);
+        if (tweetListToList.favoritedTweets) {
             tweets = tweetsArrayState.tweetsArray.filter((tweet) =>
                 tweet.userLikesArr.includes(profileUser.filteredUser.userUid) &&
                 tweet.userUid !== profileUser.filteredUser.userUid
@@ -36,22 +36,22 @@ function ProfileTweetContainer({ profileUser }) {
             {profileUser.isFilteredUserCurrentUser ?
                 (
                     <div className="profile-tweets-container__categories">
-                        <div
-                            className={`posts ${listConfig.postedTweets ? 'active' : ''}`}
-                            onClick={() => handleListConfiguration('postedTweets', setListConfig)}
+                        <ProfileTab
+                            className={`posts ${tweetListToList.postedTweets ? 'active' : ''}`}
+                            onClickHandler={() => handleListConfiguration('postedTweets', setTweetListToList)}
                         >
                             <Span
                                 contentOfSpan={"POSTS"}
                             />
-                        </div>
-                        <div
-                            className={`favorites ${listConfig.favoritedTweets ? 'active' : ''}`}
-                            onClick={() => handleListConfiguration('favoritedTweets', setListConfig)}
+                        </ProfileTab>
+                        <ProfileTab
+                            className={`favorites ${tweetListToList.favoritedTweets ? 'active' : ''}`}
+                            onClickHandler={() => handleListConfiguration('favoritedTweets', setTweetListToList)}
                         >
                             <Span
                                 contentOfSpan={"FAVORITES"}
                             />
-                        </div>
+                        </ProfileTab>
                     </div>
                 ) : <></>
             }

@@ -1,4 +1,4 @@
-export const tweetsViewerOptions = {
+export const profileTabs = {
     'postedTweets': true,
     'favoritedTweets': false,
 };
