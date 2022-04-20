@@ -9,9 +9,10 @@ import Span from "../../../../components/Span/Span"
 import TranslatedContainer from "../../../../components/AnimatedContainer/TranslationContainer"
 
 function AuthContainerBody() {
-    const { currentUser } = useAuthState();
+    const { isAuthLoading, currentUser } = useAuthState();
     const { profileConfiguration } = useContext(ProfileConfigurationContext);
 
+    //Unique nickname handler.
     const handleValueChange = (e) => {
         const nickNameValue = e.target.value.replace(/\s/g, '');
         getUsers().then((users) => {
@@ -31,7 +32,8 @@ function AuthContainerBody() {
     const profileColorConfigured = profileConfiguration.profileColor.getProfileColor;
     const isNickNameUnique = profileConfiguration.nickName.isNickNameUnique;
 
-    const isProfileSet = (nickNameConfigured || profileColorConfigured) ?? false;
+    //If auth isn't loading, and it doesnt have any profile configured
+    const isProfileSet = (!isAuthLoading || (nickNameConfigured || profileColorConfigured)) ?? false;
     return (
         <div className="auth-container-body__body">
             {currentUser ? (

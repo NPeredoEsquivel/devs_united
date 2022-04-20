@@ -10,6 +10,7 @@ import Loading from "../../components/Loading/Loading";
 
 function Login() {
     const { isAuthLoading } = useAuthState();
+
     let windowWidth = useWindowWidth();
     return (
         <div className="App login-container">
