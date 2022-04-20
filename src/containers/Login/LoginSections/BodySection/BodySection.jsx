@@ -33,7 +33,7 @@ function AuthContainerBody() {
     const isNickNameUnique = profileConfiguration.nickName.isNickNameUnique;
 
     //If auth isn't loading, and it doesnt have any profile configured
-    const isProfileSet = (!isAuthLoading || (nickNameConfigured || profileColorConfigured)) ?? false;
+    const isProfileSet = ((nickNameConfigured !== null && nickNameConfigured) || (profileColorConfigured !== null && profileColorConfigured)) ?? false;
     return (
         <div className="auth-container-body__body">
             {currentUser ? (

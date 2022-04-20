@@ -4,8 +4,12 @@ import TweetForm from './TweetForm/TweetForm'
 function Body() {
     return (
         <div className="tweet-body-container">
-            <TweetForm />
-            <TweetContainer />
+            <div className="tweet-body-container__form">
+                <TweetForm />
+            </div>
+            <div className="tweet-body-contaienr__tweet-container">
+                <TweetContainer />
+            </div>
         </div >
     );
 }

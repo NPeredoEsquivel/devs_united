@@ -17,7 +17,7 @@ function TweetCard({ tweet }) {
 
 
     let date = tweet.timestamp.toDate();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
     date = date.toLocaleDateString('es-CL', options).replaceAll(' de ', ' ');
 
     let fillHearth = tweet.userLikesArr ? (

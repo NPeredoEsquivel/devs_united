@@ -45,6 +45,10 @@
     &__logo {
         display: flex;
         padding-right: 1rem;
+        @include media-lg {
+            width: 60%;
+            justify-content: space-between;
+        }
 
         .logo {
             width: 2.8rem;

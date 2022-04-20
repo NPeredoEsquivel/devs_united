@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { useAuthState } from "../../hooks/CustomHooks/AuthHook";
 import { ProfileConfigurationContext } from "../../hooks/ContextHooks/ProfileContext";
+import { FilterUserByNickName } from "../../utils/helper/FilterUserFromCollection";
 import Loading from "../../components/Loading/Loading";
 import { default as ProfileFeedHeader } from "./ProfileFeed/Header/Header";
 import { default as ProfileFeedBody } from "./ProfileFeed/Body/Body";
@@ -12,6 +13,31 @@ function Main() {
     const { profileNickName } = useParams();
     const { isAuthLoading } = useAuthState();
     const { isProfileLoading } = useContext(ProfileConfigurationContext);
+    const [filteringUser, setFilterigUser] = useState(true);
+    const [filteredUser, setFilteredUser] = useState(null);
+
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (profileNickName) {
+            let userFilteredPromise = FilterUserByNickName(profileNickName)
+                .then(user => {
+                    if (user === null) {
+                        setFilteredUser(null);
+                        setFilterigUser(false);
+                        navigate('/404');
+                        return;
+                    } else {
+                        setFilteredUser(user);
+                        setFilterigUser(false);
+                    }
+                });
+            return () => userFilteredPromise;
+        }
+    }, [profileNickName])
+
+    const showProfileFeed = profileNickName && filteredUser && !filteringUser;
 
     return (
         <>
@@ -19,15 +45,19 @@ function Main() {
                 !isAuthLoading && !isProfileLoading ? (
                     <>
                         <header className="header">
-                            {profileNickName ?
-                                <ProfileFeedHeader />
+                            {showProfileFeed ?
+                                <ProfileFeedHeader
+                                    filteredUser={filteredUser}
+                                />
                                 :
                                 <MainFeedHeader />
                             }
                         </header>
                         <div className="main">
-                            {profileNickName ?
-                                <ProfileFeedBody />
+                            {showProfileFeed ?
+                                <ProfileFeedBody
+                                    filteredUser={filteredUser}
+                                />
                                 :
                                 <MainFeedBody />
                             }

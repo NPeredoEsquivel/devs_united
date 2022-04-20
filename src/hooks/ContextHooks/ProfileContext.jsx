@@ -26,11 +26,15 @@ export default function ProfileConfigurationProvider({ children }) {
 
     useEffect(() => {
         if (isAuthenticated) {
-            FilterUserByUid(currentUser.uid).then(data => {
-                setNickName(data.nickname);
-                setProfileColor(data.color);
-                setProfileLoading(false);
-            });
+            FilterUserByUid(currentUser.uid)
+                .then(data => {
+                    setNickName(data.nickname);
+                    setProfileColor(data.color);
+                    setProfileLoading(false);
+                })
+                .catch(error => {
+                    setProfileLoading(false);
+                });
         }
 
         return () => { }

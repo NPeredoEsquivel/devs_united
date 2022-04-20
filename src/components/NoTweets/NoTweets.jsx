@@ -4,7 +4,7 @@ function NoTweets() {
     return (
         <div className="no-tweets-container">
             <Span
-                contentOfSpan="No has creado Tweets."
+                contentOfSpan="No se encuentran Tweets."
             />
         </div>
     );

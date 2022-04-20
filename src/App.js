@@ -26,6 +26,7 @@ function App() {
         }/>
         <Route path="/" element={<Navigate to="/main" />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/404" element={<NotFound />} />
         <Route path="/login" element={<Login />} />
       </Routes>
 

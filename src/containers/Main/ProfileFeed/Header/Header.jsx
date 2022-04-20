@@ -5,13 +5,13 @@ import Button from "../../../../components/Button/Button";
 import { logOut } from "../../../../Firebase";
 import { images } from "../../../../App";
 import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-
-function Header() {
+function Header({ filteredUser }) {
     const { setCurrentUser } = useContext(AuthContext);
     const { nickName, setNickName, setProfileColor } = useContext(ProfileConfigurationContext);
     const navigate = useNavigate();
+
 
     let handleLogOut = () => {
         setCurrentUser(null);
@@ -21,7 +21,6 @@ function Header() {
         navigate('/login');
     }
 
-    const { profileNickName } = useParams();
 
     return (
         <nav className="header-container">
@@ -38,10 +37,10 @@ function Header() {
                 />
             </div>
             <div className="header-container__nickname">
-                {profileNickName}
+                {filteredUser.nickName}
             </div>
             <div className="header-container__button">
-                {profileNickName === nickName ?
+                {filteredUser.nickName === nickName ?
                     (
                         <Button
                             buttonText="Logout"
