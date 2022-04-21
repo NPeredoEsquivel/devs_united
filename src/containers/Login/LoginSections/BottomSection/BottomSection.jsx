@@ -7,7 +7,7 @@ import ScaledContainer from "../../../../components/AnimatedContainer/ScaledCont
 import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../../App";
 import FirebaseUserConfig from "../../../../utils/helper/FirebaseUserConfig";
-import { useContext } from "react";
+import { useContext, memo } from "react";
 
 function BottomSection() {
     const { currentUser } = useAuthState();
@@ -55,4 +55,4 @@ function BottomSection() {
     );
 }
 
-export default BottomSection;
+export default memo(BottomSection);

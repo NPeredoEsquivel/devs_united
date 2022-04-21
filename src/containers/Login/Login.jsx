@@ -7,6 +7,7 @@ import { images } from "../../App";
 import { useAuthState } from "../../hooks/CustomHooks/AuthHook";
 import { useWindowWidth } from "../../hooks/CustomHooks/CustomWidthHook";
 import Loading from "../../components/Loading/Loading";
+import { memo } from "react";
 
 function Login() {
     const { isAuthLoading } = useAuthState();
@@ -36,4 +37,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default memo(Login);

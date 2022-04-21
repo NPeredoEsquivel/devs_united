@@ -1,6 +1,7 @@
 import ImageContainer from "../../../../../components/ImageContainer/ImageContainer";
 import Span from "../../../../../components/Span/Span";
 import { colors } from "../../../../../hooks/ContextHooks/ProfileContext";
+import { memo } from "react";
 
 function ProfileContainer({ profileUser }) {
     let imgBorder = colors.find(color =>
@@ -22,4 +23,4 @@ function ProfileContainer({ profileUser }) {
     );
 }
 
-export default ProfileContainer;
+export default memo(ProfileContainer);

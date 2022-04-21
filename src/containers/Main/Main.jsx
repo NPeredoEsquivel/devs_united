@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, memo } from "react";
 import { useAuthState } from "../../hooks/CustomHooks/AuthHook";
 import { ProfileConfigurationContext } from "../../hooks/ContextHooks/ProfileContext";
 import { FilterUserByNickName } from "../../utils/helper/FilterUserFromCollection";
@@ -20,25 +20,26 @@ function Main() {
 
 
     useEffect(() => {
+        setFilterigUser(true)
         if (profileNickName) {
             let userFilteredPromise = FilterUserByNickName(profileNickName)
                 .then(user => {
                     if (user === null) {
                         setFilteredUser(null);
-                        setFilterigUser(false);
                         navigate('/404');
                         return;
                     } else {
                         setFilteredUser(user);
-                        setFilterigUser(false);
                     }
+
+                    setFilterigUser(false);
                 });
+
             return () => userFilteredPromise;
         }
     }, [profileNickName])
 
     const showProfileFeed = profileNickName && filteredUser && !filteringUser;
-
     return (
         <>
             {
@@ -73,4 +74,4 @@ function Main() {
     );
 }
 
-export default Main
+export default memo(Main)

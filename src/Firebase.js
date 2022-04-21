@@ -20,6 +20,7 @@ export const firestore = firebase.firestore();
 
 //exporta y crea un modulo de auth.
 export const auth = firebase.auth();
+auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
 //creando un nuevo provider.
 export const provider = new firebase.auth.GoogleAuthProvider();
 

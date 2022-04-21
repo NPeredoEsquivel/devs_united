@@ -1,6 +1,6 @@
 import TextContainer from "../../../../components/TextContainer/TextContainer";
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
-
+import { memo } from "react";
 
 function TitleSection() {
     const { currentUser } = useAuthState();
@@ -28,4 +28,4 @@ function TitleSection() {
     );
 }
 
-export default TitleSection;
+export default memo(TitleSection);

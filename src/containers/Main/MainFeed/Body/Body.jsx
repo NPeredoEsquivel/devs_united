@@ -1,5 +1,6 @@
 import TweetContainer from "../../../Main/TweetContainer/TweetContainer"
 import TweetForm from './TweetForm/TweetForm'
+import { memo } from "react";
 
 function Body() {
     return (
@@ -14,4 +15,4 @@ function Body() {
     );
 }
 
-export default Body;
+export default memo(Body);

@@ -1,6 +1,6 @@
 import TweetCard from "./TweetCard/TweetCard.jsx";
 import { StatesContext } from "../../../hooks/ContextHooks/StatesContext";
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import Loading from "../../../components/Loading/Loading";
 import NoTweets from "../../../components/NoTweets/NoTweets";
 import OpacityContainer from "../../../components/AnimatedContainer/OpacityContainer";
@@ -33,4 +33,4 @@ function TweetContainer({ tweetsArray = null }) {
     );
 }
 
-export default TweetContainer;
+export default memo(TweetContainer);

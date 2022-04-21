@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { AuthContext } from "../../../../hooks/ContextHooks/AuthContext";
 import { ProfileConfigurationContext } from "../../../../hooks/ContextHooks/ProfileContext";
 import Button from "../../../../components/Button/Button";
@@ -60,4 +60,4 @@ function Header({ filteredUser }) {
     );
 }
 
-export default Header;
+export default memo(Header);

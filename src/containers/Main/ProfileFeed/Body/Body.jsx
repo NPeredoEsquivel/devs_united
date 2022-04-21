@@ -1,7 +1,7 @@
 import ProfileContainer from "./ProfileContainer/ProfileContainer";
 import ProfileTweetContainer from "./ProfileTweetContainer/ProfileTweetContainer";
 import { AuthContext } from "../../../../hooks/ContextHooks/AuthContext";
-import { useContext } from "react";
+import { useContext, memo } from "react";
 
 function ProfileBody({ filteredUser }) {
     const { currentUser } = useContext(AuthContext);
@@ -24,4 +24,4 @@ function ProfileBody({ filteredUser }) {
     );
 }
 
-export default ProfileBody;
+export default memo(ProfileBody);

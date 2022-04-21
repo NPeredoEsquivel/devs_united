@@ -1,5 +1,5 @@
 import { StatesContext } from "../../../../../hooks/ContextHooks/StatesContext";
-import { useState, useContext } from "react";
+import { useState, useContext, memo } from "react";
 import TweetContainer from "../../../TweetContainer/TweetContainer";
 import Loading from "../../../../../components/Loading/Loading";
 import { profileTabs } from "../../../../../utils/constants/view_options.constants";
@@ -65,4 +65,4 @@ function ProfileTweetContainer({ profileUser }) {
     );
 }
 
-export default ProfileTweetContainer;
+export default memo(ProfileTweetContainer);

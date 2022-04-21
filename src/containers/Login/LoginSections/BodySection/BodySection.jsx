@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 import { ProfileConfigurationContext, colors } from "../../../../hooks/ContextHooks/ProfileContext";
 import { getUsers } from "../../../../hooks/ContextHooks/StatesContext";
@@ -91,4 +91,4 @@ function AuthContainerBody() {
     );
 }
 
-export default AuthContainerBody;
+export default memo(AuthContainerBody);

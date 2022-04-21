@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { useAuthState } from "../../../../hooks/CustomHooks/AuthHook";
 import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
 import Span from "../../../../components/Span/Span";
@@ -100,4 +100,4 @@ function TweetCard({ tweet }) {
     );
 }
 
-export default TweetCard
+export default memo(TweetCard)

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { images } from "../../../../App";
 import { AuthContext } from "../../../../hooks/ContextHooks/AuthContext";
 import { ProfileConfigurationContext } from "../../../../hooks/ContextHooks/ProfileContext";
@@ -36,4 +36,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default memo(Header);
