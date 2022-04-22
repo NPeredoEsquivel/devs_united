@@ -9,8 +9,8 @@ import Span from "../../../../components/Span/Span"
 import TranslatedContainer from "../../../../components/AnimatedContainer/TranslationContainer"
 
 function AuthContainerBody() {
-    const { isAuthLoading, currentUser } = useAuthState();
-    const { profileConfiguration } = useContext(ProfileConfigurationContext);
+    const { currentUser } = useAuthState();
+    const { profileConfiguration, isProfileLoading } = useContext(ProfileConfigurationContext);
 
     //Unique nickname handler.
     const handleValueChange = (e) => {
@@ -32,22 +32,20 @@ function AuthContainerBody() {
     const profileColorConfigured = profileConfiguration.profileColor.getProfileColor;
     const isNickNameUnique = profileConfiguration.nickName.isNickNameUnique;
 
-    //If auth isn't loading, and it doesnt have any profile configured
-    const isProfileSet = ((nickNameConfigured !== null && nickNameConfigured) || (profileColorConfigured !== null && profileColorConfigured)) ?? false;
     return (
         <div className="auth-container-body__body">
             {currentUser ? (
                 <>
                     <div className="body-input">
-                        {isProfileSet ? (
+                        {!isProfileLoading ? (
                             <>
                                 <InputText
                                     placeHolder="Type your username"
                                     inputValue={nickNameConfigured ?? ''}
                                     handleValue={handleValueChange}
-                                    className={!isNickNameUnique ? "validation-error" : ""}
+                                    className={(isNickNameUnique !== null && !isNickNameUnique) ? "validation-error" : ""}
                                 />
-                                {!isNickNameUnique ?
+                                {isNickNameUnique !== null && !isNickNameUnique ?
                                     (
                                         <Span
                                             className="validation-error"
@@ -74,7 +72,7 @@ function AuthContainerBody() {
                                     return <ColorSelector
                                         key={color.hex}
                                         hexColor={color.hex}
-                                        className={isProfileSet ? (`color-picker__selector__color ${color.name} ${profileColorConfigured === color.hex ? "selected" : ""}`) : "color-picker__selector__loading"}
+                                        className={!isProfileLoading ? (`color-picker__selector__color ${color.name} ${profileColorConfigured === color.hex ? "selected" : ""}`) : "color-picker__selector__loading"}
                                     />
                                 })}
                             </div>

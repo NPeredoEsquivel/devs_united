@@ -18,14 +18,15 @@ export default function ProfileConfigurationProvider({ children }) {
     const { currentUser } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
 
-    const [nickName, setNickName] = useState("");
-    const [profileColor, setProfileColor] = useState("");
+    const [nickName, setNickName] = useState(null);
+    const [profileColor, setProfileColor] = useState(null);
     const [validNickName, setValidNickName] = useState(true);
-    const [isProfileLoading, setProfileLoading] = useState(true);
+    const [isProfileLoading, setProfileLoading] = useState(null);
 
 
     useEffect(() => {
         if (isAuthenticated) {
+            setProfileLoading(true);
             FilterUserByUid(currentUser.uid)
                 .then(data => {
                     setNickName(data.nickname);
@@ -55,7 +56,7 @@ export default function ProfileConfigurationProvider({ children }) {
     }
 
     return (
-        <ProfileConfigurationContext.Provider value={{ profileConfiguration, nickName, setNickName, profileColor, setProfileColor, isProfileLoading }}>
+        <ProfileConfigurationContext.Provider value={{ profileConfiguration, isProfileLoading }}>
             {children}
         </ProfileConfigurationContext.Provider>
     );

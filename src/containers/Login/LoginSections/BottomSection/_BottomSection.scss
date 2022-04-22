@@ -110,6 +110,10 @@
                 background-color: #b1dbc7;
                 color: #000000;
                 cursor: default;
+
+                &:hover {
+                    background-color: #b1dbc7;
+                }
             }
         }
     }

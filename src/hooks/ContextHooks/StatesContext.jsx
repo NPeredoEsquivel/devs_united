@@ -28,7 +28,13 @@ export async function getUsers() {
 }
 
 export default function StatesContextProvider({ children }) {
-    const { nickName, profileColor } = useContext(ProfileConfigurationContext);
+    const { profileConfiguration } = useContext(ProfileConfigurationContext);
+
+
+    const nickName = profileConfiguration.nickName.getNickName;
+    const profileColor = profileConfiguration.profileColor.getProfileColor;
+
+
     const { currentUser } = useContext(AuthContext);
     const [tweetsArray, setTweetsArray] = useState([]);
     const [loadedTweets, setLoadedTweets] = useState(false);
@@ -60,7 +66,6 @@ export default function StatesContextProvider({ children }) {
                             let filteredUser = users.find((user) => {
                                 return user.user_uid === doc.data().userUid
                             })
-
                             return {
                                 text: doc.data().text,
                                 author: doc.data().author,

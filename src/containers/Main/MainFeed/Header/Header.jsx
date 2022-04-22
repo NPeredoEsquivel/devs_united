@@ -8,7 +8,11 @@ import FindTweetAuthorColor from "../../../../utils/helper/TweetAuthorColor";
 
 function Header() {
     const { currentUser } = useContext(AuthContext);
-    const { nickName, profileColor } = useContext(ProfileConfigurationContext);
+    const { profileConfiguration } = useContext(ProfileConfigurationContext);
+
+    const nickName = profileConfiguration.nickName.getNickName;
+    const profileColor = profileConfiguration.profileColor.getProfileColor;
+
     let imgBorder = FindTweetAuthorColor(profileColor);
 
     return (

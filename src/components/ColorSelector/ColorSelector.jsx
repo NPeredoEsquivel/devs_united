@@ -2,12 +2,13 @@ import { ProfileConfigurationContext } from "../../hooks/ContextHooks/ProfileCon
 import { useContext } from "react";
 
 function ColorSelector({ hexColor, className }) {
-    const { setProfileColor } = useContext(ProfileConfigurationContext);
+    const { profileConfiguration } = useContext(ProfileConfigurationContext);
+    let handleProfileColor = profileConfiguration.profileColor.setProfileColor;
 
     return (
         <div
             className={className}
-            onClick={() => setProfileColor(hexColor)}
+            onClick={() => handleProfileColor(hexColor)}
         >
 
         </div>

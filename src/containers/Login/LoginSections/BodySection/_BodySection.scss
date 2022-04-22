@@ -88,6 +88,7 @@
                 box-shadow: 1px 1px 3px 1px #868686;
                 height: 2rem;
                 width: 2rem;
+                cursor: pointer;
 
                 @include media-lg {
                     height: 3.625rem;

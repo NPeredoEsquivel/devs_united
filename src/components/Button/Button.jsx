@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion/dist/framer-motion'
 
-function Button({ buttonText, buttonClass, onClickEvent, childrenComponent = null, enableAnimation = null, disabled = false }) {
+function Button({ buttonText, buttonClass, onClickEvent, children = null, enableAnimation = false, disabled = false }) {
 
     const styles = {
         cursor: 'pointer',
@@ -23,7 +23,7 @@ function Button({ buttonText, buttonClass, onClickEvent, childrenComponent = nul
             whileTap={disabled ? {} : (enableAnimation ? scale : {})}
         >
             {buttonText}
-            {childrenComponent}
+            {children}
         </motion.button >
     );
 }

@@ -18,12 +18,12 @@ function BottomSection() {
     const profileColorConfigured = profileConfiguration.profileColor.getProfileColor;
     const isNickNameUnique = profileConfiguration.nickName.isNickNameUnique;
 
+
     let handleRedirect = (e, currentUser, nickNameConfigured, profileColorConfigured) => {
         e.preventDefault();
         FirebaseUserConfig(currentUser, nickNameConfigured, profileColorConfigured);
         navigate('/main');
     }
-
     return (
         <div className="auth-container-body__bottom">
             <div className="bottom-container">
@@ -46,7 +46,6 @@ function BottomSection() {
                             buttonText="Sign in with Google"
                             buttonClass="bottom-container__login__button"
                             onClickEvent={loginWithGoogle}
-                            enableAnimation={false}
                         />
                     </ScaledContainer>
                 )}

@@ -9,7 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 function Header({ filteredUser }) {
     const { setCurrentUser } = useContext(AuthContext);
-    const { nickName, setNickName, setProfileColor } = useContext(ProfileConfigurationContext);
+    const { profileConfiguration } = useContext(ProfileConfigurationContext);
+
+    const nickName = profileConfiguration.nickName.getNickName;
+    const setNickName = profileConfiguration.nickName.setNickName;
+    const setProfileColor = profileConfiguration.profileColor.setProfileColor;
+
     const navigate = useNavigate();
 
 
@@ -27,14 +32,14 @@ function Header({ filteredUser }) {
             <div className="header-container__back-action">
                 <Button
                     onClickEvent={() => navigate(-1)}
-                    childrenComponent={
-                        <ImageContainer
-                            className="header-container__back-action__svg"
-                            imgSrc={images('./back-action.svg').default}
-                            alternative="back-action"
-                        />
-                    }
-                />
+                    enableAnimation={true}
+                >
+                    <ImageContainer
+                        className="header-container__back-action__svg"
+                        imgSrc={images('./back-action.svg').default}
+                        alternative="back-action"
+                    />
+                </Button>
             </div>
             <div className="header-container__nickname">
                 {filteredUser.nickName}
@@ -44,15 +49,15 @@ function Header({ filteredUser }) {
                     (
                         <Button
                             buttonText="Logout"
-                            childrenComponent={
-                                <ImageContainer
-                                    className="logout-svg"
-                                    imgSrc={images('./logout-icon.svg').default}
-                                    alternative="logout-icon"
-                                />
-                            }
+                            enableAnimation={true}
                             onClickEvent={handleLogOut}
-                        />
+                        >
+                            <ImageContainer
+                                className="logout-svg"
+                                imgSrc={images('./logout-icon.svg').default}
+                                alternative="logout-icon"
+                            />
+                        </Button>
                     ) : <></>
                 }
             </div>

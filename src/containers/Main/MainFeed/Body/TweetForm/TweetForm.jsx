@@ -53,7 +53,7 @@ function TweetForm() {
                             buttonText="Post"
                             onClickEvent={sendTweetHandler}
                             buttonClass="tweet-form-container__input__submit-button__btn"
-                            pointer={(tweetState.tweet.text.length > 0)}
+                            enableAnimation={true}
                         />
                     </div>
 
