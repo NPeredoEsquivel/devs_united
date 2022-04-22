@@ -13,14 +13,11 @@ function Main() {
     const { profileNickName } = useParams();
     const { isAuthLoading } = useAuthState();
     const { isProfileLoading } = useContext(ProfileConfigurationContext);
-    const [filteringUser, setFilterigUser] = useState(true);
     const [filteredUser, setFilteredUser] = useState(null);
 
     const navigate = useNavigate();
 
-
     useEffect(() => {
-        setFilterigUser(true)
         if (profileNickName) {
             let userFilteredPromise = FilterUserByNickName(profileNickName)
                 .then(user => {
@@ -31,34 +28,48 @@ function Main() {
                     } else {
                         setFilteredUser(user);
                     }
-
-                    setFilterigUser(false);
                 });
 
             return () => userFilteredPromise;
         }
     }, [profileNickName])
 
-    const showProfileFeed = profileNickName && filteredUser && !filteringUser;
+    const showProfileFeed = profileNickName && filteredUser;
+
+    let didProfileChangeCorrectly = false;
+    if (filteredUser) {
+        didProfileChangeCorrectly = profileNickName === filteredUser.nickName;
+    }
+
     return (
         <>
             {
                 !isAuthLoading && !isProfileLoading ? (
                     <>
                         <header className="header">
-                            {showProfileFeed ?
-                                <ProfileFeedHeader
-                                    filteredUser={filteredUser}
-                                />
+                            {showProfileFeed ? (
+                                didProfileChangeCorrectly ?
+                                    <ProfileFeedHeader
+                                        filteredUser={filteredUser}
+                                    />
+                                    :
+                                    <></>
+                            )
                                 :
                                 <MainFeedHeader />
                             }
                         </header>
                         <div className="main">
-                            {showProfileFeed ?
-                                <ProfileFeedBody
-                                    filteredUser={filteredUser}
-                                />
+                            {showProfileFeed ? (
+                                didProfileChangeCorrectly ?
+                                    <ProfileFeedBody
+                                        filteredUser={filteredUser}
+                                    />
+                                    :
+                                    <div className="loading-container">
+                                        <Loading />
+                                    </div>
+                            )
                                 :
                                 <MainFeedBody />
                             }
