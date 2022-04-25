@@ -62,7 +62,7 @@ function TweetCard({ tweet }) {
                         <div className={`author__${tweetAuthorColor.name}`}>
                             <p>{tweet.userNickName}</p>
                         </div>
-                        <span>{date}.</span>
+                        <span>- {date}.</span>
                     </div>
                     <Span
                         className="tweet-author__delete-action"
