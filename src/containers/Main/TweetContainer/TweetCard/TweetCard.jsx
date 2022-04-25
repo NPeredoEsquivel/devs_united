@@ -60,7 +60,7 @@ function TweetCard({ tweet }) {
                 <div className="tweet-author">
                     <div className="tweet-author__headline">
                         <div className={`author__${tweetAuthorColor.name}`}>
-                            <p>{tweet.email}</p>
+                            <p>{tweet.userNickName}</p>
                         </div>
                         <span>{date}.</span>
                     </div>
